@@ -1,0 +1,205 @@
+[21:39:54.937] Global cache location 'C:/Users/david/AppData/Local/Microsoft/TypeScript/4.0', safe file path 'c:/users/david/appdata/roaming/npm/node_modules/typescript/lib/typingsafelist.json', types map path c:/users/david/appdata/roaming/npm/node_modules/typescript/lib/typesmap.json
+[21:39:54.938] Processing cache location 'C:/Users/david/AppData/Local/Microsoft/TypeScript/4.0'
+[21:39:54.939] Trying to find 'C:/Users/david/AppData/Local/Microsoft/TypeScript/4.0/package.json'...
+[21:39:54.942] Loaded content of 'C:/Users/david/AppData/Local/Microsoft/TypeScript/4.0/package.json': {"private":true,"dependencies":{"types-registry":"^0.1.586"},"devDependencies":{"@types/core-js":"^2.5.5","@types/regenerator-runtime":"^0.13.1"}}
+[21:39:54.967] Loaded content of 'C:/Users/david/AppData/Local/Microsoft/TypeScript/4.0/package-lock.json'
+[21:39:54.992] Adding entry into typings cache: 'core-js' => 'C:/Users/david/AppData/Local/Microsoft/TypeScript/4.0/node_modules/@types/core-js/index.d.ts'
+[21:39:55.3] Adding entry into typings cache: 'regenerator-runtime' => 'C:/Users/david/AppData/Local/Microsoft/TypeScript/4.0/node_modules/@types/regenerator-runtime/index.d.ts'
+[21:39:55.4] Finished processing cache location 'C:/Users/david/AppData/Local/Microsoft/TypeScript/4.0'
+[21:39:55.5] Process id: 1116
+[21:39:55.6] NPM location: "C:\Program Files\nodejs\npm" (explicit '--npmLocation' not  provided)
+[21:39:55.6] validateDefaultNpmLocation: false
+[21:39:55.7] Npm config file: C:/Users/david/AppData/Local/Microsoft/TypeScript/4.0/package.json
+[21:39:55.7] Updating types-registry npm package...
+[21:39:55.8] Exec: "C:\Program Files\nodejs\npm" install --ignore-scripts types-registry@latest
+[21:39:58.26]     Succeeded. stdout:
+    
+    up to date, audited 4 packages in 2s
+
+found 0 vulnerabilities
+
+[21:39:58.27] Updated types-registry npm package
+[21:39:58.73] Got install request {"projectName":"/dev/null/inferredProject1*","fileNames":["c:/Users/david/AppData/Roaming/npm/node_modules/typescript/lib/lib.d.ts","c:/Users/david/AppData/Roaming/npm/node_modules/typescript/lib/lib.es5.d.ts","c:/Users/david/AppData/Roaming/npm/node_modules/typescript/lib/lib.dom.d.ts","c:/Users/david/AppData/Roaming/npm/node_modules/typescript/lib/lib.webworker.importscripts.d.ts","c:/Users/david/AppData/Roaming/npm/node_modules/typescript/lib/lib.scripthost.d.ts","c:/js/bouboucle/packages/looper/index.js"],"compilerOptions":{"target":1,"jsx":1,"allowNonTsExtensions":true,"allowJs":true,"noEmitForJsFiles":true,"maxNodeModuleJsDepth":2},"typeAcquisition":{"enable":true,"include":[],"exclude":[]},"unresolvedImports":[],"projectRootPath":"c:/js/bouboucle/packages/looper","kind":"discover"}
+[21:39:58.89] Loaded safelist from types map file 'c:/users/david/appdata/roaming/npm/node_modules/typescript/lib/typesmap.json'
+[21:39:58.90] Explicitly included types: []
+[21:39:58.91] Typing names in 'c:/js/bouboucle/packages/looper/package.json' dependencies: ["gifshot","paper"]
+[21:39:58.93] Inferred typings from unresolved imports: []
+[21:39:58.93] Result: {"cachedTypingPaths":[],"newTypingNames":["gifshot","paper"],"filesToWatch":["c:/js/bouboucle/packages/looper/package.json","c:/js/bouboucle/packages/looper/bower_components","c:/js/bouboucle/packages/looper/node_modules"]}
+[21:39:58.94] Finished typings discovery: {"cachedTypingPaths":[],"newTypingNames":["gifshot","paper"],"filesToWatch":["c:/js/bouboucle/packages/looper/package.json","c:/js/bouboucle/packages/looper/bower_components","c:/js/bouboucle/packages/looper/node_modules"]}
+[21:39:58.94] FileWatcher:: Added:: WatchInfo: c:/js/bouboucle/packages/looper/package.json
+[21:39:58.96] DirectoryWatcher:: Added:: WatchInfo: c:/js/bouboucle/packages/looper/bower_components
+[21:39:58.97] DirectoryWatcher:: Added:: WatchInfo: c:/js/bouboucle/packages/looper/node_modules
+[21:39:58.97] Installing typings ["gifshot","paper"]
+[21:39:58.98] 'gifshot':: Entry for package 'gifshot' does not exist in local types registry - skipping...
+[21:39:58.99] 'paper':: Entry for package 'paper' does not exist in local types registry - skipping...
+[21:39:58.99] All typings are known to be missing or invalid - no need to install more typings
+[21:39:58.100] Sending response:
+    {"projectName":"/dev/null/inferredProject1*","typeAcquisition":{"enable":true,"include":[],"exclude":[]},"compilerOptions":{"target":1,"jsx":1,"allowNonTsExtensions":true,"allowJs":true,"noEmitForJsFiles":true,"maxNodeModuleJsDepth":2},"typings":[],"unresolvedImports":[],"kind":"action::set"}
+[21:39:58.101] Response has been sent.
+[21:40:10.658] Got install request {"projectName":"/dev/null/inferredProject1*","fileNames":["c:/Users/david/AppData/Roaming/npm/node_modules/typescript/lib/lib.d.ts","c:/Users/david/AppData/Roaming/npm/node_modules/typescript/lib/lib.es5.d.ts","c:/Users/david/AppData/Roaming/npm/node_modules/typescript/lib/lib.dom.d.ts","c:/Users/david/AppData/Roaming/npm/node_modules/typescript/lib/lib.webworker.importscripts.d.ts","c:/Users/david/AppData/Roaming/npm/node_modules/typescript/lib/lib.scripthost.d.ts","c:/js/bouboucle/packages/looper/makeTimeKeeper.js","c:/js/bouboucle/packages/looper/makeLine.js","c:/js/bouboucle/packages/looper/actions.js","c:/js/bouboucle/packages/looper/ajax.js","c:/js/bouboucle/packages/looper/urlUtils.js","c:/js/bouboucle/packages/looper/io.js","c:/js/bouboucle/packages/looper/makeLooper.js","c:/js/bouboucle/packages/looper/index.js"],"compilerOptions":{"target":1,"jsx":1,"allowNonTsExtensions":true,"allowJs":true,"noEmitForJsFiles":true,"maxNodeModuleJsDepth":2},"typeAcquisition":{"enable":true,"include":[],"exclude":[]},"unresolvedImports":["gifshot"],"projectRootPath":"c:/js/bouboucle/packages/looper","kind":"discover"}
+[21:40:10.660] Explicitly included types: []
+[21:40:10.663] Typing names in 'c:/js/bouboucle/packages/looper/package.json' dependencies: ["gifshot","paper"]
+[21:40:10.666] Inferred typings from unresolved imports: ["gifshot"]
+[21:40:10.667] Result: {"cachedTypingPaths":[],"newTypingNames":["gifshot","paper"],"filesToWatch":["c:/js/bouboucle/packages/looper/package.json","c:/js/bouboucle/packages/looper/bower_components","c:/js/bouboucle/packages/looper/node_modules"]}
+[21:40:10.668] Finished typings discovery: {"cachedTypingPaths":[],"newTypingNames":["gifshot","paper"],"filesToWatch":["c:/js/bouboucle/packages/looper/package.json","c:/js/bouboucle/packages/looper/bower_components","c:/js/bouboucle/packages/looper/node_modules"]}
+[21:40:10.670] Installing typings ["gifshot","paper"]
+[21:40:10.671] 'gifshot':: Entry for package 'gifshot' does not exist in local types registry - skipping...
+[21:40:10.672] 'paper':: Entry for package 'paper' does not exist in local types registry - skipping...
+[21:40:10.673] All typings are known to be missing or invalid - no need to install more typings
+[21:40:10.674] Sending response:
+    {"projectName":"/dev/null/inferredProject1*","typeAcquisition":{"enable":true,"include":[],"exclude":[]},"compilerOptions":{"target":1,"jsx":1,"allowNonTsExtensions":true,"allowJs":true,"noEmitForJsFiles":true,"maxNodeModuleJsDepth":2},"typings":[],"unresolvedImports":["gifshot"],"kind":"action::set"}
+[21:40:10.675] Response has been sent.
+[21:44:1.898] FileWatcher:: Triggered with c:/js/bouboucle/packages/looper/package.json eventKind: Changed:: WatchInfo: c:/js/bouboucle/packages/looper/package.json:: handler is already invoked 'false'
+[21:44:1.900] Sending response:
+    {"projectName":"/dev/null/inferredProject1*","kind":"action::invalidate"}
+[21:44:1.901] Response has been sent.
+[21:44:2.9] Got install request {"projectName":"/dev/null/inferredProject1*","fileNames":["c:/Users/david/AppData/Roaming/npm/node_modules/typescript/lib/lib.d.ts","c:/Users/david/AppData/Roaming/npm/node_modules/typescript/lib/lib.es5.d.ts","c:/Users/david/AppData/Roaming/npm/node_modules/typescript/lib/lib.dom.d.ts","c:/Users/david/AppData/Roaming/npm/node_modules/typescript/lib/lib.webworker.importscripts.d.ts","c:/Users/david/AppData/Roaming/npm/node_modules/typescript/lib/lib.scripthost.d.ts","c:/js/bouboucle/packages/looper/makeTimeKeeper.js","c:/js/bouboucle/packages/looper/makeLine.js","c:/js/bouboucle/packages/looper/actions.js","c:/js/bouboucle/packages/looper/ajax.js","c:/js/bouboucle/packages/looper/urlUtils.js","c:/js/bouboucle/packages/looper/io.js","c:/js/bouboucle/packages/looper/makeLooper.js","c:/js/bouboucle/packages/looper/index.js"],"compilerOptions":{"target":1,"jsx":1,"allowNonTsExtensions":true,"allowJs":true,"noEmitForJsFiles":true,"maxNodeModuleJsDepth":2},"typeAcquisition":{"enable":true,"include":[],"exclude":[]},"unresolvedImports":["gifshot"],"projectRootPath":"c:/js/bouboucle/packages/looper","kind":"discover"}
+[21:44:2.11] Explicitly included types: []
+[21:44:2.16] Typing names in 'c:/js/bouboucle/packages/looper/package.json' dependencies: ["gifshot","paper"]
+[21:44:2.19] Inferred typings from unresolved imports: ["gifshot"]
+[21:44:2.22] Result: {"cachedTypingPaths":[],"newTypingNames":["gifshot","paper"],"filesToWatch":["c:/js/bouboucle/packages/looper/package.json","c:/js/bouboucle/packages/looper/bower_components","c:/js/bouboucle/packages/looper/node_modules"]}
+[21:44:2.23] Finished typings discovery: {"cachedTypingPaths":[],"newTypingNames":["gifshot","paper"],"filesToWatch":["c:/js/bouboucle/packages/looper/package.json","c:/js/bouboucle/packages/looper/bower_components","c:/js/bouboucle/packages/looper/node_modules"]}
+[21:44:2.25] Installing typings ["gifshot","paper"]
+[21:44:2.26] 'gifshot':: Entry for package 'gifshot' does not exist in local types registry - skipping...
+[21:44:2.28] 'paper':: Entry for package 'paper' does not exist in local types registry - skipping...
+[21:44:2.29] All typings are known to be missing or invalid - no need to install more typings
+[21:44:2.30] Sending response:
+    {"projectName":"/dev/null/inferredProject1*","typeAcquisition":{"enable":true,"include":[],"exclude":[]},"compilerOptions":{"target":1,"jsx":1,"allowNonTsExtensions":true,"allowJs":true,"noEmitForJsFiles":true,"maxNodeModuleJsDepth":2},"typings":[],"unresolvedImports":["gifshot"],"kind":"action::set"}
+[21:44:2.31] Response has been sent.
+[21:52:28.114] Got install request {"projectName":"/dev/null/inferredProject1*","fileNames":["c:/Users/david/AppData/Roaming/npm/node_modules/typescript/lib/lib.d.ts","c:/Users/david/AppData/Roaming/npm/node_modules/typescript/lib/lib.es5.d.ts","c:/Users/david/AppData/Roaming/npm/node_modules/typescript/lib/lib.dom.d.ts","c:/Users/david/AppData/Roaming/npm/node_modules/typescript/lib/lib.webworker.importscripts.d.ts","c:/Users/david/AppData/Roaming/npm/node_modules/typescript/lib/lib.scripthost.d.ts","c:/js/bouboucle/packages/looper/index.js"],"compilerOptions":{"target":1,"jsx":1,"allowNonTsExtensions":true,"allowJs":true,"noEmitForJsFiles":true,"maxNodeModuleJsDepth":2},"typeAcquisition":{"enable":true,"include":[],"exclude":[]},"unresolvedImports":[],"projectRootPath":"c:/js/bouboucle/packages/looper","kind":"discover"}
+[21:52:28.138] Explicitly included types: []
+[21:52:28.143] Typing names in 'c:/js/bouboucle/packages/looper/package.json' dependencies: ["gifshot","paper"]
+[21:52:28.146] Inferred typings from unresolved imports: []
+[21:52:28.147] Result: {"cachedTypingPaths":[],"newTypingNames":["gifshot","paper"],"filesToWatch":["c:/js/bouboucle/packages/looper/package.json","c:/js/bouboucle/packages/looper/bower_components","c:/js/bouboucle/packages/looper/node_modules"]}
+[21:52:28.148] Finished typings discovery: {"cachedTypingPaths":[],"newTypingNames":["gifshot","paper"],"filesToWatch":["c:/js/bouboucle/packages/looper/package.json","c:/js/bouboucle/packages/looper/bower_components","c:/js/bouboucle/packages/looper/node_modules"]}
+[21:52:28.150] Installing typings ["gifshot","paper"]
+[21:52:28.151] 'gifshot':: Entry for package 'gifshot' does not exist in local types registry - skipping...
+[21:52:28.152] 'paper':: Entry for package 'paper' does not exist in local types registry - skipping...
+[21:52:28.152] All typings are known to be missing or invalid - no need to install more typings
+[21:52:28.153] Sending response:
+    {"projectName":"/dev/null/inferredProject1*","typeAcquisition":{"enable":true,"include":[],"exclude":[]},"compilerOptions":{"target":1,"jsx":1,"allowNonTsExtensions":true,"allowJs":true,"noEmitForJsFiles":true,"maxNodeModuleJsDepth":2},"typings":[],"unresolvedImports":[],"kind":"action::set"}
+[21:52:28.155] Response has been sent.
+[21:52:28.760] Got install request {"projectName":"/dev/null/inferredProject1*","fileNames":["c:/Users/david/AppData/Roaming/npm/node_modules/typescript/lib/lib.d.ts","c:/Users/david/AppData/Roaming/npm/node_modules/typescript/lib/lib.es5.d.ts","c:/Users/david/AppData/Roaming/npm/node_modules/typescript/lib/lib.dom.d.ts","c:/Users/david/AppData/Roaming/npm/node_modules/typescript/lib/lib.webworker.importscripts.d.ts","c:/Users/david/AppData/Roaming/npm/node_modules/typescript/lib/lib.scripthost.d.ts","c:/js/bouboucle/packages/looper/makeTimeKeeper.js","c:/js/bouboucle/packages/looper/makeLine.js","c:/js/bouboucle/packages/looper/actions.js","c:/js/bouboucle/packages/looper/ajax.js","c:/js/bouboucle/packages/looper/urlUtils.js","c:/js/bouboucle/packages/looper/io.js","c:/js/bouboucle/packages/looper/makeLooper.js","c:/js/bouboucle/packages/looper/index.js"],"compilerOptions":{"target":1,"jsx":1,"allowNonTsExtensions":true,"allowJs":true,"noEmitForJsFiles":true,"maxNodeModuleJsDepth":2},"typeAcquisition":{"enable":true,"include":[],"exclude":[]},"unresolvedImports":["gifshot"],"projectRootPath":"c:/js/bouboucle/packages/looper","kind":"discover"}
+[21:52:28.762] Explicitly included types: []
+[21:52:28.766] Typing names in 'c:/js/bouboucle/packages/looper/package.json' dependencies: ["gifshot","paper"]
+[21:52:28.770] Inferred typings from unresolved imports: ["gifshot"]
+[21:52:28.771] Result: {"cachedTypingPaths":[],"newTypingNames":["gifshot","paper"],"filesToWatch":["c:/js/bouboucle/packages/looper/package.json","c:/js/bouboucle/packages/looper/bower_components","c:/js/bouboucle/packages/looper/node_modules"]}
+[21:52:28.772] Finished typings discovery: {"cachedTypingPaths":[],"newTypingNames":["gifshot","paper"],"filesToWatch":["c:/js/bouboucle/packages/looper/package.json","c:/js/bouboucle/packages/looper/bower_components","c:/js/bouboucle/packages/looper/node_modules"]}
+[21:52:28.774] Installing typings ["gifshot","paper"]
+[21:52:28.775] 'gifshot':: Entry for package 'gifshot' does not exist in local types registry - skipping...
+[21:52:28.776] 'paper':: Entry for package 'paper' does not exist in local types registry - skipping...
+[21:52:28.777] All typings are known to be missing or invalid - no need to install more typings
+[21:52:28.778] Sending response:
+    {"projectName":"/dev/null/inferredProject1*","typeAcquisition":{"enable":true,"include":[],"exclude":[]},"compilerOptions":{"target":1,"jsx":1,"allowNonTsExtensions":true,"allowJs":true,"noEmitForJsFiles":true,"maxNodeModuleJsDepth":2},"typings":[],"unresolvedImports":["gifshot"],"kind":"action::set"}
+[21:52:28.779] Response has been sent.
+[22:7:36.153] Got install request {"projectName":"/dev/null/inferredProject1*","fileNames":["c:/Users/david/AppData/Roaming/npm/node_modules/typescript/lib/lib.d.ts","c:/Users/david/AppData/Roaming/npm/node_modules/typescript/lib/lib.es5.d.ts","c:/Users/david/AppData/Roaming/npm/node_modules/typescript/lib/lib.dom.d.ts","c:/Users/david/AppData/Roaming/npm/node_modules/typescript/lib/lib.webworker.importscripts.d.ts","c:/Users/david/AppData/Roaming/npm/node_modules/typescript/lib/lib.scripthost.d.ts","c:/js/bouboucle/packages/looper/index.js"],"compilerOptions":{"target":1,"jsx":1,"allowNonTsExtensions":true,"allowJs":true,"noEmitForJsFiles":true,"maxNodeModuleJsDepth":2},"typeAcquisition":{"enable":true,"include":[],"exclude":[]},"unresolvedImports":[],"projectRootPath":"c:/js/bouboucle/packages/looper","kind":"discover"}
+[22:7:36.180] Explicitly included types: []
+[22:7:36.188] Typing names in 'c:/js/bouboucle/packages/looper/package.json' dependencies: ["gifshot","paper"]
+[22:7:36.190] Inferred typings from unresolved imports: []
+[22:7:36.192] Result: {"cachedTypingPaths":[],"newTypingNames":["gifshot","paper"],"filesToWatch":["c:/js/bouboucle/packages/looper/package.json","c:/js/bouboucle/packages/looper/bower_components","c:/js/bouboucle/packages/looper/node_modules"]}
+[22:7:36.193] Finished typings discovery: {"cachedTypingPaths":[],"newTypingNames":["gifshot","paper"],"filesToWatch":["c:/js/bouboucle/packages/looper/package.json","c:/js/bouboucle/packages/looper/bower_components","c:/js/bouboucle/packages/looper/node_modules"]}
+[22:7:36.194] Installing typings ["gifshot","paper"]
+[22:7:36.196] 'gifshot':: Entry for package 'gifshot' does not exist in local types registry - skipping...
+[22:7:36.197] 'paper':: Entry for package 'paper' does not exist in local types registry - skipping...
+[22:7:36.198] All typings are known to be missing or invalid - no need to install more typings
+[22:7:36.199] Sending response:
+    {"projectName":"/dev/null/inferredProject1*","typeAcquisition":{"enable":true,"include":[],"exclude":[]},"compilerOptions":{"target":1,"jsx":1,"allowNonTsExtensions":true,"allowJs":true,"noEmitForJsFiles":true,"maxNodeModuleJsDepth":2},"typings":[],"unresolvedImports":[],"kind":"action::set"}
+[22:7:36.200] Response has been sent.
+[22:7:38.466] Got install request {"projectName":"/dev/null/inferredProject1*","fileNames":["c:/Users/david/AppData/Roaming/npm/node_modules/typescript/lib/lib.d.ts","c:/Users/david/AppData/Roaming/npm/node_modules/typescript/lib/lib.es5.d.ts","c:/Users/david/AppData/Roaming/npm/node_modules/typescript/lib/lib.dom.d.ts","c:/Users/david/AppData/Roaming/npm/node_modules/typescript/lib/lib.webworker.importscripts.d.ts","c:/Users/david/AppData/Roaming/npm/node_modules/typescript/lib/lib.scripthost.d.ts","c:/js/bouboucle/packages/looper/makeTimeKeeper.js","c:/js/bouboucle/packages/looper/makeLine.js","c:/js/bouboucle/packages/looper/actions.js","c:/js/bouboucle/packages/looper/ajax.js","c:/js/bouboucle/packages/looper/urlUtils.js","c:/js/bouboucle/packages/looper/io.js","c:/js/bouboucle/packages/looper/makeLooper.js","c:/js/bouboucle/packages/looper/index.js"],"compilerOptions":{"target":1,"jsx":1,"allowNonTsExtensions":true,"allowJs":true,"noEmitForJsFiles":true,"maxNodeModuleJsDepth":2},"typeAcquisition":{"enable":true,"include":[],"exclude":[]},"unresolvedImports":["gifshot"],"projectRootPath":"c:/js/bouboucle/packages/looper","kind":"discover"}
+[22:7:38.467] Explicitly included types: []
+[22:7:38.468] Typing names in 'c:/js/bouboucle/packages/looper/package.json' dependencies: ["gifshot","paper"]
+[22:7:38.469] Inferred typings from unresolved imports: ["gifshot"]
+[22:7:38.469] Result: {"cachedTypingPaths":[],"newTypingNames":["gifshot","paper"],"filesToWatch":["c:/js/bouboucle/packages/looper/package.json","c:/js/bouboucle/packages/looper/bower_components","c:/js/bouboucle/packages/looper/node_modules"]}
+[22:7:38.469] Finished typings discovery: {"cachedTypingPaths":[],"newTypingNames":["gifshot","paper"],"filesToWatch":["c:/js/bouboucle/packages/looper/package.json","c:/js/bouboucle/packages/looper/bower_components","c:/js/bouboucle/packages/looper/node_modules"]}
+[22:7:38.470] Installing typings ["gifshot","paper"]
+[22:7:38.470] 'gifshot':: Entry for package 'gifshot' does not exist in local types registry - skipping...
+[22:7:38.470] 'paper':: Entry for package 'paper' does not exist in local types registry - skipping...
+[22:7:38.471] All typings are known to be missing or invalid - no need to install more typings
+[22:7:38.471] Sending response:
+    {"projectName":"/dev/null/inferredProject1*","typeAcquisition":{"enable":true,"include":[],"exclude":[]},"compilerOptions":{"target":1,"jsx":1,"allowNonTsExtensions":true,"allowJs":true,"noEmitForJsFiles":true,"maxNodeModuleJsDepth":2},"typings":[],"unresolvedImports":["gifshot"],"kind":"action::set"}
+[22:7:38.471] Response has been sent.
+[22:8:12.234] FileWatcher:: Triggered with c:/js/bouboucle/packages/looper/package.json eventKind: Changed:: WatchInfo: c:/js/bouboucle/packages/looper/package.json:: handler is already invoked 'false'
+[22:8:12.235] Sending response:
+    {"projectName":"/dev/null/inferredProject1*","kind":"action::invalidate"}
+[22:8:12.236] Response has been sent.
+[22:8:12.343] Got install request {"projectName":"/dev/null/inferredProject1*","fileNames":["c:/Users/david/AppData/Roaming/npm/node_modules/typescript/lib/lib.d.ts","c:/Users/david/AppData/Roaming/npm/node_modules/typescript/lib/lib.es5.d.ts","c:/Users/david/AppData/Roaming/npm/node_modules/typescript/lib/lib.dom.d.ts","c:/Users/david/AppData/Roaming/npm/node_modules/typescript/lib/lib.webworker.importscripts.d.ts","c:/Users/david/AppData/Roaming/npm/node_modules/typescript/lib/lib.scripthost.d.ts","c:/js/bouboucle/packages/looper/makeTimeKeeper.js","c:/js/bouboucle/packages/looper/makeLine.js","c:/js/bouboucle/packages/looper/actions.js","c:/js/bouboucle/packages/looper/ajax.js","c:/js/bouboucle/packages/looper/urlUtils.js","c:/js/bouboucle/packages/looper/io.js","c:/js/bouboucle/packages/looper/makeLooper.js","c:/js/bouboucle/packages/looper/index.js"],"compilerOptions":{"target":1,"jsx":1,"allowNonTsExtensions":true,"allowJs":true,"noEmitForJsFiles":true,"maxNodeModuleJsDepth":2},"typeAcquisition":{"enable":true,"include":[],"exclude":[]},"unresolvedImports":["gifshot"],"projectRootPath":"c:/js/bouboucle/packages/looper","kind":"discover"}
+[22:8:12.345] Explicitly included types: []
+[22:8:12.349] Typing names in 'c:/js/bouboucle/packages/looper/package.json' dependencies: ["gifshot","paper"]
+[22:8:12.352] Inferred typings from unresolved imports: ["gifshot"]
+[22:8:12.353] Result: {"cachedTypingPaths":[],"newTypingNames":["gifshot","paper"],"filesToWatch":["c:/js/bouboucle/packages/looper/package.json","c:/js/bouboucle/packages/looper/bower_components","c:/js/bouboucle/packages/looper/node_modules"]}
+[22:8:12.354] Finished typings discovery: {"cachedTypingPaths":[],"newTypingNames":["gifshot","paper"],"filesToWatch":["c:/js/bouboucle/packages/looper/package.json","c:/js/bouboucle/packages/looper/bower_components","c:/js/bouboucle/packages/looper/node_modules"]}
+[22:8:12.356] Installing typings ["gifshot","paper"]
+[22:8:12.357] 'gifshot':: Entry for package 'gifshot' does not exist in local types registry - skipping...
+[22:8:12.357] 'paper':: Entry for package 'paper' does not exist in local types registry - skipping...
+[22:8:12.358] All typings are known to be missing or invalid - no need to install more typings
+[22:8:12.360] Sending response:
+    {"projectName":"/dev/null/inferredProject1*","typeAcquisition":{"enable":true,"include":[],"exclude":[]},"compilerOptions":{"target":1,"jsx":1,"allowNonTsExtensions":true,"allowJs":true,"noEmitForJsFiles":true,"maxNodeModuleJsDepth":2},"typings":[],"unresolvedImports":["gifshot"],"kind":"action::set"}
+[22:8:12.361] Response has been sent.
+[22:8:32.572] FileWatcher:: Triggered with c:/js/bouboucle/packages/looper/package.json eventKind: Changed:: WatchInfo: c:/js/bouboucle/packages/looper/package.json:: handler is already invoked 'false'
+[22:8:32.574] Sending response:
+    {"projectName":"/dev/null/inferredProject1*","kind":"action::invalidate"}
+[22:8:32.575] Response has been sent.
+[22:8:32.682] Got install request {"projectName":"/dev/null/inferredProject1*","fileNames":["c:/Users/david/AppData/Roaming/npm/node_modules/typescript/lib/lib.d.ts","c:/Users/david/AppData/Roaming/npm/node_modules/typescript/lib/lib.es5.d.ts","c:/Users/david/AppData/Roaming/npm/node_modules/typescript/lib/lib.dom.d.ts","c:/Users/david/AppData/Roaming/npm/node_modules/typescript/lib/lib.webworker.importscripts.d.ts","c:/Users/david/AppData/Roaming/npm/node_modules/typescript/lib/lib.scripthost.d.ts","c:/js/bouboucle/packages/looper/makeTimeKeeper.js","c:/js/bouboucle/packages/looper/makeLine.js","c:/js/bouboucle/packages/looper/actions.js","c:/js/bouboucle/packages/looper/ajax.js","c:/js/bouboucle/packages/looper/urlUtils.js","c:/js/bouboucle/packages/looper/io.js","c:/js/bouboucle/packages/looper/makeLooper.js","c:/js/bouboucle/packages/looper/index.js"],"compilerOptions":{"target":1,"jsx":1,"allowNonTsExtensions":true,"allowJs":true,"noEmitForJsFiles":true,"maxNodeModuleJsDepth":2},"typeAcquisition":{"enable":true,"include":[],"exclude":[]},"unresolvedImports":["gifshot"],"projectRootPath":"c:/js/bouboucle/packages/looper","kind":"discover"}
+[22:8:32.684] Explicitly included types: []
+[22:8:32.688] Typing names in 'c:/js/bouboucle/packages/looper/package.json' dependencies: ["gifshot","paper"]
+[22:8:32.690] Inferred typings from unresolved imports: ["gifshot"]
+[22:8:32.691] Result: {"cachedTypingPaths":[],"newTypingNames":["gifshot","paper"],"filesToWatch":["c:/js/bouboucle/packages/looper/package.json","c:/js/bouboucle/packages/looper/bower_components","c:/js/bouboucle/packages/looper/node_modules"]}
+[22:8:32.692] Finished typings discovery: {"cachedTypingPaths":[],"newTypingNames":["gifshot","paper"],"filesToWatch":["c:/js/bouboucle/packages/looper/package.json","c:/js/bouboucle/packages/looper/bower_components","c:/js/bouboucle/packages/looper/node_modules"]}
+[22:8:32.693] Installing typings ["gifshot","paper"]
+[22:8:32.694] 'gifshot':: Entry for package 'gifshot' does not exist in local types registry - skipping...
+[22:8:32.695] 'paper':: Entry for package 'paper' does not exist in local types registry - skipping...
+[22:8:32.696] All typings are known to be missing or invalid - no need to install more typings
+[22:8:32.697] Sending response:
+    {"projectName":"/dev/null/inferredProject1*","typeAcquisition":{"enable":true,"include":[],"exclude":[]},"compilerOptions":{"target":1,"jsx":1,"allowNonTsExtensions":true,"allowJs":true,"noEmitForJsFiles":true,"maxNodeModuleJsDepth":2},"typings":[],"unresolvedImports":["gifshot"],"kind":"action::set"}
+[22:8:32.698] Response has been sent.
+[22:8:58.159] FileWatcher:: Triggered with c:/js/bouboucle/packages/looper/package.json eventKind: Changed:: WatchInfo: c:/js/bouboucle/packages/looper/package.json:: handler is already invoked 'false'
+[22:8:58.159] Sending response:
+    {"projectName":"/dev/null/inferredProject1*","kind":"action::invalidate"}
+[22:8:58.159] Response has been sent.
+[22:8:58.270] Got install request {"projectName":"/dev/null/inferredProject1*","fileNames":["c:/Users/david/AppData/Roaming/npm/node_modules/typescript/lib/lib.d.ts","c:/Users/david/AppData/Roaming/npm/node_modules/typescript/lib/lib.es5.d.ts","c:/Users/david/AppData/Roaming/npm/node_modules/typescript/lib/lib.dom.d.ts","c:/Users/david/AppData/Roaming/npm/node_modules/typescript/lib/lib.webworker.importscripts.d.ts","c:/Users/david/AppData/Roaming/npm/node_modules/typescript/lib/lib.scripthost.d.ts","c:/js/bouboucle/packages/looper/makeTimeKeeper.js","c:/js/bouboucle/packages/looper/makeLine.js","c:/js/bouboucle/packages/looper/actions.js","c:/js/bouboucle/packages/looper/ajax.js","c:/js/bouboucle/packages/looper/urlUtils.js","c:/js/bouboucle/packages/looper/io.js","c:/js/bouboucle/packages/looper/makeLooper.js","c:/js/bouboucle/packages/looper/index.js"],"compilerOptions":{"target":1,"jsx":1,"allowNonTsExtensions":true,"allowJs":true,"noEmitForJsFiles":true,"maxNodeModuleJsDepth":2},"typeAcquisition":{"enable":true,"include":[],"exclude":[]},"unresolvedImports":["gifshot"],"projectRootPath":"c:/js/bouboucle/packages/looper","kind":"discover"}
+[22:8:58.271] Explicitly included types: []
+[22:8:58.275] Typing names in 'c:/js/bouboucle/packages/looper/package.json' dependencies: ["gifshot","paper"]
+[22:8:58.277] Inferred typings from unresolved imports: ["gifshot"]
+[22:8:58.278] Result: {"cachedTypingPaths":[],"newTypingNames":["gifshot","paper"],"filesToWatch":["c:/js/bouboucle/packages/looper/package.json","c:/js/bouboucle/packages/looper/bower_components","c:/js/bouboucle/packages/looper/node_modules"]}
+[22:8:58.280] Finished typings discovery: {"cachedTypingPaths":[],"newTypingNames":["gifshot","paper"],"filesToWatch":["c:/js/bouboucle/packages/looper/package.json","c:/js/bouboucle/packages/looper/bower_components","c:/js/bouboucle/packages/looper/node_modules"]}
+[22:8:58.281] Installing typings ["gifshot","paper"]
+[22:8:58.282] 'gifshot':: Entry for package 'gifshot' does not exist in local types registry - skipping...
+[22:8:58.283] 'paper':: Entry for package 'paper' does not exist in local types registry - skipping...
+[22:8:58.284] All typings are known to be missing or invalid - no need to install more typings
+[22:8:58.285] Sending response:
+    {"projectName":"/dev/null/inferredProject1*","typeAcquisition":{"enable":true,"include":[],"exclude":[]},"compilerOptions":{"target":1,"jsx":1,"allowNonTsExtensions":true,"allowJs":true,"noEmitForJsFiles":true,"maxNodeModuleJsDepth":2},"typings":[],"unresolvedImports":["gifshot"],"kind":"action::set"}
+[22:8:58.286] Response has been sent.
+[22:9:50.127] FileWatcher:: Triggered with c:/js/bouboucle/packages/looper/package.json eventKind: Changed:: WatchInfo: c:/js/bouboucle/packages/looper/package.json:: handler is already invoked 'false'
+[22:9:50.128] Sending response:
+    {"projectName":"/dev/null/inferredProject1*","kind":"action::invalidate"}
+[22:9:50.129] Response has been sent.
+[22:9:50.236] Got install request {"projectName":"/dev/null/inferredProject1*","fileNames":["c:/Users/david/AppData/Roaming/npm/node_modules/typescript/lib/lib.d.ts","c:/Users/david/AppData/Roaming/npm/node_modules/typescript/lib/lib.es5.d.ts","c:/Users/david/AppData/Roaming/npm/node_modules/typescript/lib/lib.dom.d.ts","c:/Users/david/AppData/Roaming/npm/node_modules/typescript/lib/lib.webworker.importscripts.d.ts","c:/Users/david/AppData/Roaming/npm/node_modules/typescript/lib/lib.scripthost.d.ts","c:/js/bouboucle/packages/looper/makeTimeKeeper.js","c:/js/bouboucle/packages/looper/makeLine.js","c:/js/bouboucle/packages/looper/actions.js","c:/js/bouboucle/packages/looper/ajax.js","c:/js/bouboucle/packages/looper/urlUtils.js","c:/js/bouboucle/packages/looper/io.js","c:/js/bouboucle/packages/looper/makeLooper.js","c:/js/bouboucle/packages/looper/index.js"],"compilerOptions":{"target":1,"jsx":1,"allowNonTsExtensions":true,"allowJs":true,"noEmitForJsFiles":true,"maxNodeModuleJsDepth":2},"typeAcquisition":{"enable":true,"include":[],"exclude":[]},"unresolvedImports":["gifshot"],"projectRootPath":"c:/js/bouboucle/packages/looper","kind":"discover"}
+[22:9:50.238] Explicitly included types: []
+[22:9:50.241] Typing names in 'c:/js/bouboucle/packages/looper/package.json' dependencies: ["gifshot","paper"]
+[22:9:50.243] Inferred typings from unresolved imports: ["gifshot"]
+[22:9:50.244] Result: {"cachedTypingPaths":[],"newTypingNames":["gifshot","paper"],"filesToWatch":["c:/js/bouboucle/packages/looper/package.json","c:/js/bouboucle/packages/looper/bower_components","c:/js/bouboucle/packages/looper/node_modules"]}
+[22:9:50.245] Finished typings discovery: {"cachedTypingPaths":[],"newTypingNames":["gifshot","paper"],"filesToWatch":["c:/js/bouboucle/packages/looper/package.json","c:/js/bouboucle/packages/looper/bower_components","c:/js/bouboucle/packages/looper/node_modules"]}
+[22:9:50.246] Installing typings ["gifshot","paper"]
+[22:9:50.247] 'gifshot':: Entry for package 'gifshot' does not exist in local types registry - skipping...
+[22:9:50.248] 'paper':: Entry for package 'paper' does not exist in local types registry - skipping...
+[22:9:50.249] All typings are known to be missing or invalid - no need to install more typings
+[22:9:50.250] Sending response:
+    {"projectName":"/dev/null/inferredProject1*","typeAcquisition":{"enable":true,"include":[],"exclude":[]},"compilerOptions":{"target":1,"jsx":1,"allowNonTsExtensions":true,"allowJs":true,"noEmitForJsFiles":true,"maxNodeModuleJsDepth":2},"typings":[],"unresolvedImports":["gifshot"],"kind":"action::set"}
+[22:9:50.251] Response has been sent.
+[22:10:48.811] FileWatcher:: Triggered with c:/js/bouboucle/packages/looper/package.json eventKind: Changed:: WatchInfo: c:/js/bouboucle/packages/looper/package.json:: handler is already invoked 'false'
+[22:10:48.812] Sending response:
+    {"projectName":"/dev/null/inferredProject1*","kind":"action::invalidate"}
+[22:10:48.812] Response has been sent.
+[22:10:48.921] Got install request {"projectName":"/dev/null/inferredProject1*","fileNames":["c:/Users/david/AppData/Roaming/npm/node_modules/typescript/lib/lib.d.ts","c:/Users/david/AppData/Roaming/npm/node_modules/typescript/lib/lib.es5.d.ts","c:/Users/david/AppData/Roaming/npm/node_modules/typescript/lib/lib.dom.d.ts","c:/Users/david/AppData/Roaming/npm/node_modules/typescript/lib/lib.webworker.importscripts.d.ts","c:/Users/david/AppData/Roaming/npm/node_modules/typescript/lib/lib.scripthost.d.ts","c:/js/bouboucle/packages/looper/makeTimeKeeper.js","c:/js/bouboucle/packages/looper/makeLine.js","c:/js/bouboucle/packages/looper/actions.js","c:/js/bouboucle/packages/looper/ajax.js","c:/js/bouboucle/packages/looper/urlUtils.js","c:/js/bouboucle/packages/looper/io.js","c:/js/bouboucle/packages/looper/makeLooper.js","c:/js/bouboucle/packages/looper/index.js"],"compilerOptions":{"target":1,"jsx":1,"allowNonTsExtensions":true,"allowJs":true,"noEmitForJsFiles":true,"maxNodeModuleJsDepth":2},"typeAcquisition":{"enable":true,"include":[],"exclude":[]},"unresolvedImports":["gifshot"],"projectRootPath":"c:/js/bouboucle/packages/looper","kind":"discover"}
+[22:10:48.923] Explicitly included types: []
+[22:10:48.926] Typing names in 'c:/js/bouboucle/packages/looper/package.json' dependencies: ["gifshot","paper"]
+[22:10:48.929] Inferred typings from unresolved imports: ["gifshot"]
+[22:10:48.930] Result: {"cachedTypingPaths":[],"newTypingNames":["gifshot","paper"],"filesToWatch":["c:/js/bouboucle/packages/looper/package.json","c:/js/bouboucle/packages/looper/bower_components","c:/js/bouboucle/packages/looper/node_modules"]}
+[22:10:48.931] Finished typings discovery: {"cachedTypingPaths":[],"newTypingNames":["gifshot","paper"],"filesToWatch":["c:/js/bouboucle/packages/looper/package.json","c:/js/bouboucle/packages/looper/bower_components","c:/js/bouboucle/packages/looper/node_modules"]}
+[22:10:48.932] Installing typings ["gifshot","paper"]
+[22:10:48.933] 'gifshot':: Entry for package 'gifshot' does not exist in local types registry - skipping...
+[22:10:48.934] 'paper':: Entry for package 'paper' does not exist in local types registry - skipping...
+[22:10:48.935] All typings are known to be missing or invalid - no need to install more typings
+[22:10:48.936] Sending response:
+    {"projectName":"/dev/null/inferredProject1*","typeAcquisition":{"enable":true,"include":[],"exclude":[]},"compilerOptions":{"target":1,"jsx":1,"allowNonTsExtensions":true,"allowJs":true,"noEmitForJsFiles":true,"maxNodeModuleJsDepth":2},"typings":[],"unresolvedImports":["gifshot"],"kind":"action::set"}
+[22:10:48.938] Response has been sent.
