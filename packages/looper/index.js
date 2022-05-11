@@ -1,5 +1,5 @@
 import makeLooper from './makeLooper.js'
 import actions from './actions.js';
+import urlUtils from './urlUtils.js';
 import io from './io.js';
-export default makeLooper
-export {actions, io}
+export {makeLooper, actions, io, urlUtils}
