@@ -18,6 +18,8 @@ move package to subtree
 ``` bash
 git remote add origin https://github.com/andreaskundig/looper.git
 git subtree add --prefix=packages/looper looper-origin master
-# haven't tried that yet
-git subtree push --prefix=packages/looper looper_origin master
+# push to subtree repo
+git subtree push --prefix=packages/looper looper-origin master
+# push a tag creates a branch on the subtree repo
+git subtree push --prefix=packages/looper looper-origin looper-1.0.3
 ```
