@@ -16,7 +16,7 @@ npm publish
 
 move package to subtree
 ``` bash
-git remote add origin https://github.com/andreaskundig/looper.git
+git remote add looper-origin https://github.com/andreaskundig/looper.git
 git subtree add --prefix=packages/looper looper-origin master
 # push to subtree repo
 git subtree push --prefix=packages/looper looper-origin master

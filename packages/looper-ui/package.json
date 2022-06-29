@@ -1,5 +1,6 @@
 {
-  "name": "looper-ui",
+  "name": "@andreaskundig/looper-ui",
+  "type": "module",
   "version": "1.0.0",
   "description": "",
   "main": "index.js",
@@ -10,6 +11,6 @@
   "author": "",
   "license": "UNLICENSED",
   "dependencies": {
-    "looper": "file:packages/looper"
+    "@andreaskundig/looper": "github:andreaskundig/looper"
   }
 }

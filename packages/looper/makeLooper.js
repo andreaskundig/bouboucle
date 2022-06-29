@@ -3,6 +3,20 @@ import makeLine from './makeLine.js';
 import actions from './actions.js';
 import io from './io.js';
 
+// TODO: complete jsdoc
+/**
+ * @typedef {Object} makeLooperOptions
+ * @property {{canvas:HTMLCanvasElement, paper: any}} graphics
+ * @property {{width: number, height: number}} dimension
+ * @property {string} backgroundColor
+ * @property {number} [ratio]
+ */
+
+/**
+ * looper creation function
+ * @param {makeLooperOptions} opts 
+ * @returns {any} Looper instance
+ */
 var makeLooper = function(opts){
     // state is what is going to be exported
     // all the rest is information that can be discarded/recalculated at reload
@@ -485,4 +499,4 @@ var makeLooper = function(opts){
     };
 };
 
-export default  makeLooper
+export default makeLooper
