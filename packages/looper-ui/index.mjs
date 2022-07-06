@@ -7,6 +7,7 @@ import defaultHtmlTemplate from './htmlTemplates/defaultHtmlTemplate.js';
  * make ui wrapper function
  * @param {HTMLElement} targetElement - Dom element where the UI should libe
  * @param {*} looper - looper instance
+ * @param {string} htmlTemplate - ui html tree represented as a string
  * @param {boolean} fullSizeGif - ?? you want the big one ??
  * @param {boolean} newTiming - ??
  * @param {{width:number, height:number}} dimension 
