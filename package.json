@@ -8,7 +8,7 @@
     "push-looper": "git subtree push --prefix=packages/looper looper-origin master",
     "push-looper-ui": "git subtree push --prefix=packages/looper-ui looper-ui-origin master",
     "tag-looper": "git subtree push --prefix=packages/looper looper-origin",
-    "tag-looper-uu": "git subtree push --prefix=packages/looper-ui looper-ui-origin"
+    "tag-looper-ui": "git subtree push --prefix=packages/looper-ui looper-ui-origin"
   },
   "keywords": [],
   "author": "",

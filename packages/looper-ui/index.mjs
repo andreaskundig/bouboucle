@@ -1,7 +1,7 @@
-import setupDom from './setup.js'
 import makeSimpleUi from './simple-ui.js'; 
 import makeExportAndInfoUi from './web-export-info-ui.js'; // ??
 import defaultHtmlTemplate from './htmlTemplates/defaultHtmlTemplate.js';
+import setupDom from './setup.js'
 
 /**
  * make ui wrapper function
@@ -13,6 +13,7 @@ import defaultHtmlTemplate from './htmlTemplates/defaultHtmlTemplate.js';
  * @param {{width:number, height:number}} dimension 
  */
 export default function makeUI(targetElement, htmlTemplate = defaultHtmlTemplate, looper, fullSizeGif, newTiming, dimension){
-    setupDom(targetElement, htmlTemplate);
     makeSimpleUi(looper, fullSizeGif, makeExportAndInfoUi, newTiming, dimension);
 }
+
+export { setupDom, defaultHtmlTemplate };
