@@ -5,14 +5,12 @@ import setupDom from './setup.js'
 
 /**
  * make ui wrapper function
- * @param {HTMLElement} targetElement - Dom element where the UI should libe
  * @param {*} looper - looper instance
- * @param {string} htmlTemplate - ui html tree represented as a string
  * @param {boolean} fullSizeGif - ?? you want the big one ??
  * @param {boolean} newTiming - ??
  * @param {{width:number, height:number}} dimension 
  */
-export default function makeUI(targetElement, htmlTemplate = defaultHtmlTemplate, looper, fullSizeGif, newTiming, dimension){
+export default function makeUI(looper, fullSizeGif, newTiming, dimension){
     makeSimpleUi(looper, fullSizeGif, makeExportAndInfoUi, newTiming, dimension);
 }
 
