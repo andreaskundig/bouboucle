@@ -1,7 +1,9 @@
 import makeSimpleUi from './simple-ui.js'; 
 import makeExportAndInfoUi from './web-export-info-ui.js'; // ??
 import defaultHtmlTemplate from './htmlTemplates/defaultHtmlTemplate.js';
+import simpleCSS from './cssTemplates/simpleCSS.js';
 import setupDom from './setup.js'
+import { injectCSS } from './setup.js'
 
 /**
  * make ui wrapper function
@@ -14,4 +16,4 @@ export default function makeUI(looper, fullSizeGif, newTiming, dimension){
     makeSimpleUi(looper, fullSizeGif, makeExportAndInfoUi, newTiming, dimension);
 }
 
-export { setupDom, defaultHtmlTemplate };
+export { setupDom, injectCSS, defaultHtmlTemplate, simpleCSS };
