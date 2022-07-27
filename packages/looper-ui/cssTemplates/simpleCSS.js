@@ -27,7 +27,7 @@ body {
     width: 16.66666%; /* 6 buttons */
 }
 .menu > div > img,
-.menu > div > svg,
+.menu svg,
 .menu > div > div,
 #color-button > svg,
 #stroke-submenu > div > img,
