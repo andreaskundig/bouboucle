@@ -30,7 +30,10 @@ body {
 .menu > div > div,
 #color-button > svg,
 #stroke-submenu > div > img,
-#timing-submenu > div > img {
+#timing-submenu > div > img,
+#stroke-submenu > div > svg,
+#timing-submenu > div > svg,
+ {
     width: 100%;
     height: 39px;
     padding: 20px 0px;
