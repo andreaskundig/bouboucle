@@ -31,9 +31,7 @@ body {
 .menu > div > div,
 #color-button > svg,
 #stroke-submenu > div > img,
-#timing-submenu > div > img,
-#stroke-submenu > div > svg,
-#timing-submenu > div > svg
+#timing-submenu > div > img
  {
     width: 100%;
     height: 39px;
