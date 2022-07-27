@@ -33,7 +33,7 @@ body {
 #stroke-submenu > div > img,
 #timing-submenu > div > img,
 #stroke-submenu > div > svg,
-#timing-submenu > div > svg,
+#timing-submenu > div > svg
  {
     width: 100%;
     height: 39px;
