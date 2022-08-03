@@ -1,4 +1,9 @@
+import { getAssetString } from "./assetsDB";
 export default function makeExportAndInfoUi(menu, looper, io, fullSizeGif){
+
+    const download_10 = getAssetString('10_download.svg');
+    const erase_4 = getAssetString('4_erase.svg');
+    const done_8 = getAssetString('8_done.svg');
 
     var infoContent = [
         '<div class="info">',
@@ -47,9 +52,11 @@ export default function makeExportAndInfoUi(menu, looper, io, fullSizeGif){
             '     <p>Veux-tu générer un gif?</p>',
             '   </div>',
             '   <div class="dialog-buttons gist no-gist">',
-            '    <div id="export-cancel-button"><img src="icons/4_erase.svg">',
+            `    <div id="export-cancel-button"><img src="/${erase_4}">`,
+            // '    <div id="export-cancel-button"><img src="icons/4_erase.svg">',
             '    </div><div id="export-ok-button">',
-            '         <img src="icons/8_done.svg"></div>',
+            `         <img src="${done_8}"></div>`,
+            // '         <img src="icons/8_done.svg"></div>',
             '   </div>',
             ' </div>',
             ' <div class="export-2 info">',
@@ -74,7 +81,8 @@ export default function makeExportAndInfoUi(menu, looper, io, fullSizeGif){
             '   <div class="gist no-gist">',
             '     <div><img id="gif"></img></div>',
             '     <div><a download="bouboucle.gif" id="gif-download">',
-            '            <img src="icons/10_download.svg"></div>',
+            `             <img src="${download_10}"></div>`,
+            // '            <img src="icons/10_download.svg"></div>',
             '   </div>',
             ' </div>',
         ].join('\n'),
