@@ -1,4 +1,5 @@
 import { actions, io } from '@andreaskundig/looper'; 
+import { getAssetString } from './assetsDB';
 
 /**
  * generates looper's ui 
@@ -111,8 +112,9 @@ var colors = [
         var strokeButtonDiv = document.querySelector('#stroke-button'),
             strokeMenuDiv = document.querySelector('#stroke-submenu'),
             strokes =[2, 7, 20, 50, 200, 600].map(function(width, index){
+                const assetname = `2_taille_${index + 1}.svg`;
                 return {width: width,
-                        icon: 'icons/2_taille_'+(index+1)+'.svg'};
+                        icon: getAssetString(assetname)};
             }),
             pickStroke = function(stroke){
                 strokeButtonDiv.firstChild.src = stroke.icon;
