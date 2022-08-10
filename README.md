@@ -30,8 +30,8 @@ or
 npm run push-looper   # push to looper repo
 npm run push-looper-ui   # push to looper-ui repo
 
-npm run tag-looper looper-1.0.2 # tags branch with version *1.0.2*
-npm run tag-looper-ui looper-ui-1.0.2 # tags branch with version *1.0.2*
+npm run tag-looper looper-1.0.2 # creates branch *looper-1.02* on looper subtree
+npm run tag-looper-ui looper-ui-1.0.2 # creates branch *looper-ui-1.02* on looper-ui subtree
 ```
 
 
