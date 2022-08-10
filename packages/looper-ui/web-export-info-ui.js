@@ -52,7 +52,7 @@ export default function makeExportAndInfoUi(menu, looper, io, fullSizeGif){
             '     <p>Veux-tu générer un gif?</p>',
             '   </div>',
             '   <div class="dialog-buttons gist no-gist">',
-            `    <div id="export-cancel-button"><img src="/${erase_4}">`,
+            `    <div id="export-cancel-button"><img src="${erase_4}">`,
             // '    <div id="export-cancel-button"><img src="icons/4_erase.svg">',
             '    </div><div id="export-ok-button">',
             `         <img src="${done_8}"></div>`,
