@@ -300,8 +300,10 @@ var colors = [
                 setSpeed(s);
                 var buttonIndex = speed ? 1 : 0,
                     activeButton = determineActiveButton(s);
-                // pauseButtonDiv.firstChild.src = 'icons/' + icons[buttonIndex];
-                pauseButtonDiv.firstChild.src = getAssetString(icons[buttonIndex]);
+                const encodedIcon = getAssetString(icons[buttonIndex]);
+                // note: we must clear the div to allow new src to be set
+                pauseButtonDiv.innerHTML = "<img/>";
+                pauseButtonDiv.firstChild.src = encodedIcon;
                 allButtons.forEach(function(button){
                     if(button === activeButton){
                         button.classList.add('active');
