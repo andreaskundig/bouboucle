@@ -1,7 +1,8 @@
 import makeSimpleUi from './simple-ui.js'; 
 import makeExportAndInfoUi from './web-export-info-ui.js'; // ??
-import defaultHtmlTemplate from './htmlTemplates/defaultHtmlTemplate.js';
+import localHtmlTemplate from './htmlTemplates/localHtmlTemplate.js';
 import simpleCSS from './cssTemplates/simpleCSS.js';
+import simpleIpadCSS from './cssTemplates/simple-ipad.js';
 import setupDom from './setup.js'
 import { injectCSS } from './setup.js'
 
@@ -16,4 +17,22 @@ export default function makeUI(looper, fullSizeGif, newTiming, dimension){
     makeSimpleUi(looper, fullSizeGif, makeExportAndInfoUi, newTiming, dimension);
 }
 
-export { setupDom, injectCSS, defaultHtmlTemplate, simpleCSS };
+/**
+ * enum to discriminate ui variant
+ * @readonly
+ * @enum { number }
+ */
+const UIVariant = Object.freeze({
+    default: 0,
+    local: 1,
+    advanced: 2,
+});
+
+export { 
+    setupDom, 
+    injectCSS, 
+    localHtmlTemplate, 
+    simpleCSS, 
+    simpleIpadCSS,
+};
+

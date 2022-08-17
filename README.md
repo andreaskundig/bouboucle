@@ -37,6 +37,14 @@ npm run tag-looper-ui looper-ui-1.0.2 # creates branch *looper-ui-1.02* on loope
 
 ## looper-ui
 
+
+### ui variants
+
+Goal is to support three variants:
+- default
+- local
+- advanced
+
 ### html template preparation
 To avoid issues in deploying the visual assets used by the looper-ui, we replace all img tags with the literal svg content. the original html templates are found in /packages/looper-ui/htmlTemplates. They have the file extension .template. A transformation script injects the literal svg content and resaves the template file with a .js extension.
 
