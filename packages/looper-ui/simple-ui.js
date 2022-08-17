@@ -158,7 +158,7 @@ var colors = [
                 .map(function(t, index){
                     return {lifetime: t[0],
                             beat: t[1], 
-                            icon: 'icons/3_trait_'+(index+1)+'.svg'};
+                            icon: getAssetString(`3_trait_${index+1}.svg`)};
                 }),
             pickTiming = function(timing){
                 if(timing.icon){
@@ -300,7 +300,8 @@ var colors = [
                 setSpeed(s);
                 var buttonIndex = speed ? 1 : 0,
                     activeButton = determineActiveButton(s);
-                pauseButtonDiv.firstChild.src = 'icons/' + icons[buttonIndex];
+                // pauseButtonDiv.firstChild.src = 'icons/' + icons[buttonIndex];
+                pauseButtonDiv.firstChild.src = getAssetString(icons[buttonIndex]);
                 allButtons.forEach(function(button){
                     if(button === activeButton){
                         button.classList.add('active');
