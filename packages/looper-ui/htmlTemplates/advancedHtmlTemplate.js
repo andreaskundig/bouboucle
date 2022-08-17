@@ -1,11 +1,10 @@
 const advancedHtmlTemplateStr = `
-    <div class="menu">
-      <style>
+    <style>
       .menu > div {
-          /* width: 11.1111%; /\* 9 buttons *\/ */
-          width: 9.0909%; /* 11 buttons (/ 100.0 11) */
+          width: 9.0909%; 
       }
-      </style>
+    </style>
+    <div class="menu">
       <div id="color-button">
         <!-- 1_couleur+2_taille_5.svg is inlined so we can change its color -->
         <svg  version="1.1" id="Calque_1"
