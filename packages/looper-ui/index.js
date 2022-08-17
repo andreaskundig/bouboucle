@@ -2,7 +2,7 @@ import makeSimpleUi from './simple-ui.js';
 import makeExportAndInfoUi from './web-export-info-ui.js'; // ??
 
 import localHtmlTemplate from './htmlTemplates/localHtmlTemplate.js';
-import advancedHtmlTemplateStr from './htmlTemplates/advancedHtmlTemplate.template';
+import advancedHtmlTemplate from './htmlTemplates/advancedHtmlTemplate.js';
 
 import simpleCSS from './cssTemplates/simpleCSS.js';
 import simpleIpadCSS from './cssTemplates/simple-ipad.js';
@@ -33,7 +33,7 @@ const UIVariant = Object.freeze({
 
 export { 
     setupDom, 
-    advancedHtmlTemplateStr,
+    advancedHtmlTemplate,
     localHtmlTemplate, 
     
     injectCSS,
