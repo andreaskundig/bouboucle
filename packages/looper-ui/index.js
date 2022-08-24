@@ -1,6 +1,7 @@
 import makeSimpleUi from './simple-ui.js'; 
 import makeExportAndInfoUi from './web-export-info-ui.js'; // ??
 
+import defaultHtmlTemplate from './htmlTemplates/defaultHtmltemplate.js';
 import localHtmlTemplate from './htmlTemplates/localHtmlTemplate.js';
 import advancedHtmlTemplate from './htmlTemplates/advancedHtmlTemplate.js';
 
@@ -33,6 +34,7 @@ const UIVariant = Object.freeze({
 
 export { 
     setupDom, 
+    defaultHtmlTemplate,
     advancedHtmlTemplate,
     localHtmlTemplate, 
     
