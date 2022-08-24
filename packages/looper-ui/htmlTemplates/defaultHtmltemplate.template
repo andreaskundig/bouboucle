@@ -43,3 +43,5 @@ const defaultHtmlTemplateStr = `
     <div id="canvas-parent"><canvas  id="main-canvas"></canvas></div>
     <div class="hidden"><canvas id="hidden-canvas"></canvas></div>
 `;
+
+export default defaultHtmlTemplateStr;
