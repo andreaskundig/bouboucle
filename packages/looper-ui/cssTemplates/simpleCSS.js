@@ -60,6 +60,9 @@ body {
 #color-submenu {
     background-color: #eeeeee;
 }
+#color-submenu > div {
+    height: 40px;
+}
 #color-submenu > div > div{
     display: inline-block;
     width:5.2632%;
