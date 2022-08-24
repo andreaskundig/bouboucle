@@ -162,7 +162,7 @@ var colors = [
                 }),
             pickTiming = function(timing){
                 if(timing.icon){
-                    timingButtonDiv.firstChild.innerHTML = `<img src=${timing.icon}/>`;
+                    timingButtonDiv.innerHTML = `<img src=${timing.icon}/>`;
                 }
                 menu.hideSubmenu();
                 timingHandler.handle(timing);
