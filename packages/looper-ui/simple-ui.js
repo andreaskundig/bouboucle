@@ -213,8 +213,8 @@ var colors = [
         canvasParent.style.position = 'absolute';
         buttonTable.style.position = 'absolute';
         buttonTable.style.borderCollapse = 'collapse';
-        buttonTable.style.height = dimension.height;
-        buttonTable.style.width = dimension.width;
+        buttonTable.style.height = dimension.height + "px";
+        buttonTable.style.width = dimension.width + "px";
         displayTable = buttonTable.cloneNode();
         displayTable.style.backgroundColor = 'white';
         parentDiv.appendChild(displayTable);
