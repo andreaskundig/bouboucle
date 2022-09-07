@@ -17,7 +17,7 @@ import { injectCSS } from './setup.js'
  * @param {boolean} newTiming - ??
  * @param {{width:number, height:number}} dimension 
  */
-export default function makeUI(looper, fullSizeGif, newTiming, dimension){
+export function makeUI(looper, fullSizeGif, newTiming, dimension){
     makeSimpleUi(looper, fullSizeGif, makeExportAndInfoUi, newTiming, dimension);
 }
 
@@ -26,20 +26,39 @@ export default function makeUI(looper, fullSizeGif, newTiming, dimension){
  * @readonly
  * @enum { number }
  */
-const UIVariant = Object.freeze({
+export const UIVariant = Object.freeze({
     default: 0,
     local: 1,
     advanced: 2,
 });
 
-export { 
-    setupDom, 
-    defaultHtmlTemplate,
-    advancedHtmlTemplate,
-    localHtmlTemplate, 
+/**
+ * 
+ * @param {(0, 1, 2)} uiVariant 
+ * @param { HTMLElement } targetDomElement root element of ui
+ */
+export function setupDomForVariant(uiVariant, targetDomElement = document.body){
+    injectCSS(simpleCSS);
+    if(uiVariant == UIVariant.default){
+        // 1 setup dom
+        setupDom(targetDomElement, defaultHtmlTemplate);
+        return;
+    }
     
-    injectCSS,
-    simpleCSS, 
-    simpleIpadCSS,
-};
+    if(uiVariant == UIVariant.local){
+        // 1 setup dom
+        setupDom(targetDomElement, localHtmlTemplate);
+        return;
+    }
+
+    if(uiVariant == UIVariant.advanced){
+        injectCSS(simpleIpadCSS);
+        // 1 setup dom
+        setupDom(targetDomElement, advancedHtmlTemplate);
+        return;
+    }
+
+    throw new Error(`unsupported UI variant ${uiVariant}`);
+}
+
 
