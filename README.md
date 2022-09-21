@@ -53,3 +53,16 @@ To avoid issues in deploying the visual assets used by the looper-ui, we replace
 ```
 
 will create a .js file in the htmlTemplates folder
+
+
+# git remotes
+
+```
+> git remote -v
+looper-origin   https://github.com/andreaskundig/looper.git (fetch)
+looper-origin   https://github.com/andreaskundig/looper.git (push)
+looper-ui-origin        https://github.com/andreaskundig/looper-ui.git (fetch)
+looper-ui-origin        https://github.com/andreaskundig/looper-ui.git (push)
+origin  https://github.com/andreaskundig/bouboucle.git (fetch)
+origin  https://github.com/andreaskundig/bouboucle.git (push)
+```
