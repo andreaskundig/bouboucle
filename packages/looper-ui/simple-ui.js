@@ -1,5 +1,5 @@
 import { actions, io } from '@andreaskundig/looper'; 
-import { getAssetString } from './assetsDB';
+import { getAssetString } from './assetsDB.js';
 
 /**
  * generates looper's ui 

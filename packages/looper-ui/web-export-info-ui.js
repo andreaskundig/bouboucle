@@ -1,4 +1,4 @@
-import { getAssetString } from "./assetsDB";
+import { getAssetString } from "./assetsDB.js";
 export default function makeExportAndInfoUi(menu, looper, io, fullSizeGif){
 
     const download_10 = getAssetString('10_download.svg');
