@@ -1,5 +1,7 @@
 import makeSimpleUi from './simple-ui.js'; 
-import makeExportAndInfoUi from './web-export-info-ui.js'; // ??
+import webMakeExportAndInfoUi from './web-export-info-ui.js'; // ??
+
+import { localMakeExportAndInfoUi } from './local-export-info-ui.js';
 
 import defaultHtmlTemplate from './htmlTemplates/defaultHtmltemplate.js';
 import localHtmlTemplate from './htmlTemplates/localHtmlTemplate.js';
@@ -12,12 +14,14 @@ import { injectCSS } from './setup.js'
 
 /**
  * make ui wrapper function
+ * @param {*} UIVariant - looper instance
  * @param {*} looper - looper instance
  * @param {boolean} fullSizeGif - ?? you want the big one ??
  * @param {boolean} newTiming - ??
  * @param {{width:number, height:number}} dimension 
  */
-export function makeUI(looper, fullSizeGif, newTiming, dimension){
+export function makeUI(variant, looper, fullSizeGif, newTiming, dimension){
+    const makeExportAndInfoUi = variant == UIVariant.local ? localMakeExportAndInfoUi : webMakeExportAndInfoUi;
     makeSimpleUi(looper, fullSizeGif, makeExportAndInfoUi, newTiming, dimension);
 }
 
