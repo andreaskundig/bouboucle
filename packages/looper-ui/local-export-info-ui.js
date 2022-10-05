@@ -1,5 +1,5 @@
-import { getAssetString } from "./assetsDB";
-export function makeExportAndInfoUi(menu, looper, io, fullSizeGif){
+import { getAssetString } from "./assetsDB.js";
+export default function localMakeExportAndInfoUi(menu, looper, io, fullSizeGif){
 
     const erase_4 = getAssetString('4_erase.svg');
     const done_8 = getAssetString('8_done.svg');

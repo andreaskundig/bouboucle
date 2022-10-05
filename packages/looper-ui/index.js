@@ -1,7 +1,7 @@
 import makeSimpleUi from './simple-ui.js'; 
 import webMakeExportAndInfoUi from './web-export-info-ui.js'; // ??
 
-import { localMakeExportAndInfoUi } from './local-export-info-ui.js';
+import localMakeExportAndInfoUi from './local-export-info-ui.js';
 
 import defaultHtmlTemplate from './htmlTemplates/defaultHtmltemplate.js';
 import localHtmlTemplate from './htmlTemplates/localHtmlTemplate.js';
@@ -11,6 +11,7 @@ import simpleCSS from './cssTemplates/simpleCSS.js';
 import simpleIpadCSS from './cssTemplates/simple-ipad.js';
 import setupDom from './setup.js'
 import { injectCSS } from './setup.js'
+
 
 /**
  * make ui wrapper function
