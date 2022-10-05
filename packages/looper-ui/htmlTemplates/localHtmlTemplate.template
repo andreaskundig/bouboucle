@@ -30,6 +30,7 @@ const localHtmlTemplateStr = `
       </div><div id="pause-button"><img src="icons/6_pause.svg">
       </div><div id="export-button"><img src="icons/8_done.svg">
       </div><div id="info-button"><img src="icons/9_informations.svg">
+      </div><div id="gallery-button" class="hidden"><img src="icons/15_gallery.svg">
       </div>
     </div>
     

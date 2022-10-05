@@ -163,6 +163,29 @@ const localHtmlTemplateStr = `
 <line fill="none" stroke="#1D1D1B" stroke-width="4" stroke-linecap="round" stroke-miterlimit="10" x1="56.693" y1="44.109" x2="56.693" y2="42.385"/>
 </svg>
 
+      </div><div id="gallery-button" class="hidden"><svg version="1.1" id="Calque_1" xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink" x="0px" y="0px"
+	 width="113.387px" height="113.387px" viewBox="0 0 113.387 113.387" enable-background="new 0 0 113.387 113.387"
+	 xml:space="preserve">
+<g>
+	<defs>
+		<circle id="SVGID_49_" cx="56.694" cy="56.693" r="44.628"/>
+	</defs>
+	<clipPath id="SVGID_2_">
+		<use xlink:href="#SVGID_49_"  overflow="visible"/>
+	</clipPath>
+	<use xlink:href="#SVGID_49_"  overflow="visible" fill="none" stroke="#1D1D1B" stroke-width="2" stroke-miterlimit="10"/>
+</g>
+<circle fill="#1D1D1B" cx="56.693" cy="56.693" r="2.789"/>
+<circle fill="#1D1D1B" cx="67.85" cy="56.693" r="2.789"/>
+<circle fill="#1D1D1B" cx="45.537" cy="56.693" r="2.789"/>
+<circle fill="#1D1D1B" cx="56.693" cy="45.537" r="2.789"/>
+<circle fill="#1D1D1B" cx="67.85" cy="45.537" r="2.789"/>
+<circle fill="#1D1D1B" cx="45.537" cy="45.537" r="2.789"/>
+<circle fill="#1D1D1B" cx="56.693" cy="67.85" r="2.789"/>
+<circle fill="#1D1D1B" cx="67.85" cy="67.85" r="2.789"/>
+<circle fill="#1D1D1B" cx="45.537" cy="67.85" r="2.789"/>
+</svg>
+
       </div>
     </div>
     
