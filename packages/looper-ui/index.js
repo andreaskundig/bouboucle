@@ -15,7 +15,7 @@ import { injectCSS } from './setup.js'
 
 /**
  * make ui wrapper function
- * @param {*} UIVariant - looper instance
+ * @param {*} UIVariant - ui variant see below
  * @param {*} looper - looper instance
  * @param {boolean} fullSizeGif - ?? you want the big one ??
  * @param {boolean} newTiming - ??
@@ -29,17 +29,17 @@ export function makeUI(variant, looper, fullSizeGif, newTiming, dimension){
 /**
  * enum to discriminate ui variant
  * @readonly
- * @enum { number }
+ * @enum { string }
  */
 export const UIVariant = Object.freeze({
-    default: 0,
-    local: 1,
-    advanced: 2,
+    default: "default",
+    local: "local",
+    advanced: "advanced",
 });
 
 /**
  * 
- * @param {(0, 1, 2)} uiVariant 
+ * @param {("default", "local", "advanced")} uiVariant 
  * @param { HTMLElement } targetDomElement root element of ui
  */
 export function setupDomForVariant(uiVariant, targetDomElement = document.body){
