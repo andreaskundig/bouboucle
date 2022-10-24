@@ -56,9 +56,9 @@ export default function localMakeExportAndInfoUi(menu, looper, io, fullSizeGif){
             // '     <p>Wollen sie ihre Animation veröffentlichen?</p>',
             // '   </div>',
             '   <div class="dialog-buttons">',
-            `     <div id="export-cancel-button"><img src="icons/${erase_4}">`,
+            `     <div id="export-cancel-button"><img src="${erase_4}">`,
             '     </div><div id="export-ok-button">',
-            `         <img src="icons/${done_8}"></div>`,
+            `         <img src="${done_8}"></div>`,
             '   </div>',
             ' </div>'
         ].join('\n'),
