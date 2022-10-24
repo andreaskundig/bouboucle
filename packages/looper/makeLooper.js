@@ -449,7 +449,7 @@ var makeLooper = function(opts){
                 data.lineData.push(ldata);
             });
         });
-        console.log('timings', JSON.stringify(data));
+        // console.log('timings', JSON.stringify(data));
         looper.importData(data);
         looper.start();
         //looper.redrawAllLines(800);
