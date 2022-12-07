@@ -20,8 +20,12 @@ const animData =
   ],
   "backgroundColor": "rgb(200,255,200)"
 };
-const canvas = document.getElementById('bouboucle-canvas')
+const canvas = document.getElementById('bouboucle-canvas');
+const foregroundImage =
+      document.getElementById('bouboucle-foreground-image');
 const graphics = { canvas, paper };
-const looper = makeLooper({ graphics });
+const looper = makeLooper(
+  { graphics,
+    foregroundImage});
 looper.importData(animData);
 looper.start();

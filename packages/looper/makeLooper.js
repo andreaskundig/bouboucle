@@ -23,7 +23,7 @@ var makeLooper = function(opts){
     var state, currentLine, lineColor, strokeWidth, lifetime, 
         timeKeeper = makeTimeKeeper(), periods, beatListener, 
         graphics, stopped, ps, background, availableWidth, availableHeight,
-        toCallInNextFrame = [];
+        toCallInNextFrame = [], foregroundImage;
     
     var reset = function(thePeriods, dimension){
         state = {lines: []}, 
@@ -175,6 +175,7 @@ var makeLooper = function(opts){
             multiPeriod = config.multiPeriod,
             dimension = calculateDimension(config);
         graphics = config.graphics;
+        foregroundImage = config.foregroundImage;
         reset(multiPeriod, dimension);
         timeKeeper.reset();
         timeKeeper.setBeat(theBeat || 2000);
@@ -242,6 +243,10 @@ var makeLooper = function(opts){
         console.log('start');
         ps.activate();
         stopped = false;
+        if(foregroundImage){
+            const foreground = new ps.Raster(foregroundImage);
+            foreground.position = new ps.Point(180, -9);
+        }
         var render = function(){
             var time = timeKeeper.getTime(Date.now());
             redrawAllLines(time);
