@@ -1,10 +1,14 @@
 import paper from 'paper';
 import { makeLooper } from '@andreaskundig/looper';
 
+const foregroundImage =
+      document.getElementById('bouboucle-foreground-image');
+
+const scale = 500 /foregroundImage.naturalHeight
 const animData =
 {
-  "width": 1024,
-  "height": 500,
+  "width": foregroundImage.naturalWidth * scale,
+  "height": foregroundImage.naturalHeight * scale,
   "speed": 0.5,
   "lineData": [{
       "start": 1536824533767,
@@ -21,11 +25,10 @@ const animData =
   "backgroundColor": "rgb(200,255,200)"
 };
 const canvas = document.getElementById('bouboucle-canvas');
-const foregroundImage =
-      document.getElementById('bouboucle-foreground-image');
 const graphics = { canvas, paper };
 const looper = makeLooper(
   { graphics,
     foregroundImage});
 looper.importData(animData);
+looper.setLineColor('red')
 looper.start();

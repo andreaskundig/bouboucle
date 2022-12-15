@@ -231,25 +231,40 @@ var makeLooper = function(opts){
         }
     };
     
+    var redrawAll = function(time, foreground){
+        // ps.activate();
+        redrawAllLines(time)
+        foreground?.bringToFront();
+        ps.view.draw();
+    };
+
     var redrawAllLines = function(time){
         // ps.activate();
         state.lines.forEach(function(line){
             line.redraw(time);
         });
-        ps.view.draw();
     };
+
+    var createForeground = function(foregroundImage){
+        if (foregroundImage) {
+            const foreground = new ps.Raster(foregroundImage);
+            foreground.position = ps.view.center;
+            const { width, height } = ps.view.size;
+            const scaleWidth = width / foreground.width
+            const scaleHeight = height / foreground.height
+            foreground.scale(Math.min(scaleWidth, scaleHeight))
+            return foreground
+        }
+    }
 
     var start = function(){
         console.log('start');
         ps.activate();
         stopped = false;
-        if(foregroundImage){
-            const foreground = new ps.Raster(foregroundImage);
-            foreground.position = new ps.Point(180, -9);
-        }
+        const foreground = createForeground(foregroundImage)
         var render = function(){
             var time = timeKeeper.getTime(Date.now());
-            redrawAllLines(time);
+            redrawAll(time, foreground);
             if(timeKeeper.hasBeatChanged(time) && beatListener){
                 beatListener(time);
             }
