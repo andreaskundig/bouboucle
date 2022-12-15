@@ -3,7 +3,6 @@ import { makeLooper } from '@andreaskundig/looper';
 
 const foregroundImage =
       document.getElementById('bouboucle-foreground-image');
-
 const scale = 500 /foregroundImage.naturalHeight
 const animData =
 {
