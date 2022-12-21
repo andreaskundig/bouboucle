@@ -1,8 +1,6 @@
 import  { makeUI, setupDomForVariant, UIVariant } from '@andreaskundig/looper-ui';
-import { makeLooper } from '@andreaskundig/looper';
+import { io, urlUtils, makeLooper } from '@andreaskundig/looper';
 import paper from 'paper/dist/paper-core';
-
-
 
 console.log("running config", config);
 
@@ -21,10 +19,14 @@ async function main(){
     // 1 choose ui variant and setup dom accordingly
     setupDomForVariant(variant);
     // 2 setup looper
-    const newTiming = config.newTiming;
-    const backgroundColor = config.backgroundColor || '#ffffff';
+    const urlParams = urlUtils.getUrlParams(location.href);
+    const newTiming = 'new-timing' in urlParams || config.newTiming;
+    const ratio = urlParams.ratio || config.ratio;
+    const backgroundColor =
+      urlParams['background-color'] || config.backgroundColor || '#ffffff';
+    const showGallery = !!urlParams.gallery;
     const titleHeight = 79.67; // related to selected html ?
-    const fullSizeGif = false;
+    const fullSizeGif = !!urlParams['big-gif'];
 
     const foregroundImage = await loadImage('Coloriage_Assiette-polaire.png');
     const targetHeight = window.innerHeight - titleHeight;
@@ -45,16 +47,24 @@ async function main(){
         foregroundImage,
     }, dimension);
 
+    if (ratio) {
+        looperConfig.ratio = eval(ratio);
+    }
+
+
     const looper = makeLooper(looperConfig);
     looper.start();
+    if (urlParams.gist) {
+        io.gists.load(urlParams.gist, looper.importData);
+    }
 
-    makeUI(variant, looper, fullSizeGif, newTiming, dimension);
+    makeUI(variant, looper, fullSizeGif, newTiming, dimension, showGallery);
 
     window.addEventListener('resize', () => {
         looper.scale({
             width: window.innerWidth,
             height: window.innerHeight - titleHeight,
-            ratio: null,
+            ratio
         });
     });
 }
