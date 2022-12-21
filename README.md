@@ -6,6 +6,8 @@ to publish a package
 cd packages/looper
 ```
 
+increment version number in package.json
+
 Don't forget to update the "version": 10.xx in package.json.
 
 ``` sh

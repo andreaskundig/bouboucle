@@ -19,11 +19,14 @@ import { injectCSS } from './setup.js'
  * @param {*} looper - looper instance
  * @param {boolean} fullSizeGif - ?? you want the big one ??
  * @param {boolean} newTiming - ??
- * @param {{width:number, height:number}} dimension 
+ * @param {{width:number, height:number}} dimension
+ * @param {boolean} showGallery
  */
-export function makeUI(variant, looper, fullSizeGif, newTiming, dimension){
+export function makeUI(variant, looper, fullSizeGif, newTiming,
+                       dimension, showGallery){
     const makeExportAndInfoUi = variant == UIVariant.local ? localMakeExportAndInfoUi : webMakeExportAndInfoUi;
-    makeSimpleUi(looper, fullSizeGif, makeExportAndInfoUi, newTiming, dimension);
+    makeSimpleUi(looper, fullSizeGif, makeExportAndInfoUi, newTiming,
+                 dimension, showGallery);
 }
 
 /**
