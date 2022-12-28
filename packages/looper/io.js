@@ -222,23 +222,25 @@ io.makeGifRecorder = function(canvas){
             width = Math.floor(width * shrinkFactor);
             var height = Math.floor(width * canvas.height / canvas.width);
             // console.log(width);
-            imgs.length = 0;
             totalBlobSize = 0;
             return new Promise(function(resolve, reject){
+                const gfParams = {
+                    interval: interval / 1000,
+                    images: imgsShallowCopy,
+                    gifWidth: width,
+                    gifHeight: height,
+                    // TODO find out how to deal with transparency
+                    // transparent: 0,
+                    // disposal:0,
+                    progressCallback: progressCallback
+                };
                 gifshot.createGIF(
-                    {interval: interval / 1000,
-                     images: imgsShallowCopy,
-                     gifWidth: width, 
-                     gifHeight: height,
-                     // TODO find out how to deal with transparency
-                     // transparent: 0,
-                     // disposal:0,
-                     progressCallback: progressCallback},
-                    function(obj) {
-                        if(obj.error) {
+                    gfParams,
+                    function (obj) {
+                        if (obj.error) {
                             reject(obj);
-                            console.log('gifshot error:', obj);
-                        }else{
+                            console.error('gifshot error:', obj);
+                        } else {
                             resolve(obj.image);
                         }
                     });

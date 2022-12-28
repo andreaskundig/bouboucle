@@ -344,7 +344,8 @@ var makeLooper = function(opts){
         recLooper.importData(exportData());
         stop();
         for(var time = 0; time < duration ; time += interval){
-            recLooper.redrawAllLines(recordingStart + time);
+            // recLooper.redrawAllLines(recordingStart + time);
+            recLooper.redrawAll(recordingStart + time);
             gifRecorder.recordImage();
         }
         return gifRecorder.makeGif(realInterval,theProgressCallback,fullSize)
@@ -505,7 +506,7 @@ var makeLooper = function(opts){
         setBeat: timeKeeper.setBeat.bind(timeKeeper),
         tapTempo: function(){ return timeKeeper.tapTempo(now()); },
         setBeatListener: function(b){ beatListener = b; },
-        redrawAllLines: redrawAllLines,
+        redrawAll: redrawAll,
         makeGifRecorder: makeGifRecorder,
         findShortestLoop: findShortestLoop,
         record: record,
