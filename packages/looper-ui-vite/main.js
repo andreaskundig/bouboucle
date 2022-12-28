@@ -27,8 +27,8 @@ async function main(){
     const showGallery = !!urlParams.gallery;
     const titleHeight = 79.67; // related to selected html ?
     const fullSizeGif = !!urlParams['big-gif'];
-
-    const foregroundImage = await loadImage('Coloriage_Assiette-polaire.png');
+    const foregroundUrl = 'Coloriage_Assiette-polaire.png';
+    const foregroundImage = await loadImage(foregroundUrl);
     const targetHeight = window.innerHeight - titleHeight;
     const scale = targetHeight / foregroundImage.naturalHeight;
     const dimension = {
@@ -44,7 +44,7 @@ async function main(){
     const looperConfig = Object.assign({
         graphics: graphics,
         backgroundColor: backgroundColor,
-        foregroundImage,
+        foregroundUrl,
     }, dimension);
 
     if (ratio) {

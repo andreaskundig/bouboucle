@@ -23,7 +23,7 @@ var makeLooper = function(opts){
     var state, currentLine, lineColor, strokeWidth, lifetime, 
         timeKeeper = makeTimeKeeper(), periods, beatListener, 
         graphics, stopped, ps, background, availableWidth, availableHeight,
-        toCallInNextFrame = [], foregroundImage;
+        toCallInNextFrame = [], foregroundUrl;
     
     var reset = function(thePeriods, dimension){
         state = {lines: []}, 
@@ -175,7 +175,7 @@ var makeLooper = function(opts){
             multiPeriod = config.multiPeriod,
             dimension = calculateDimension(config);
         graphics = config.graphics;
-        foregroundImage = config.foregroundImage;
+        foregroundUrl = config.foregroundUrl;
         reset(multiPeriod, dimension);
         timeKeeper.reset();
         timeKeeper.setBeat(theBeat || 2000);
@@ -245,23 +245,34 @@ var makeLooper = function(opts){
         });
     };
 
-    var createForeground = function(foregroundImage){
-        if (foregroundImage) {
-            const foreground = new ps.Raster(foregroundImage);
+    const createImageFromUrl = function(url) {
+        return new Promise(function(resolve, reject){
+            const image = new ps.Raster(url);
+            image.visible = false;
+            image.onLoad = () => resolve(image);
+            image.onError = reject;
+        });
+    };
+
+    var createForeground = async function(foregroundUrl){
+        if (foregroundUrl) {
+            const foreground =
+                  await createImageFromUrl(foregroundUrl);
             foreground.position = ps.view.center;
             const { width, height } = ps.view.size;
             const scaleWidth = width / foreground.width
             const scaleHeight = height / foreground.height
             foreground.scale(Math.min(scaleWidth, scaleHeight))
+            foreground.visible = true
             return foreground
         }
     }
 
-    var start = function(){
+    var start = async function(){
         console.log('start');
         ps.activate();
         stopped = false;
-        const foreground = createForeground(foregroundImage)
+        const foreground = await createForeground(foregroundUrl)
         var render = function(){
             var time = timeKeeper.getTime(Date.now());
             redrawAll(time, foreground);
@@ -312,7 +323,7 @@ var makeLooper = function(opts){
         }).reduce(lcm);
     };
 
-    var record = function(opts){
+    var record = async function(opts){
         var theProgressCallback = opts.progress,
             duration = opts.duration || Math.min(6000, findShortestLoop()),
             fullSize = opts.fullSize,
@@ -348,11 +359,10 @@ var makeLooper = function(opts){
             recLooper.redrawAll(recordingStart + time);
             gifRecorder.recordImage();
         }
-        return gifRecorder.makeGif(realInterval,theProgressCallback,fullSize)
-            .then(function(gif){
-                start();
-                return gif;
-            });
+
+        const gif = await gifRecorder.makeGif(realInterval,theProgressCallback,fullSize)
+        start();
+        return gif;
     };
     
     var makeCircleLineData = function(lineOpts, origin, size, speed){

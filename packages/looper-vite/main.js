@@ -1,13 +1,11 @@
 import paper from 'paper';
 import { makeLooper } from '@andreaskundig/looper';
 
-const foregroundImage =
-      document.getElementById('bouboucle-foreground-image');
-const scale = 500 /foregroundImage.naturalHeight
+const foregroundUrl = 'Coloriage_Assiette-polaire.png';
 const animData =
 {
-  "width": foregroundImage.naturalWidth * scale,
-  "height": foregroundImage.naturalHeight * scale,
+  "width": 500,
+  "height": 500,
   "speed": 0.5,
   "lineData": [{
       "start": 1536824533767,
@@ -27,7 +25,7 @@ const canvas = document.getElementById('bouboucle-canvas');
 const graphics = { canvas, paper };
 const looper = makeLooper(
   { graphics,
-    foregroundImage});
+    foregroundUrl});
 looper.importData(animData);
 looper.setLineColor('red')
 looper.start();
