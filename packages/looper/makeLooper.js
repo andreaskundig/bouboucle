@@ -44,6 +44,7 @@ var makeLooper = function(opts){
             width: state.width || graphics.canvas.width / ps.view.pixelRatio,
             height: state.height || graphics.canvas.height / ps.view.pixelRatio,
             speed: timeKeeper.getSpeed(),
+            foregroundUrl: state.foregroundUrl,
             lineData: state.lines.map(function(l){
                 return l.exportData();})};
         if(background){
@@ -64,6 +65,7 @@ var makeLooper = function(opts){
         clearState();
         state.width = data.width || 1000;
         state.height = data.height || 600;
+        state.foregroundUrl = data.foregroundUrl;
         scale(availableSize);
         if(data.hasOwnProperty('speed')){
             timeKeeper.setSpeed(data.speed);
@@ -359,7 +361,7 @@ var makeLooper = function(opts){
         stop();
         for(var time = 0; time < duration ; time += interval){
             // recLooper.redrawAllLines(recordingStart + time);
-            recLooper.redrawAll(recordingStart + time);
+            await recLooper.redrawAll(recordingStart + time);
             gifRecorder.recordImage();
         }
 
