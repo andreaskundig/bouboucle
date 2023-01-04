@@ -23,7 +23,9 @@ var makeLooper = function(opts){
     var state, currentLine, lineColor, strokeWidth, lifetime, 
         timeKeeper = makeTimeKeeper(), periods, beatListener, 
         graphics, stopped, ps, background, availableWidth, availableHeight,
-        toCallInNextFrame = [], foregroundUrl;
+        toCallInNextFrame = [], foreground,
+        // TODO move foregroundUrl into state
+        foregroundUrl;
     
     var reset = function(thePeriods, dimension){
         state = {lines: []}, 
@@ -231,8 +233,12 @@ var makeLooper = function(opts){
         }
     };
     
-    var redrawAll = function(time, foreground){
+    var redrawAll = async function(time){
         // ps.activate();
+
+        if(!foreground && foregroundUrl) {
+            foreground = await createForeground(foregroundUrl);
+        }
         redrawAllLines(time)
         foreground?.bringToFront();
         ps.view.draw();
@@ -272,10 +278,9 @@ var makeLooper = function(opts){
         console.log('start');
         ps.activate();
         stopped = false;
-        const foreground = await createForeground(foregroundUrl)
-        var render = function(){
+        var render = async function(){
             var time = timeKeeper.getTime(Date.now());
-            redrawAll(time, foreground);
+            await redrawAll(time);
             if(timeKeeper.hasBeatChanged(time) && beatListener){
                 beatListener(time);
             }
@@ -286,7 +291,7 @@ var makeLooper = function(opts){
                 requestAnimationFrame(render);
             }
         };
-        render();
+        await render();
     };
 
     var stop = function(){
