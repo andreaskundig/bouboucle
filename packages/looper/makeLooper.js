@@ -23,12 +23,10 @@ var makeLooper = function(opts){
     var state, currentLine, lineColor, strokeWidth, lifetime, 
         timeKeeper = makeTimeKeeper(), periods, beatListener, 
         graphics, stopped, ps, background, availableWidth, availableHeight,
-        toCallInNextFrame = [], foreground,
-        // TODO move foregroundUrl into state
-        foregroundUrl;
+        toCallInNextFrame = [], foreground;
     
-    var reset = function(thePeriods, dimension){
-        state = {lines: []}, 
+    var reset = function(thePeriods, dimension, foregroundUrl){
+        state = {lines: [], foregroundUrl},
         state.width = dimension.width;
         state.height = dimension.height;
         availableWidth = dimension.width;
@@ -56,7 +54,8 @@ var makeLooper = function(opts){
 
     var clearState= function(){
         var oldState = state;
-        setState({width: availableWidth, height: availableHeight, lines: []});
+        setState({width: availableWidth, height: availableHeight,
+                  lines: []});
         oldState.lines.forEach(function(line){ line.clear(); });
         return waitForNextFrame();
     };
@@ -177,8 +176,7 @@ var makeLooper = function(opts){
             multiPeriod = config.multiPeriod,
             dimension = calculateDimension(config);
         graphics = config.graphics;
-        foregroundUrl = config.foregroundUrl;
-        reset(multiPeriod, dimension);
+        reset(multiPeriod, dimension, config.foregroundUrl);
         timeKeeper.reset();
         timeKeeper.setBeat(theBeat || 2000);
         ps = new graphics.paper.PaperScope();
@@ -236,8 +234,8 @@ var makeLooper = function(opts){
     var redrawAll = async function(time){
         // ps.activate();
 
-        if(!foreground && foregroundUrl) {
-            foreground = await createForeground(foregroundUrl);
+        if(!foreground && state.foregroundUrl) {
+            foreground = await createForeground(state.foregroundUrl);
         }
         redrawAllLines(time)
         foreground?.bringToFront();
