@@ -1,5 +1,6 @@
 import  { makeUI, setupDomForVariant, UIVariant } from '@andreaskundig/looper-ui';
 import { io, urlUtils, makeLooper } from '@andreaskundig/looper';
+import miraMakeExportAndInfoUi from './mira-export-info-ui.js'; // ??
 import paper from 'paper/dist/paper-core';
 
 console.log("running config", config);
@@ -58,7 +59,8 @@ async function main(){
         io.gists.load(urlParams.gist, looper.importData);
     }
 
-    makeUI(variant, looper, fullSizeGif, newTiming, dimension, showGallery);
+    makeUI(variant, looper, fullSizeGif, newTiming, dimension,
+           showGallery, miraMakeExportAndInfoUi);
 
     window.addEventListener('resize', () => {
         looper.scale({

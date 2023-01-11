@@ -11,7 +11,9 @@ import simpleCSS from './cssTemplates/simpleCSS.js';
 import simpleIpadCSS from './cssTemplates/simple-ipad.js';
 import setupDom from './setup.js'
 import { injectCSS } from './setup.js'
+import * as assDB from "./assetsDB.js";
 
+export const getAssetString = assDB.getAssetString;
 
 /**
  * make ui wrapper function
@@ -23,8 +25,10 @@ import { injectCSS } from './setup.js'
  * @param {boolean} showGallery
  */
 export function makeUI(variant, looper, fullSizeGif, newTiming,
-                       dimension, showGallery){
-    const makeExportAndInfoUi = variant == UIVariant.local ? localMakeExportAndInfoUi : webMakeExportAndInfoUi;
+                       dimension, showGallery, makeExportAndInfoUi){
+    if (!makeExportAndInfoUi) {
+        makeExportAndInfoUi = variant == UIVariant.local ? localMakeExportAndInfoUi : webMakeExportAndInfoUi;
+    }
     makeSimpleUi(looper, fullSizeGif, makeExportAndInfoUi, newTiming,
                  dimension, showGallery);
 }

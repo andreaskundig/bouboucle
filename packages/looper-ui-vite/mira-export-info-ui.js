@@ -1,4 +1,4 @@
-import { getAssetString } from "./assetsDB.js";
+import { getAssetString } from '@andreaskundig/looper-ui';
 export default function makeExportAndInfoUi(menu, looper, io, fullSizeGif){
 
     const download_10 = getAssetString('10_download.svg');
@@ -37,17 +37,7 @@ export default function makeExportAndInfoUi(menu, looper, io, fullSizeGif){
     ].join('\n'),
 
         exportContent = [
-            // ' <div class="export-0 gist info">',
-            // '   <div class="info-fr">',
-            // "     <p>Un instant, j'enregistre l'animation.</p>",
-            // '   </div>',
-            // ' </div>',
             ' <div class="export-1 info">',
-            '   <div class="info-fr gist">',
-            "     <p>L'animation est enregistrée ",
-            '        <a class="gist-link link" target="_blank">ici</a>.</p>',
-            '     <p>Veux-tu aussi générer un gif?</p>',
-            '   </div>',
             '   <div class="info-fr no-gist">',
             '     <p>Veux-tu générer un gif?</p>',
             '   </div>',
@@ -60,21 +50,11 @@ export default function makeExportAndInfoUi(menu, looper, io, fullSizeGif){
             '   </div>',
             ' </div>',
             ' <div class="export-2 info">',
-            '   <div class="info-fr gist">',
-            "     <p>L'animation est enregistrée ",
-            '        <a class="gist-link link" target="_blank">ici</a>.</p>',
-            '     <p>Un instant, je génère le gif.</p>',
-            '   </div>',
             '   <div class="info-fr no-gist">',
             '     <p>Un instant</p>',
             '   </div>',
             '  <div id="gif-progress-bar" class="gist no-gist"><div></div></div></div>',
             ' <div class="export-3 info" >',
-            '   <div class="info-fr gist">',
-            "     <p>L'animation est ",
-            '        <a class="gist-link link" target="_blank">ici</a>.',
-            '     Le gif est là:</p> ',
-            '   </div>',
             '   <div class="info-fr no-gist">',
             '     <p>Voilà</p> ',
             '   </div>',
@@ -140,44 +120,24 @@ export default function makeExportAndInfoUi(menu, looper, io, fullSizeGif){
                 exportMenuSelector = '#export-submenu',
                 exportMenuDiv = document.querySelector(exportMenuSelector);
             exportMenuDiv.innerHTML = exportContent;
-            var gistLinks = exportMenuDiv.querySelectorAll('.gist-link'),
-                exportCancelBtnDiv = document.querySelector(
+            var exportCancelBtnDiv = document.querySelector(
                     '#export-cancel-button'),
                 exportOkBtnDiv = document.querySelector('#export-ok-button'),
-                gistId = false,
                 beforeShow = function(){
-                    showElements(exportMenuSelector, 'export-0');
-                    io.gists.save(looper.exportData)
-                        .then(function(id){
-                            if(!id){
-                                menu.hideSubmenu();
-                                return;   
-                            }
-                            showElements('.export-1', 'gist');
-                            gistLinks.forEach(function(gistLink){
-                                gistLink.href = 'http://www.bouboucle.com?gist='+id;
-                            });
-                            gistId = id;
-                        },function(err){
-                            console.error('could not save gist', err);
-                            showElements('.export-1', 'no-gist');
-                        })
-                        .then(function (){
-                            showElements(exportMenuSelector, 'export-1');
-                        });
+                    // showElements('.export-1', 'no-gist');
+                    showElements(exportMenuSelector, 'export-1');
                 };
             exportCancelBtnDiv.addEventListener('click', function(){
                 menu.hideSubmenu();
             });
             exportOkBtnDiv.addEventListener('click', function(){
-                showElements('.export-2', gistId ? 'gist' : 'no-gist');
                 showElements(exportMenuSelector, 'export-2');
                 displayRecording(looper.record, fullSizeGif)
                     .then(function(){
-                        showElements('.export-3', gistId ? 'gist' : 'no-gist');
                         showElements(exportMenuSelector, 'export-3');
                     });
             });
+
             menu.initShowSubmenu(exportMenuDiv, exportButtonDiv, beforeShow);
         },
         
