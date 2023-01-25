@@ -55,8 +55,11 @@ var makeLooper = function(opts){
 
     var clearState= function(){
         var oldState = state;
+        console.log('c old', oldState.foregroundUrl)
         setState({width: availableWidth, height: availableHeight,
+                  foregroundUrl: oldState.foregroundUrl,
                   lines: []});
+        console.log('c new', state.foregroundUrl)
         oldState.lines.forEach(function(line){ line.clear(); });
         return waitForNextFrame();
     };
