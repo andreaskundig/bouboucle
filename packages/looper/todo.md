@@ -90,3 +90,12 @@ they are both permanent state
 
 ## understand resizing
 what state is set, what can be resized, when can aspect ratio change?
+
+ratio should be set as application state, set once and for all in setup()
+calculateDimension should use it to recalculate the animation dimension
+based on the new availableHeight and Width 
+that can be passed to scale({width, height})
+
+current bug ratio is passed to scale({width, height, ratio})
+whenever the window resizes (see looper-ui-vite main.js).
+
