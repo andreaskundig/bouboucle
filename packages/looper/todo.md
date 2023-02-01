@@ -79,7 +79,7 @@ undo import:
 why setState, clearState and importData?
 can we importData instead of setState. It calls clearState
 
-## explicitely create state objects
+## explicitly create state objects
 the current state object seems to be the exportable state
 move all clearable state to its own object (included in exportable state, probably)
 move drawing tool state from closure variables to toolState

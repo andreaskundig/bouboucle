@@ -162,18 +162,17 @@ var makeLooper = function(opts){
     };
     
     var calculateDimension = function(dimension){
-        var correctDim = {width: dimension.width || 1000,
-                          height: dimension.height || 600},
-            screenRatio = correctDim.width / correctDim.height;
-        if(dimension.ratio){
-            if(screenRatio < dimension.ratio){
-                correctDim.height = correctDim.width / dimension.ratio;
+        let {width=1000, height=600, ratio} = dimension;
+        const calculatedRatio = width / height;
+        if(ratio){
+            if(calculatedRatio < ratio){
+                height = width / ratio;
             }else{
-                correctDim.width = correctDim.height * dimension.ratio;
+                width = height * ratio;
             }
-            console.log(dimension.width, dimension.height, correctDim);
         }
-        return correctDim;
+        return {width: Math.floor(width),
+                height: Math.floor(height)};
     };
 
     var setup = function(config){
@@ -202,11 +201,11 @@ var makeLooper = function(opts){
             availableWidth = dimension.width;
             availableHeight = dimension.height;
         }
-        var widthRatio = state.width / state.height,
-            maxW =  availableWidth / availableHeight < widthRatio,
-            width = maxW ? availableWidth : Math.floor(availableHeight * widthRatio),
-            height = Math.floor(width / widthRatio),
-            zoom = width/state.width;
+        const ratio = state.width / state.height;
+        const {width, height} = calculateDimension({width: availableWidth,
+                                                    height: availableHeight,
+                                                    ratio})
+        const zoom = width / state.width;
         ps.activate();
         ps.view.zoom = zoom;
         var center = new graphics.paper.Point(

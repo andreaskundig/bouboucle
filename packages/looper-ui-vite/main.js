@@ -22,7 +22,7 @@ async function main(){
     // 2 setup looper
     const urlParams = urlUtils.getUrlParams(location.href);
     const newTiming = 'new-timing' in urlParams || config.newTiming;
-    const ratio = urlParams.ratio || config.ratio;
+    const configRatioCode = urlParams.ratio || config.ratio;
     const backgroundColor =
       urlParams['background-color'] || config.backgroundColor || '#ffffff';
     const showGallery = !!urlParams.gallery;
@@ -30,12 +30,17 @@ async function main(){
     const fullSizeGif = !!urlParams['big-gif'];
     const foregroundUrl = 'Coloriage_Assiette-polaire.png';
     const foregroundImage = await loadImage(foregroundUrl);
-    const targetHeight = window.innerHeight - titleHeight;
-    const scale = targetHeight / foregroundImage.naturalHeight;
-    const dimension = {
-        "width": foregroundImage.naturalWidth * scale,
-        "height": foregroundImage.naturalHeight * scale,
-    };
+    let ratio =  foregroundImage.naturalWidth / foregroundImage.naturalHeight;
+    if (configRatioCode) {
+        ratio = eval(configRatioCode);
+    }
+    const calculateDimension = () => {
+        const targetHeight = window.innerHeight - titleHeight;
+        return {width: window.innerWidth,
+                height: targetHeight,
+                ratio};
+    }
+    const dimension = calculateDimension();
 
     const graphics = {
         canvas: document.getElementById('main-canvas'),
@@ -48,9 +53,6 @@ async function main(){
         foregroundUrl,
     }, dimension);
 
-    if (ratio) {
-        looperConfig.ratio = eval(ratio);
-    }
 
 
     const looper = makeLooper(looperConfig);
@@ -63,11 +65,7 @@ async function main(){
            showGallery, miraMakeExportAndInfoUi);
 
     window.addEventListener('resize', () => {
-        looper.scale({
-            width: window.innerWidth,
-            height: window.innerHeight - titleHeight,
-            ratio
-        });
+        looper.scale(calculateDimension());
     });
 }
 
