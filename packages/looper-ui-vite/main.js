@@ -65,7 +65,9 @@ async function main(){
            showGallery, miraMakeExportAndInfoUi);
 
     window.addEventListener('resize', () => {
-        looper.scale(calculateDimension());
+        const targetHeight = window.innerHeight - titleHeight;
+        const dim = { width: window.innerWidth, height: targetHeight }
+        looper.scale(dim);
     });
 }
 

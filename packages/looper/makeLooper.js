@@ -161,24 +161,34 @@ var makeLooper = function(opts){
         return canvas;
     };
     
-    var calculateDimension = function(dimension){
-        let {width=1000, height=600, ratio} = dimension;
+    var reconcileDimensions = function(dimension, ratio){
+        if(!ratio){
+            throw new Error('no ratio')
+        }
+        // example width = 2 height = 1 ratio = 1
+        // keep image visible with demanded ratio
+        let { width=1000, height=600 } = dimension;
         const calculatedRatio = width / height;
-        if(ratio){
+        // ex: calculatedRatio = 2
+
             if(calculatedRatio < ratio){
                 height = width / ratio;
             }else{
+                // ex: 2 > 1, so: shorten width
                 width = height * ratio;
             }
-        }
         return {width: Math.floor(width),
                 height: Math.floor(height)};
     };
 
+    const getRatio = function () {
+        return state.width / state.height;
+    }
+
     var setup = function(config){
         var theBeat = config.beat,
             multiPeriod = config.multiPeriod,
-            dimension = calculateDimension(config);
+            dimension = reconcileDimensions(config, config.ratio);
         graphics = config.graphics;
         reset(multiPeriod, dimension, config.foregroundUrl);
         timeKeeper.reset();
@@ -197,14 +207,13 @@ var makeLooper = function(opts){
     /** Scale the animation to maximum size within available width & height.*/ 
     var scale = function(newAvailableSize){
         if(newAvailableSize){
-            var dimension = calculateDimension(newAvailableSize);
-            availableWidth = dimension.width;
-            availableHeight = dimension.height;
+            availableWidth = newAvailableSize.width;
+            availableHeight = newAvailableSize.height;
         }
-        const ratio = state.width / state.height;
-        const {width, height} = calculateDimension({width: availableWidth,
-                                                    height: availableHeight,
-                                                    ratio})
+        const { width, height } =
+              reconcileDimensions({width: availableWidth,
+                                  height: availableHeight},
+                                  getRatio())
         const zoom = width / state.width;
         ps.activate();
         ps.view.zoom = zoom;
