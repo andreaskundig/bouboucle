@@ -56,10 +56,11 @@ var makeLooper = function(opts){
     var clearState= function(){
         var oldState = state;
         let dims = {width: availableWidth, height: availableHeight };
-        if(oldState.foregroundUrl){
-              dims = reconcileDimensions(dims, getRatio())
+        const { foregroundUrl } = oldState;
+        if(foregroundUrl){
+           dims = reconcileDimensions(dims, getRatio())
         }
-        setState({lines: [], ...dims});
+        setState({lines: [], foregroundUrl, ...dims});
         oldState.lines.forEach(function(line){ line.clear(); });
         return waitForNextFrame();
     };
