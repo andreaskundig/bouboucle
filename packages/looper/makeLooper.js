@@ -162,21 +162,20 @@ var makeLooper = function(opts){
     };
     
     var reconcileDimensions = function(dimension, ratio){
-        if(!ratio){
-            throw new Error('no ratio')
-        }
-        // example width = 2 height = 1 ratio = 1
-        // keep image visible with demanded ratio
         let { width=1000, height=600 } = dimension;
-        const calculatedRatio = width / height;
-        // ex: calculatedRatio = 2
+        if(ratio){
+            // example width = 2 height = 1 ratio = 1
+            // keep image visible with demanded ratio
+            const calculatedRatio = width / height;
+            // ex: calculatedRatio = 2
 
-            if(calculatedRatio < ratio){
+            if (calculatedRatio < ratio) {
                 height = width / ratio;
-            }else{
+            } else {
                 // ex: 2 > 1, so: shorten width
                 width = height * ratio;
             }
+        }
         return {width: Math.floor(width),
                 height: Math.floor(height)};
     };
