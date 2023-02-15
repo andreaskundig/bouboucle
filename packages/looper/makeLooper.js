@@ -25,7 +25,7 @@ var makeLooper = function(opts){
         graphics, stopped, ps, background, availableWidth, availableHeight,
         toCallInNextFrame = [], foreground;
     
-    var reset = function(thePeriods, dimension, foregroundUrl){
+    var init = function(thePeriods, dimension, foregroundUrl){
         state = {lines: [], foregroundUrl},
         state.width = dimension.width;
         state.height = dimension.height;
@@ -55,11 +55,11 @@ var makeLooper = function(opts){
 
     var clearState= function(){
         var oldState = state;
-        console.log('c old', oldState.foregroundUrl)
-        setState({width: availableWidth, height: availableHeight,
-                  foregroundUrl: oldState.foregroundUrl,
-                  lines: []});
-        console.log('c new', state.foregroundUrl)
+        let dims = {width: availableWidth, height: availableHeight };
+        if(oldState.foregroundUrl){
+              dims = reconcileDimensions(dims, getRatio())
+        }
+        setState({lines: [], ...dims});
         oldState.lines.forEach(function(line){ line.clear(); });
         return waitForNextFrame();
     };
@@ -190,7 +190,7 @@ var makeLooper = function(opts){
             multiPeriod = config.multiPeriod,
             dimension = reconcileDimensions(config, config.ratio);
         graphics = config.graphics;
-        reset(multiPeriod, dimension, config.foregroundUrl);
+        init(multiPeriod, dimension, config.foregroundUrl);
         timeKeeper.reset();
         timeKeeper.setBeat(theBeat || 2000);
         ps = new graphics.paper.PaperScope();
