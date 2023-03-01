@@ -53,12 +53,12 @@ var makeLooper = function(opts){
         return data;
     };
 
-    var clearState= function(){
+    var clearState = function(){
         var oldState = state;
         let dims = {width: availableWidth, height: availableHeight };
         const { foregroundUrl } = oldState;
         if(foregroundUrl){
-           dims = reconcileDimensions(dims, getRatio())
+            dims = { width: oldState.width, height: oldState.height };
         }
         setState({lines: [], foregroundUrl, ...dims});
         oldState.lines.forEach(function(line){ line.clear(); });
