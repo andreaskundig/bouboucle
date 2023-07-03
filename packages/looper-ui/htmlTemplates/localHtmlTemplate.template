@@ -1,3 +1,5 @@
+import { buttonMap } from './buttons.js';
+
 const localHtmlTemplateStr = `
  <div class="menu nine-buttons">
     <div id="color-button">
