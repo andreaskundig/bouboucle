@@ -1,24 +1,27 @@
 import { buttonMap } from './buttons.js';
 
-const advancedHtmlTemplateStr = `
+const defaultButtonOrder = [
+  "color-button",
+  "stroke-button",
+  "timing-button",
+  "clear-button",
+  "undo-button",
+  "redo-button",
+  "rewind-button",
+  "pause-button",
+  "forward-button",
+  "export-button",
+  "info-button",
+];
+
+const advancedHtmlTemplateStr = (buttonOrder=defaultButtonOrder) => `
     <style>
       .menu > div {
           width: 9.0909%; 
       }
     </style>
     <div class="menu">
-      <div id="color-button">${buttonMap["color-button"]}
-      </div><div id="stroke-button" >${buttonMap["stroke-button"]}
-      </div><div id="timing-button">${buttonMap["timing-button"]}
-      </div><div id="clear-button">${buttonMap["clear-button"]}
-      </div><div id="undo-button">${buttonMap["undo-button"]}
-      </div><div id="redo-button">${buttonMap["redo-button"]}
-      </div><div id="rewind-button">${buttonMap["rewind-button"]}
-      </div><div id="pause-button">${buttonMap["pause-button"]}
-      </div><div id="forward-button">${buttonMap["forward-button"]}
-      </div><div id="export-button">${buttonMap["export-button"]}
-      </div><div id="info-button">${buttonMap["info-button"]}
-      </div>
+     ${buttonOrder.map(b => buttonMap[b]).join('')}
     </div>
     
     <div id="overlay" class="hidden"> </div>

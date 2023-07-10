@@ -1,18 +1,21 @@
 import { buttonMap } from './buttons.js';
 
-const localHtmlTemplateStr = `
- <div class="menu nine-buttons">
-      <div id="color-button">${buttonMap["color-button"]}
-      </div><div id="stroke-button" >${buttonMap["stroke-button"]}
-      </div><div id="timing-button">${buttonMap["timing-button"]}
-      </div><div id="clear-button">${buttonMap["clear-button"]}
-      </div><div id="undo-button">${buttonMap["undo-button"]}
-      </div><div id="redo-button">${buttonMap["redo-button"]}
-      </div><div id="pause-button">${buttonMap["pause-button"]}
-      </div><div id="export-button">${buttonMap["export-button"]}
-      </div><div id="info-button">${buttonMap["info-button"]}
-      </div><div id="gallery-button" class="hidden">${buttonMap["gallery-button"]}
-      </div>
+const defaultButtonOrder = [
+  "color-button",
+  "stroke-button",
+  "timing-button",
+  "clear-button",
+  "undo-button",
+  "redo-button",
+  "pause-button",
+  "export-button",
+  "info-button",
+  "gallery-button",
+];
+
+const localHtmlTemplateStr = (buttonOrder=defaultButtonOrder) => `
+    <div class="menu nine-buttons">
+     ${buttonOrder.map(b => buttonMap[b]).join('')}
     </div>
     
     <div id="overlay" class="hidden"> </div>

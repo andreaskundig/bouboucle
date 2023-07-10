@@ -406,12 +406,14 @@ var colors = [
         initSpeedButtons(setSpeed, menu);
         makeExportAndInfoUi(menu, looper, io,  fullSizeGif);
 
+        const galleryButton = document.getElementById('gallery-button');
         if(showGallery){
-            const galleryButton = document.getElementById('gallery-button');
-            galleryButton.classList.remove('hidden');
-            galleryButton.parentNode.classList.add('ten-buttons');
-            galleryButton.parentNode.classList.remove('nine-buttons');
-            console.log(galleryButton.parentNode);
+            galleryButton?.classList.remove('hidden');
+            galleryButton?.parentNode.classList.add('ten-buttons');
+            galleryButton?.parentNode.classList.remove('nine-buttons');
+            console.log(galleryButton?.parentNode);
+        }else{
+            galleryButton?.classList.add('hidden');
         }
     };
     init(looper);

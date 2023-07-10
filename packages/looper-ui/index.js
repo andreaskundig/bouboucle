@@ -49,24 +49,24 @@ export const UIVariant = Object.freeze({
  * @param {("default", "local", "advanced")} uiVariant 
  * @param { HTMLElement } targetDomElement root element of ui
  */
-export function setupDomForVariant(uiVariant, targetDomElement = document.body){
+export function setupDomForVariant(uiVariant, targetDomElement = document.body, buttonOrder=undefined){
     injectCSS(simpleCSS);
     if(uiVariant == UIVariant.default){
         // 1 setup dom
-        setupDom(targetDomElement, defaultHtmlTemplate);
+        setupDom(targetDomElement, defaultHtmlTemplate, buttonOrder);
         return;
     }
     
     if(uiVariant == UIVariant.local){
         // 1 setup dom
-        setupDom(targetDomElement, localHtmlTemplate);
+        setupDom(targetDomElement, localHtmlTemplate, buttonOrder);
         return;
     }
 
     if(uiVariant == UIVariant.advanced){
         injectCSS(simpleIpadCSS);
         // 1 setup dom
-        setupDom(targetDomElement, advancedHtmlTemplate);
+        setupDom(targetDomElement, advancedHtmlTemplate, buttonOrder);
         return;
     }
 
