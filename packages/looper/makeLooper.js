@@ -32,7 +32,9 @@ var makeLooper = function(opts){
         availableWidth = dimension.width;
         availableHeight = dimension.height;
         timeKeeper.reset();
-        currentLine = lineColor = strokeWidth = lifetime = null;
+        currentLine = lifetime = null;
+        lineColor = '#303F9F';
+        strokeWidth = 20;
         periods = thePeriods || 1;
     };
 
@@ -520,12 +522,12 @@ var makeLooper = function(opts){
         completeLine: completeLine,
         importData: (d,s) => actions.do(importDataAction(d,s)),
         clear: () => actions.do(clearAction()),
-        setLineColor: function(c) { lineColor = c;},
-        setStrokeWidth: function(w) { strokeWidth = w;},
-        setLifetime: function(l) { lifetime = l;},
-        setPeriods: function(p) {
-            periods = p;
-        },
+        setLineColor: function(c) { lineColor = c; },
+        getLineColor: function() { return lineColor; },
+        setStrokeWidth: function(w) { strokeWidth = w; },
+        getStrokeWidth: function() { return strokeWidth; },
+        setLifetime: function(l) { lifetime = l; },
+        setPeriods: function(p) { periods = p; },
         scale: scale,
         getTime: timeKeeper.getTime.bind(timeKeeper),
         setSpeed: timeKeeper.setSpeed.bind(timeKeeper),

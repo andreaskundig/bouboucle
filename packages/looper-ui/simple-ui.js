@@ -379,10 +379,10 @@ var colors = [
     
     init = function(looper){
         var menu = makeMenu();
-        initColorButton({initial: '#303F9F', //'#212121',
+        initColorButton({initial: looper.getLineColor(), 
                          handle: function(c){ looper.setLineColor(c); }},
                          menu);
-        initStrokeButton({initial: 20,
+        initStrokeButton({initial: looper.getStrokeWidth(),
                           handle: function(w){ looper.setStrokeWidth(w); }},
                           menu);
 
