@@ -117,6 +117,7 @@ var colors = [
                         icon: getAssetString(assetname)};
             }),
             pickStroke = function(stroke){
+                strokeButtonDiv.innerHTML = "<img/>";
                 strokeButtonDiv.firstChild.src = stroke.icon;
                 menu.hideSubmenu();
                 strokeHandler.handle(stroke.width);
@@ -128,7 +129,7 @@ var colors = [
 
     makeStrokeMenu = function(parentDiv, strokes, initialWidth, pickStroke){
         var activeButton;
-        strokes.forEach(function(stroke, strokeIndex){
+        strokes.forEach(function(stroke){
             var strokeXButtonDiv = document.createElement('div'),
                 strokeXIcon = document.createElement('img');
             strokeXIcon.src = stroke.icon;
@@ -307,7 +308,7 @@ var colors = [
                 // note: we must clear the div to allow new src to be set
                 pauseButtonDiv.innerHTML = "<img/>";
                 pauseButtonDiv.firstChild.src = encodedIcon;
-                allButtons.forEach(function(button){
+                allButtons.filter(b => !!b).forEach(function(button){
                     if(button === activeButton){
                         button.classList.add('active');
                     }else{
