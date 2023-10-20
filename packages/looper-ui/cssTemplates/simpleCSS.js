@@ -26,10 +26,11 @@ body {
 #stroke-submenu > div, #timing-submenu > div.old {
     width: 16.66666%; /* 6 buttons */
 }
+.menu,
 .menu > div,
 .submenu,
 .submenu > div {
-    height: 80px;
+    line-height: 0;
 }
 .menu > div > img,
 .menu svg,
@@ -80,7 +81,7 @@ body {
     border-color: white;
 }
 
-.info {
+.submenu .info {
     font: 21px arial, sans-serif;
     text-align: center;
     line-height:130%;
