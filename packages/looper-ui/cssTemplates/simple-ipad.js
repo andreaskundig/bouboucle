@@ -19,8 +19,10 @@ const simpleIpadCSS = `
         width:54px; 
     }
     #color-submenu > div > div.selected{
-        margin:  3px 3px; /* (* .0029 1024) 2.96 */
-        width: 48px; /* (* .0467 1024) 47.82 */
+        box-sizing: border-box;
+        border-style: solid;
+        border-width: 3px;
+        border-color: white;
     }
     #color-submenu > div > div.selected:last-child{
         width: 46px; /* (* .0467 1024) 47.82 */

@@ -74,9 +74,10 @@ body {
     height: 40px;
 }
 #color-submenu > div > div.selected{
-    margin:  3.15px 0.29%;
-    width: 4.67%;
-    height: 34px;
+    box-sizing: border-box;
+    border-style: solid;
+    border-width: 3.15px 0.29%;
+    border-color: white;
 }
 
 .info {
