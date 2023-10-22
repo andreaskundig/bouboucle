@@ -74,7 +74,10 @@ async function main(){
     }
 
     makeUI(variant, looper, fullSizeGif, newTiming, dimension,
-           showGallery, miraMakeExportAndInfoUi);
+           showGallery,
+           // undefined
+           miraMakeExportAndInfoUi
+          );
 
     window.addEventListener('resize', () => {
         const targetHeight = window.innerHeight - titleHeight;

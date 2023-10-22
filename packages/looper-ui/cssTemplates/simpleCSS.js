@@ -1,5 +1,10 @@
 
 const simpleCSS = `
+:root {
+  --font-family: Arial, Helvetica, sans-serif;
+  --font-size: 21px;
+}
+
 body {
     margin:0;
     position: fixed;
@@ -121,6 +126,7 @@ body {
 #export-3 > div{
     text-align: center; /* WTF */
 }
+
 `;
 
 export default simpleCSS;
