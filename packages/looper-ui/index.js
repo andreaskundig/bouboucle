@@ -14,6 +14,7 @@ import { injectCSS } from './setup.js'
 import * as assDB from "./assetsDB.js";
 
 export const getAssetString = assDB.getAssetString;
+export { injectCSS };
 
 /**
  * make ui wrapper function

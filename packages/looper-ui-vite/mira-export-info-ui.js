@@ -1,4 +1,4 @@
-import { getAssetString } from '@andreaskundig/looper-ui';
+import { getAssetString, injectCSS } from '@andreaskundig/looper-ui';
 export default function makeExportAndInfoUi(menu, looper, io, fullSizeGif){
 
     const download_10 = getAssetString('10_download.svg');
@@ -35,7 +35,31 @@ export default function makeExportAndInfoUi(menu, looper, io, fullSizeGif){
         ' </div>',
         '</div>'
     ].join('\n'),
-
+infoCSS = `
+.submenu .info {
+    font: 21px arial, sans-serif;
+    text-align: center;
+    line-height:130%;
+    padding-top: 40px;
+    bottom: 0;
+}
+.info p{
+    margin: 6px;
+}
+.info div {
+    margin-bottom: 40px;
+}
+.info-fr, .info-de {
+    font-weight: bold;
+}
+.info-en {
+    font-style: italic;
+}
+.info .link {
+    color: rgb(77, 208, 225);
+    text-decoration: none;
+}
+        `,
         exportContent = [
             ' <div class="export-1 info">',
             '   <div class="info-fr no-gist">',
@@ -142,6 +166,7 @@ export default function makeExportAndInfoUi(menu, looper, io, fullSizeGif){
         },
         
         initInfoButton = function(menu){
+            injectCSS(infoCSS);
             var infoButtonDiv = document.querySelector('#info-button'),
                 infoMenuDiv = document.querySelector('#info-submenu');
             infoMenuDiv.innerHTML = infoContent;

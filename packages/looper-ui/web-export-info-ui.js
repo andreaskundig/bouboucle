@@ -1,11 +1,13 @@
 import { getAssetString } from "./assetsDB.js";
+import { injectCSS } from './setup.js'
+
 export default function makeExportAndInfoUi(menu, looper, io, fullSizeGif){
 
     const download_10 = getAssetString('10_download.svg');
     const erase_4 = getAssetString('4_erase.svg');
     const done_8 = getAssetString('8_done.svg');
 
-    var infoContent = [
+    const infoContent = [
         '<div class="info">',
         ' <div class="info-fr">',
         '   <p>Bouboucle est un projet ',
@@ -34,9 +36,34 @@ export default function makeExportAndInfoUi(menu, looper, io, fullSizeGif){
         '      class="link">Ivan</a> est impeccable.</p>',
         ' </div>',
         '</div>'
-    ].join('\n'),
+    ].join('\n');
+    const infoCSS = `
+.submenu .info {
+    font: 21px arial, sans-serif;
+    text-align: center;
+    line-height:130%;
+    padding-top: 40px;
+    bottom: 0;
+}
+.info p{
+    margin: 6px;
+}
+.info div {
+    margin-bottom: 40px;
+}
+.info-fr, .info-de {
+    font-weight: bold;
+}
+.info-en {
+    font-style: italic;
+}
+.info .link {
+    color: rgb(77, 208, 225);
+    text-decoration: none;
+}
+        `;
 
-        exportContent = [
+    const exportContent = [
             // ' <div class="export-0 gist info">',
             // '   <div class="info-fr">',
             // "     <p>Un instant, j'enregistre l'animation.</p>",
@@ -85,9 +112,9 @@ export default function makeExportAndInfoUi(menu, looper, io, fullSizeGif){
             // '            <img src="icons/10_download.svg"></div>',
             '   </div>',
             ' </div>',
-        ].join('\n'),
+        ].join('\n');
 
-        showElements = function(parentSelector, showClass){
+        const showElements = function(parentSelector, showClass){
             document.querySelector(parentSelector)
                 .childNodes
                 .forEach(function(e){
@@ -95,15 +122,15 @@ export default function makeExportAndInfoUi(menu, looper, io, fullSizeGif){
                     var hasClass = e.classList.contains(showClass);
                     e.classList[hasClass ? 'remove': 'add']('hidden');
                 });
-        },
+        };
         
-        requestAnimationFramePromise = function(){
+        const requestAnimationFramePromise = function(){
             return new Promise(function(resolve, reject){
                 requestAnimationFrame(resolve);
             });
-        },
+        };
         
-        displayRecording = function(record, fullSizeGif){
+        const displayRecording = function(record, fullSizeGif){
             var progBar = document.querySelector('#gif-progress-bar'),
                 progIndex = progBar.firstChild,
                 progressCallback = function(prog){
@@ -133,9 +160,9 @@ export default function makeExportAndInfoUi(menu, looper, io, fullSizeGif){
                     console.error(o.error,o);
                 }
             );
-        },
+        };
 
-        initExportButton = function(looper, menu){
+        const initExportButton = function(looper, menu){
             var exportButtonDiv = document.querySelector('#export-button'),
                 exportMenuSelector = '#export-submenu',
                 exportMenuDiv = document.querySelector(exportMenuSelector);
@@ -179,9 +206,10 @@ export default function makeExportAndInfoUi(menu, looper, io, fullSizeGif){
                     });
             });
             menu.initShowSubmenu(exportMenuDiv, exportButtonDiv, beforeShow);
-        },
+        };
         
-        initInfoButton = function(menu){
+        const initInfoButton = function(menu){
+            injectCSS(infoCSS);
             var infoButtonDiv = document.querySelector('#info-button'),
                 infoMenuDiv = document.querySelector('#info-submenu');
             infoMenuDiv.innerHTML = infoContent;
@@ -189,9 +217,9 @@ export default function makeExportAndInfoUi(menu, looper, io, fullSizeGif){
                 menu.hideSubmenu();
             });
             menu.initShowSubmenu(infoMenuDiv, infoButtonDiv);
-        },
+        };
 
-        init = function(menu, looper, fullSizeGif){
+        const init = function(menu, looper, fullSizeGif){
             initExportButton(looper, menu, fullSizeGif);
             initInfoButton(menu);
         };

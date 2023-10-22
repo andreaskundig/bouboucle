@@ -81,30 +81,6 @@ body {
     border-color: white;
 }
 
-.submenu .info {
-    font: 21px arial, sans-serif;
-    text-align: center;
-    line-height:130%;
-    padding-top: 40px;
-    bottom: 0;
-}
-.info p{
-    margin: 6px;
-}
-.info div {
-    margin-bottom: 40px;
-}
-.info-fr, .info-de {
-    font-weight: bold;
-}
-.info-en {
-    font-style: italic;
-}
-.link {
-    color: rgb(77, 208, 225);
-    text-decoration: none;
-}
-
 #export-submenu > div {
     margin-bottom: 40px;
     
