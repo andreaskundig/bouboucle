@@ -61,6 +61,21 @@ export default function makeExportAndInfoUi(menu, looper, io, fullSizeGif){
     color: rgb(77, 208, 225);
     text-decoration: none;
 }
+#gif-progress-bar{
+    width: 500px;
+    background-color: darkGrey;
+    margin: 0 auto;
+}
+#gif-progress-bar > div{
+    height: 10px;
+    background-color: darkCyan;
+}
+#gif {
+  border: 1px solid #dddddd;
+}
+#export-3 > div{
+    text-align: center; /* WTF */
+}
         `;
 
     const exportContent = [

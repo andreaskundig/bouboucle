@@ -111,21 +111,6 @@ body {
     display:block;
     margin: auto;
 }
-#gif-progress-bar{
-    width: 500px;
-    background-color: darkGrey;
-    margin: 0 auto;
-}
-#gif-progress-bar > div{
-    height: 10px;
-    background-color: darkCyan;
-}
-#gif {
-  border: 1px solid #dddddd;
-}
-#export-3 > div{
-    text-align: center; /* WTF */
-}
 
 `;
 

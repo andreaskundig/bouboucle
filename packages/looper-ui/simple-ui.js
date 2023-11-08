@@ -65,6 +65,7 @@ var colors = [
                 menuDiv.classList.add('hidden');
                 // menuDiv.addEventListener('click', hideSubmenu);
                 buttonDiv.addEventListener('click', showThisSubmenu);
+                return showThisSubmenu;
             };
         overlayDiv.addEventListener('click', hideSubmenu);
         return {initShowSubmenu: initShowSubmenu,
