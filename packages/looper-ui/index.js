@@ -51,27 +51,22 @@ export const UIVariant = Object.freeze({
  * @param { HTMLElement } targetDomElement root element of ui
  */
 export function setupDomForVariant(uiVariant, targetDomElement = document.body, buttonOrder=undefined){
-    injectCSS(simpleCSS);
+    // TODO replace variant with args: additionalCss, htmlTemplate
+    // requires exporting the css/html templates
+    // and importing them in projects stroke-looper
+    // and mirabilia
+    const cssToInject = [simpleCSS];
+    let htmlTemplate;
     if(uiVariant == UIVariant.default){
-        // 1 setup dom
-        setupDom(targetDomElement, defaultHtmlTemplate, buttonOrder);
-        return;
+        htmlTemplate = defaultHtmlTemplate;
+    } else if (uiVariant == UIVariant.local){
+        htmlTemplate = localHtmlTemplate;
+    } else if(uiVariant == UIVariant.advanced){
+        cssToInject.push(simpleIpadCSS);
+        htmlTemplate = advancedHtmlTemplate;
+    } else {
+        throw new Error(`unsupported UI variant ${uiVariant}`);
     }
-    
-    if(uiVariant == UIVariant.local){
-        // 1 setup dom
-        setupDom(targetDomElement, localHtmlTemplate, buttonOrder);
-        return;
-    }
-
-    if(uiVariant == UIVariant.advanced){
-        injectCSS(simpleIpadCSS);
-        // 1 setup dom
-        setupDom(targetDomElement, advancedHtmlTemplate, buttonOrder);
-        return;
-    }
-
-    throw new Error(`unsupported UI variant ${uiVariant}`);
+    cssToInject.forEach(injectCSS);
+    setupDom(targetDomElement, htmlTemplate, buttonOrder);
 }
-
-
