@@ -73,10 +73,14 @@ async function main(){
         io.gists.load(urlParams.gist, looper.importData);
     }
 
+    function makeExportAndInfoUi(menu, looper) {
+        miraMakeExportAndInfoUi(menu, looper, undefined, fullSizeGif)
+    }
+
     makeUI(variant, looper, fullSizeGif, newTiming, dimension,
            showGallery,
            // undefined
-           miraMakeExportAndInfoUi
+           makeExportAndInfoUi
           );
 
     window.addEventListener('resize', () => {

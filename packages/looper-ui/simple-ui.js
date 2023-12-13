@@ -1,16 +1,17 @@
-import { actions, io } from '@andreaskundig/looper'; 
+import { actions } from '@andreaskundig/looper';
 import { getAssetString } from './assetsDB.js';
 
 /**
  * generates looper's ui 
  * @param {*} looper - looper instance 
  * @param {boolean} fullSizeGif 
- * @param {*} makeExportAndInfoUi - factory function to build some extra ui bits
+ * @param {*} makeExportAndInfoUi - factory function to build
+ *                                  some extra ui bits
  * @param {boolean} newTiming 
  * @param {{width: number, height: number}} dimension 
  * @param {boolean} showGallery - flag controlling gallery display
  */
-export default function makeSimpleUi(looper, fullSizeGif, makeExportAndInfoUi,
+export default function makeSimpleUi(looper, makeExportAndInfoUi,
                             newTiming, dimension, showGallery){
 
     
@@ -406,7 +407,7 @@ var colors = [
             updateTiming({speed: speed});
         };
         initSpeedButtons(setSpeed, menu);
-        makeExportAndInfoUi(menu, looper, io,  fullSizeGif);
+        makeExportAndInfoUi(menu, looper);
 
         const galleryButton = document.getElementById('gallery-button');
         if(showGallery){

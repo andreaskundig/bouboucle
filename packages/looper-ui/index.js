@@ -1,6 +1,5 @@
 import makeSimpleUi from './simple-ui.js'; 
 import webMakeExportAndInfoUi from './web-export-info-ui.js'; // ??
-
 import localMakeExportAndInfoUi from './local-export-info-ui.js';
 
 import defaultHtmlTemplate from './htmlTemplates/defaultHtmltemplate.js';
@@ -27,10 +26,19 @@ export { injectCSS };
  */
 export function makeUI(variant, looper, fullSizeGif, newTiming,
                        dimension, showGallery, makeExportAndInfoUi){
+    //TODO pass makeExportAndInfoUi instead of variant
+    // requires exporting the exportUIAndInfo methods
+    // and importing them in projects stroke-looper
+    // and mirabilia
     if (!makeExportAndInfoUi) {
-        makeExportAndInfoUi = variant == UIVariant.local ? localMakeExportAndInfoUi : webMakeExportAndInfoUi;
+        if(variant == UIVariant.local) {
+            makeExportAndInfoUi = localMakeExportAndInfoUi;
+        } else {
+            makeExportAndInfoUi =
+                (menu,looper) =>  webMakeExportAndInfoUi(menu, looper, fullSizeGif);
+        }
     }
-    makeSimpleUi(looper, fullSizeGif, makeExportAndInfoUi, newTiming,
+    makeSimpleUi(looper, makeExportAndInfoUi, newTiming,
                  dimension, showGallery);
 }
 

@@ -1,6 +1,7 @@
 import { getAssetString } from "./assetsDB.js";
 import { injectCSS } from './setup.js'
-export default function localMakeExportAndInfoUi(menu, looper, io, fullSizeGif){
+import { io } from '@andreaskundig/looper';
+export default function localMakeExportAndInfoUi(menu, looper){
 
     const erase_4 = getAssetString('4_erase.svg');
     const done_8 = getAssetString('8_done.svg');
