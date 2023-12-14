@@ -1,4 +1,4 @@
-import makeSimpleUi from './simple-ui.js'; 
+import makeSimpleUi from './simple-ui.js';
 import webMakeExportAndInfoUi from './web-export-info-ui.js'; // ??
 import localMakeExportAndInfoUi from './local-export-info-ui.js';
 
@@ -13,7 +13,7 @@ import { injectCSS } from './setup.js'
 import * as assDB from "./assetsDB.js";
 
 export const getAssetString = assDB.getAssetString;
-export { injectCSS };
+export { injectCSS, makeSimpleUi  };
 
 /**
  * make ui wrapper function
@@ -26,10 +26,7 @@ export { injectCSS };
  */
 export function makeUI(variant, looper, fullSizeGif, newTiming,
                        dimension, showGallery, makeExportAndInfoUi){
-    //TODO pass makeExportAndInfoUi instead of variant
-    // requires exporting the exportUIAndInfo methods
-    // and importing them in projects stroke-looper
-    // and mirabilia
+    //TODO stop using this and call makeSimpleUi directly
     if (!makeExportAndInfoUi) {
         if(variant == UIVariant.local) {
             makeExportAndInfoUi = localMakeExportAndInfoUi;
@@ -41,6 +38,7 @@ export function makeUI(variant, looper, fullSizeGif, newTiming,
     makeSimpleUi(looper, makeExportAndInfoUi, newTiming,
                  dimension, showGallery);
 }
+
 
 /**
  * enum to discriminate ui variant
@@ -54,27 +52,39 @@ export const UIVariant = Object.freeze({
 });
 
 /**
+ * enum to discriminate ui variant
+ * @readonly
+ * @enum { string }
+ */
+export const UIVariantCode = Object.freeze({
+    default: { html: defaultHtmlTemplate, css: [] },
+    local: { html: localHtmlTemplate, css: [] },
+    advanced: { html: advancedHtmlTemplate, css: simpleIpadCSS },
+});
+
+/**
  * 
  * @param {("default", "local", "advanced")} uiVariant 
  * @param { HTMLElement } targetDomElement root element of ui
  */
-export function setupDomForVariant(uiVariant, targetDomElement = document.body, buttonOrder=undefined){
-    // TODO replace variant with args: additionalCss, htmlTemplate
-    // requires exporting the css/html templates
-    // and importing them in projects stroke-looper
-    // and mirabilia
-    const cssToInject = [simpleCSS];
-    let htmlTemplate;
-    if(uiVariant == UIVariant.default){
-        htmlTemplate = defaultHtmlTemplate;
-    } else if (uiVariant == UIVariant.local){
-        htmlTemplate = localHtmlTemplate;
-    } else if(uiVariant == UIVariant.advanced){
-        cssToInject.push(simpleIpadCSS);
-        htmlTemplate = advancedHtmlTemplate;
-    } else {
-        throw new Error(`unsupported UI variant ${uiVariant}`);
+export function setupDomForVariant(uiVariant,
+                                   targetDomElement=document.body,
+                                   buttonOrder=undefined)
+{
+    if(!(uiVariant in UIVariantCode)){
+        throw new Error(`unsupported UI variant ${uiVariant}`)
     }
+    const { css, html } = UIVariantCode[uiVariant];
+    setupDomAndCss(html, css, targetDomElement, buttonOrder);
+}
+
+export function setupDomAndCss(htmlTemplate,
+                               additionalCSS=[],
+                               targetDomElement=document.body,
+                               buttonOrder=undefined)
+{
+    const cssToInject = additionalCSS.slice();
+    cssToInject.unshift(simpleCSS);
     cssToInject.forEach(injectCSS);
     setupDom(targetDomElement, htmlTemplate, buttonOrder);
 }
