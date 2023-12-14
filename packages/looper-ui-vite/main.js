@@ -1,4 +1,4 @@
-import  { makeUI, setupDomForVariant, UIVariant } from '@andreaskundig/looper-ui';
+import  { makeSimpleUi, setupDomForVariant, UIVariant } from '@andreaskundig/looper-ui';
 import { io, urlUtils, makeLooper } from '@andreaskundig/looper';
 import miraMakeExportAndInfoUi from './mira-export-info-ui.js'; // ??
 import paper from 'paper/dist/paper-core';
@@ -15,7 +15,6 @@ async function loadImage(url) {
 }
 
 async function main(){
-
     const variant = config.variant || UIVariant.default;
     // 1 choose ui variant and setup dom accordingly
     const mirabiliaButtonOrder = [
@@ -77,11 +76,8 @@ async function main(){
         miraMakeExportAndInfoUi(menu, looper, undefined, fullSizeGif)
     }
 
-    makeUI(variant, looper, fullSizeGif, newTiming, dimension,
-           showGallery,
-           // undefined
-           makeExportAndInfoUi
-          );
+    makeSimpleUi(looper, makeExportAndInfoUi, newTiming, dimension,
+                 showGallery);
 
     window.addEventListener('resize', () => {
         const targetHeight = window.innerHeight - titleHeight;
