@@ -58,8 +58,8 @@ export const UIVariant = Object.freeze({
  * @enum { string }
  */
 export const UIVariantCode = Object.freeze({
-  [UIVariant.default]: { html: defaultHtmlTemplate, css: [] },
-  [UIVariant.local]: { html: localHtmlTemplate, css: [] },
+  [UIVariant.default]: { html: defaultHtmlTemplate },
+  [UIVariant.local]: { html: localHtmlTemplate },
   [UIVariant.advanced]: { html: advancedHtmlTemplate, css: simpleIpadCSS },
 });
 
@@ -80,12 +80,11 @@ export function setupDomForVariant(uiVariant,
 }
 
 export function setupDomAndCss(htmlTemplate,
-                               additionalCSS=[],
+                               additionalCSS,
                                targetDomElement=document.body,
                                buttonOrder=undefined)
 {
-    const cssToInject = additionalCSS.slice();
-    cssToInject.unshift(simpleCSS);
-    cssToInject.forEach(injectCSS);
-    setupDom(targetDomElement, htmlTemplate, buttonOrder);
+  const cssToInject = additionalCSS ? [simpleCSS] : [simpleCSS, additionalCSS];
+  cssToInject.forEach(injectCSS);
+  setupDom(targetDomElement, htmlTemplate, buttonOrder);
 }
