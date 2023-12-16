@@ -13,8 +13,9 @@ import { injectCSS } from './setup.js'
 import * as assDB from "./assetsDB.js";
 
 export const getAssetString = assDB.getAssetString;
-export { injectCSS, makeSimpleUi  };
-
+export { injectCSS, makeSimpleUi };
+export const ExportInfoUIMaker = {web: webMakeExportAndInfoUi,
+                                  local: localMakeExportAndInfoUi}
 /**
  * make ui wrapper function
  * @param {*} UIVariant - ui variant see below
@@ -57,9 +58,9 @@ export const UIVariant = Object.freeze({
  * @enum { string }
  */
 export const UIVariantCode = Object.freeze({
-    default: { html: defaultHtmlTemplate, css: [] },
-    local: { html: localHtmlTemplate, css: [] },
-    advanced: { html: advancedHtmlTemplate, css: simpleIpadCSS },
+  [UIVariant.default]: { html: defaultHtmlTemplate, css: [] },
+  [UIVariant.local]: { html: localHtmlTemplate, css: [] },
+  [UIVariant.advanced]: { html: advancedHtmlTemplate, css: simpleIpadCSS },
 });
 
 /**

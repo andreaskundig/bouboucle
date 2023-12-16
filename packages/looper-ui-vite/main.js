@@ -15,8 +15,8 @@ async function loadImage(url) {
 }
 
 async function main(){
-    const variant = config.variant || UIVariant.default;
     // 1 choose ui variant and setup dom accordingly
+    const variant = config.variant || UIVariant.default;
     const mirabiliaButtonOrder = [
         "info-button",
         "color-button",
