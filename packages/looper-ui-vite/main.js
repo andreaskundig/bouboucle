@@ -73,7 +73,7 @@ async function main(){
     }
 
     function makeExportAndInfoUi(menu, looper) {
-        miraMakeExportAndInfoUi(menu, looper, undefined, fullSizeGif)
+        miraMakeExportAndInfoUi(menu, looper, fullSizeGif)
     }
 
     makeSimpleUi(looper, makeExportAndInfoUi, newTiming, dimension,

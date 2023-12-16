@@ -1,5 +1,9 @@
 import { getAssetString, injectCSS } from '@andreaskundig/looper-ui';
-export default function makeExportAndInfoUi(menu, looper, io, fullSizeGif){
+import { makeCarousel} from './carousel';
+
+const carousel = makeCarousel();
+
+export default function makeExportAndInfoUi(menu, looper, fullSizeGif){
 
     const gas = getAssetString;
     const download_10 = gas('10_download.svg');
@@ -34,6 +38,7 @@ export default function makeExportAndInfoUi(menu, looper, io, fullSizeGif){
                 Quand tu as terminé, télécharge ton animation</div>
             </div>
          </div>
+         ${ carousel.html }
          <div>
             <p class="text__paragraph">
                Voyez des exemples d'animations dans la
@@ -170,6 +175,7 @@ export default function makeExportAndInfoUi(menu, looper, io, fullSizeGif){
     .instructions__text {
         padding: 2px 0 0 20px;
     }
+    ${ carousel.css }
         `;
 
     const showElements = function (parentSelector, showClass) {
@@ -255,9 +261,10 @@ export default function makeExportAndInfoUi(menu, looper, io, fullSizeGif){
         const infoButtonDiv = document.querySelector('#info-button'),
             infoMenuDiv = document.querySelector('#info-submenu');
         infoMenuDiv.innerHTML = infoContent;
-        infoMenuDiv.addEventListener('click', function () {
-            menu.hideSubmenu();
-        });
+        // infoMenuDiv.addEventListener('click', function () {
+        //     menu.hideSubmenu();
+        // });
+        carousel.addListeners(infoMenuDiv);
         const showInfoSubmenu =
               menu.initShowSubmenu(infoMenuDiv, infoButtonDiv);
         return showInfoSubmenu;

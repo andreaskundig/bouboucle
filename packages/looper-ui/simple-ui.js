@@ -7,6 +7,7 @@ import { getAssetString } from './assetsDB.js';
  * @param {boolean} fullSizeGif 
  * @param {*} makeExportAndInfoUi - factory function to build
  *                                  some extra ui bits
+ *                                  called with args: menu, looper
  * @param {boolean} newTiming 
  * @param {{width: number, height: number}} dimension 
  * @param {boolean} showGallery - flag controlling gallery display
