@@ -1,0 +1,28 @@
+#canvas-parent{
+    /* top: 0; */
+    /* bottom: 47px; */
+    bottom: 0;
+    top: 47px;
+}
+
+#gif-parent {
+    top: 47px;
+    bottom: 0px;
+    /* bottom: 47px; */
+    /* top: 0px; */
+}
+
+.footer {
+    top: 0px;
+    border-bottom: 1px solid #bbbbbb;
+            border-top: 0px ; 
+    /* bottom: 0px;
+*/
+}
+
+#menu > #animations {
+    top: 47px;
+    bottom: 0;
+    /* top: 0;
+            bottom: 47px; */
+}
