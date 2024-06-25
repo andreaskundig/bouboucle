@@ -13,7 +13,7 @@ class SVGButton extends HTMLElement {
     render(){
         this.shadowRoot!.innerHTML = `
         <style>
-        div {
+        ::slotted(svg) {
             width: 200px;
             height: 39px;
             padding: 20px 0;
@@ -31,4 +31,3 @@ class SVGButton extends HTMLElement {
 }
 
 customElements.define("svg-button", SVGButton);
-  
