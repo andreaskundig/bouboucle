@@ -10,10 +10,6 @@
   "author": "",
   "license": "UNLICENSED",
   "workspaces": [
-    "packages/looper",
-    "packages/looper-vite",
-    "packages/looper-ui-vite",
-    "packages/looper-react-ui",
-    "packages/looper-ui"
+    "packages/**/*"
   ]
 }

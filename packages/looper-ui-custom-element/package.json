@@ -8,6 +8,11 @@
     "build": "tsc && vite build",
     "preview": "vite preview"
   },
+  "dependencies": {
+    "@andreaskundig/looper": "^1.0.0",
+    "@andreaskundig/looper-ui": "^1.0.0",
+    "paper": "^0.12.17"
+  },
   "devDependencies": {
     "typescript": "^5.2.2",
     "vite": "^5.2.0"
