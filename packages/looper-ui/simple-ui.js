@@ -13,7 +13,7 @@ import { getAssetString } from './assetsDB.js';
  * @param {boolean} showGallery - flag controlling gallery display
  */
 export default function makeSimpleUi(looper, makeExportAndInfoUi,
-                            newTiming, dimension, showGallery){
+                            newTiming, dimension, showGallery, overlayParent = undefined, looperParent = undefined){
 
     
 var colors = [
@@ -27,10 +27,11 @@ var colors = [
 ['#d32f2f', '#C2185B', '#7B1FA2', '#512DA8', '#303F9F', '#1976D2', '#0288D1', '#0097A7', '#00796B', '#388E3C', '#689F38', '#AFB42B', '#FBC02D', '#FFA000', '#F57C00', '#E64A19', '#5D4037', '#616161', '#455A64'],
     ['#c62828', '#AD1457', '#6A1B9A', '#4527A0', '#283593', '#1565C0', '#0277BD', '#00838F', '#00695C', '#2E7D32', '#558B2F', '#9E9D24', '#F9A825', '#FF8F00', '#EF6C00', '#D84315', '#4E342E', '#424242', '#37474F'],
     ['#b71c1c', '#880E4F', '#4A148C', '#311B92', '#1A237E', '#0D47A1', '#01579B', '#006064', '#004D40', '#1B5E20', '#33691E', '#827717', '#F57F17', '#FF6F00', '#E65100', '#BF360C', '#3E2723', 'black',/*'#212121'*/, '#263238']],
-
+    overlayParent = overlayParent || document,
+    looperParent = overlayParent || document,
     makeMenu = function(){
         var selectedSubmenuDiv = null,
-            overlayDiv = document.querySelector('#overlay'),
+            overlayDiv = overlayParent.querySelector('#overlay'),
             activeMenuButton,
             showSubmenu = function(submenuDiv, button){
                 hideSubmenu();
@@ -75,8 +76,8 @@ var colors = [
     },
     
     initColorButton = function(colorHandler, menu){
-        var colorMenuDiv = document.querySelector('#color-submenu'),
-            colorButtonDiv = document.querySelector('#color-button'),
+        var colorMenuDiv = looperParent.querySelector('#color-submenu'),
+            colorButtonDiv = looperParent.querySelector('#color-button'),
             pickColor = function(color){
                 colorButtonDiv.style.fill = color;
                 colorButtonDiv.style.stroke = color;
@@ -112,8 +113,8 @@ var colors = [
     },
 
     initStrokeButton = function(strokeHandler, menu){
-        var strokeButtonDiv = document.querySelector('#stroke-button'),
-            strokeMenuDiv = document.querySelector('#stroke-submenu'),
+        var strokeButtonDiv = looperParent.querySelector('#stroke-button'),
+            strokeMenuDiv = looperParent.querySelector('#stroke-submenu'),
             strokes =[2, 7, 20, 50, 200, 600].map(function(width, index){
                 const assetname = `2_taille_${index + 1}.svg`;
                 return {width: width,
@@ -156,8 +157,8 @@ var colors = [
 
     initTimingButton = function(timingHandler, menu,
                                 newTimingUi, looper, dimension){
-        var timingButtonDiv = document.querySelector('#timing-button'),
-            timingMenuDiv = document.querySelector('#timing-submenu'),
+        var timingButtonDiv = looperParent.querySelector('#timing-button'),
+            timingMenuDiv = looperParent.querySelector('#timing-submenu'),
             timings =[[0.05,0.5],[0.25,1],[0.5,2],[1,2],[1,4],[2,1]]
                 .map(function(t, index){
                     return {lifetime: t[0],
@@ -287,9 +288,9 @@ var colors = [
         });
     },
     initSpeedButtons = function(setSpeed, menu){
-        var pauseButtonDiv = document.querySelector('#pause-button'),
-            rewindButtonDiv = document.querySelector('#rewind-button'),
-            forwardButtonDiv = document.querySelector('#forward-button'),
+        var pauseButtonDiv = looperParent.querySelector('#pause-button'),
+            rewindButtonDiv = looperParent.querySelector('#rewind-button'),
+            forwardButtonDiv = looperParent.querySelector('#forward-button'),
             allButtons = [pauseButtonDiv, rewindButtonDiv, forwardButtonDiv],
             icons = ['6_play.svg', '6_pause.svg'],
             speed = 1,
@@ -346,10 +347,10 @@ var colors = [
     },
 
     initControlButtons = function(controls, menu){
-        var clearButtonDiv = document.querySelector('#clear-button'),
-            undoButtonDiv = document.querySelector('#undo-button'),
-            redoButtonDiv = document.querySelector('#redo-button'),
-            exportButtonDiv = document.querySelector('#export-button');
+        var clearButtonDiv = looperParent.querySelector('#clear-button'),
+            undoButtonDiv = looperParent.querySelector('#undo-button'),
+            redoButtonDiv = looperParent.querySelector('#redo-button'),
+            exportButtonDiv = looperParent.querySelector('#export-button');
         clearButtonDiv.addEventListener('click', function(){
             menu.hideSubmenu();
             controls.clear();
@@ -365,7 +366,7 @@ var colors = [
     },
 
     showDialog = function (contentDiv){
-        var dialogMenuDiv = document.querySelector('#dialog-submenu');
+        var dialogMenuDiv = looperParent.querySelector('#dialog-submenu');
         if(dialogMenuDiv.firstChild){
             dialogMenuDiv.removeChild(dialogMenuDiv.firstChild);
         }
@@ -373,7 +374,7 @@ var colors = [
     },
     
     initDialogButton = function(menu, dialogButtonId, content){
-        var dialogMenuDiv = document.querySelector('#dialog-submenu'),
+        var dialogMenuDiv = looperParent.querySelector('#dialog-submenu'),
             dialogButtonDiv = document.getElementById(dialogButtonId),
             contentDiv = document.createElement('div'),
             beforeShow = function(){ showDialog(contentDiv); };
@@ -408,7 +409,7 @@ var colors = [
             updateTiming({speed: speed});
         };
         initSpeedButtons(setSpeed, menu);
-        makeExportAndInfoUi(menu, looper);
+        makeExportAndInfoUi && makeExportAndInfoUi(menu, looper);
 
         const galleryButton = document.getElementById('gallery-button');
         if(showGallery){
