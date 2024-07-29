@@ -19,7 +19,6 @@ class LooperUI extends HTMLElement {
 
     constructor() {
         super();
-        console.log("hello world");
         this.attachShadow({ mode: "open" });
     }
 
@@ -38,7 +37,6 @@ class LooperUI extends HTMLElement {
     }
 
     connectedCallback() {
-        console.log("connected callback");
         this.shadowRoot?.appendChild(this.rootDiv);
 
         // 1 choose ui variant and setup dom accordingly
@@ -87,18 +85,10 @@ class LooperUI extends HTMLElement {
         }
 
         // TODO uncomment this
-        // makeSimpleUi(looper, makeExportAndInfoUi, newTiming, dimension, showGallery,
-        //     this.rootDiv as any, this.rootDiv as any);
-        //TODO remove this to use makeExport...
-        makeSimpleUi(this.looper, undefined, newTiming, dimension, showGallery, 
+        const cssList = makeSimpleUi(this.looper, makeExportAndInfoUi, newTiming, dimension, showGallery,
             this.rootDiv as any, this.rootDiv as any);
 
-        // TODO: component should not be responsible for handling resize events
-        // window.addEventListener('resize', () => {
-        //     const targetHeight = window.innerHeight - titleHeight;
-        //     const dim = { width: window.innerWidth, height: targetHeight }
-        //     looper.scale(dim);
-        // });
+        cssList.forEach((css: string) => this.injectCSS(css));    
     }
 
     attributeChangedCallback(name:string, _oldValue:string, newValue:string) {

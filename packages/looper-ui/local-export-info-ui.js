@@ -1,7 +1,7 @@
 import { getAssetString } from "./assetsDB.js";
 import { injectCSS } from './setup.js'
 import { io } from '@andreaskundig/looper';
-export default function localMakeExportAndInfoUi(menu, looper){
+export default function localMakeExportAndInfoUi({menu, looper}){
 
     const erase_4 = getAssetString('4_erase.svg');
     const done_8 = getAssetString('8_done.svg');
@@ -110,7 +110,6 @@ export default function localMakeExportAndInfoUi(menu, looper){
     };
 
     const initInfoButton = function (menu) {
-        injectCSS(infoCSS);
         var infoButtonDiv = document.querySelector('#info-button'),
             infoMenuDiv = document.querySelector('#info-submenu');
         infoMenuDiv.innerHTML = infoContent;
@@ -153,5 +152,7 @@ export default function localMakeExportAndInfoUi(menu, looper){
         startAutoSaves(looper);
     };
     init(menu, looper);
+
+    return [infoCSS];
 };
 

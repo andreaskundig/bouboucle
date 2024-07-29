@@ -1,4 +1,4 @@
-import  { makeSimpleUi, setupDomForVariant, UIVariant } from '@andreaskundig/looper-ui';
+import  { makeSimpleUi, setupDomForVariant, UIVariant, injectCSS } from '@andreaskundig/looper-ui';
 import { io, urlUtils, makeLooper } from '@andreaskundig/looper';
 import miraMakeExportAndInfoUi from './mira-export-info-ui.js'; // ??
 import paper from 'paper/dist/paper-core';
@@ -72,12 +72,14 @@ async function main(){
         io.gists.load(urlParams.gist, looper.importData);
     }
 
-    function makeExportAndInfoUi(menu, looper) {
-        miraMakeExportAndInfoUi(menu, looper, fullSizeGif)
+    function makeExportAndInfoUi({menu, looper}) {
+        return miraMakeExportAndInfoUi({menu, looper, fullSizeGif})
     }
 
-    makeSimpleUi(looper, makeExportAndInfoUi, newTiming, dimension,
+    const cssList = makeSimpleUi(looper, makeExportAndInfoUi, newTiming, dimension,
                  showGallery);
+
+    cssList.forEach(injectCSS);
 
     window.addEventListener('resize', () => {
         const targetHeight = window.innerHeight - titleHeight;

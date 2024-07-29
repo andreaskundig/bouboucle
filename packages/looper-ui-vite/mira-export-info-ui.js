@@ -3,7 +3,7 @@ import { makeCarousel} from './carousel';
 
 const carousel = makeCarousel();
 
-export default function makeExportAndInfoUi(menu, looper, fullSizeGif){
+export default function makeExportAndInfoUi({menu, looper, fullSizeGif}){
 
     const gas = getAssetString;
     const download_10 = gas('10_download.svg');
@@ -271,10 +271,11 @@ export default function makeExportAndInfoUi(menu, looper, fullSizeGif){
     };
 
     const init = function (menu, looper, fullSizeGif) {
-        injectCSS(infoExportCSS);
         const showExportSubmenu = initExportButton(looper, menu,
                                                    fullSizeGif);
         const showInfoSubmenu = initInfoButton(menu);
     };
     init(menu, looper, fullSizeGif);
+
+    return [infoExportCSS];
 };

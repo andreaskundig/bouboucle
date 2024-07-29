@@ -28,7 +28,7 @@ var colors = [
     ['#c62828', '#AD1457', '#6A1B9A', '#4527A0', '#283593', '#1565C0', '#0277BD', '#00838F', '#00695C', '#2E7D32', '#558B2F', '#9E9D24', '#F9A825', '#FF8F00', '#EF6C00', '#D84315', '#4E342E', '#424242', '#37474F'],
     ['#b71c1c', '#880E4F', '#4A148C', '#311B92', '#1A237E', '#0D47A1', '#01579B', '#006064', '#004D40', '#1B5E20', '#33691E', '#827717', '#F57F17', '#FF6F00', '#E65100', '#BF360C', '#3E2723', 'black',/*'#212121'*/, '#263238']],
     overlayParent = overlayParent || document,
-    looperParent = overlayParent || document,
+    looperParent = looperParent || document,
     makeMenu = function(){
         var selectedSubmenuDiv = null,
             overlayDiv = overlayParent.querySelector('#overlay'),
@@ -409,7 +409,7 @@ var colors = [
             updateTiming({speed: speed});
         };
         initSpeedButtons(setSpeed, menu);
-        makeExportAndInfoUi && makeExportAndInfoUi(menu, looper);
+        const cssList = makeExportAndInfoUi && makeExportAndInfoUi({menu, looper, overlayParent, looperParent});
 
         const galleryButton = document.getElementById('gallery-button');
         if(showGallery){
@@ -420,8 +420,9 @@ var colors = [
         }else{
             galleryButton?.classList.add('hidden');
         }
+        return cssList;
     };
-    init(looper);
+    return init(looper);
 };
 
 

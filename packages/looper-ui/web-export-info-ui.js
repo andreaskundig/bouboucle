@@ -2,7 +2,7 @@ import { getAssetString } from "./assetsDB.js";
 import { injectCSS } from './setup.js'
 import { io } from '@andreaskundig/looper';
 
-export default function makeExportAndInfoUi(menu, looper, fullSizeGif){
+export default function makeExportAndInfoUi({menu, looper, fullSizeGif, overlayParent, looperParent}){
 
     const download_10 = getAssetString('10_download.svg');
     const erase_4 = getAssetString('4_erase.svg');
@@ -131,7 +131,7 @@ export default function makeExportAndInfoUi(menu, looper, fullSizeGif){
         ].join('\n');
 
         const showElements = function(parentSelector, showClass){
-            document.querySelector(parentSelector)
+            overlayParent.querySelector(parentSelector)
                 .childNodes
                 .forEach(function(e){
                     if(! e.classList){ return; }
@@ -147,7 +147,7 @@ export default function makeExportAndInfoUi(menu, looper, fullSizeGif){
         };
         
         const displayRecording = function(record, fullSizeGif){
-            var progBar = document.querySelector('#gif-progress-bar'),
+            var progBar = overlayParent.querySelector('#gif-progress-bar'),
                 progIndex = progBar.firstChild,
                 progressCallback = function(prog){
                     var width = Math.abs(500*(0.1+prog*0.9));
@@ -160,8 +160,8 @@ export default function makeExportAndInfoUi(menu, looper, fullSizeGif){
                                fullSize: fullSizeGif});
             }).then(
                 function(imgSrc){
-                    var download = document.querySelector('#gif-download'),
-                        gif = document.querySelector('#gif'),
+                    var download = overlayParent.querySelector('#gif-download'),
+                        gif = overlayParent.querySelector('#gif'),
                         //         window - buttons - .info padding
                         maxHeight = window.innerHeight  - 79.67 - 40;
                     //    - text height - .info>div margin - icon height
@@ -179,14 +179,14 @@ export default function makeExportAndInfoUi(menu, looper, fullSizeGif){
         };
 
         const initExportButton = function(looper, menu){
-            var exportButtonDiv = document.querySelector('#export-button'),
+            var exportButtonDiv = looperParent.querySelector('#export-button'),
                 exportMenuSelector = '#export-submenu',
-                exportMenuDiv = document.querySelector(exportMenuSelector);
+                exportMenuDiv = overlayParent.querySelector(exportMenuSelector);
             exportMenuDiv.innerHTML = exportContent;
             var gistLinks = exportMenuDiv.querySelectorAll('.gist-link'),
-                exportCancelBtnDiv = document.querySelector(
+                exportCancelBtnDiv = overlayParent.querySelector(
                     '#export-cancel-button'),
-                exportOkBtnDiv = document.querySelector('#export-ok-button'),
+                exportOkBtnDiv = overlayParent.querySelector('#export-ok-button'),
                 gistId = false,
                 beforeShow = function(){
                     showElements(exportMenuSelector, 'export-0');
@@ -225,9 +225,8 @@ export default function makeExportAndInfoUi(menu, looper, fullSizeGif){
         };
         
         const initInfoButton = function(menu){
-            injectCSS(infoCSS);
-            var infoButtonDiv = document.querySelector('#info-button'),
-                infoMenuDiv = document.querySelector('#info-submenu');
+            var infoButtonDiv = looperParent.querySelector('#info-button'),
+                infoMenuDiv = looperParent.querySelector('#info-submenu');
             infoMenuDiv.innerHTML = infoContent;
             infoMenuDiv.addEventListener('click', function(){
                 menu.hideSubmenu();
@@ -240,4 +239,5 @@ export default function makeExportAndInfoUi(menu, looper, fullSizeGif){
             initInfoButton(menu);
         };
     init(menu, looper, fullSizeGif);
+    return [infoCSS];
 };

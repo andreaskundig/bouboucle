@@ -33,7 +33,7 @@ export function makeUI(variant, looper, fullSizeGif, newTiming,
             makeExportAndInfoUi = localMakeExportAndInfoUi;
         } else {
             makeExportAndInfoUi =
-                (menu,looper) =>  webMakeExportAndInfoUi(menu, looper, fullSizeGif);
+                (menu,looper) =>  webMakeExportAndInfoUi({menu, looper, fullSizeGif});
         }
     }
     makeSimpleUi(looper, makeExportAndInfoUi, newTiming,
