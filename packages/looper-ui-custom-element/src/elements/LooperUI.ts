@@ -1,8 +1,7 @@
-import { makeSimpleUi, UIVariant, ExportInfoUIMaker, injectCSS, UIVariantCode} from '@andreaskundig/looper-ui';
+import { makeSimpleUi, UIVariant, ExportInfoUIMaker,  UIVariantCode, setupDomForVariant} from '@andreaskundig/looper-ui';
 import { io, urlUtils, makeLooper } from '@andreaskundig/looper';
 import paper from 'paper/dist/paper-core';
 import simpleCSS from '@andreaskundig/looper-ui/cssTemplates/simpleCSS';
-import setupDom from '@andreaskundig/looper-ui/setup';
 
 const makeExportAndInfoUi = ExportInfoUIMaker.web;
 
@@ -42,7 +41,11 @@ class LooperUI extends HTMLElement {
         // 1 choose ui variant and setup dom accordingly
         // TODO take name of variant from attritube
         const variant = UIVariant.default;
-        this.setupDomForVariant(variant, this.rootDiv);
+        {
+            const cssList = setupDomForVariant(variant, this.rootDiv);
+            cssList.forEach(css => this.injectCSS(css));
+        }
+        // this.setupDomForVariant(variant, this.rootDiv);
         // 2 setup looper
         const urlParams: any = urlUtils.getUrlParams(location.href);
         const newTiming = 'new-timing' in urlParams || false;
@@ -84,11 +87,12 @@ class LooperUI extends HTMLElement {
             (io as any).gists.load(urlParams.gist, this.looper.importData);
         }
 
-        // TODO uncomment this
-        const cssList = makeSimpleUi(this.looper, makeExportAndInfoUi, newTiming, dimension, showGallery,
-            this.rootDiv as any, this.rootDiv as any);
+        {
+            const cssList = makeSimpleUi(this.looper, makeExportAndInfoUi, newTiming, dimension, showGallery,
+                this.rootDiv as any, this.rootDiv as any);
 
-        cssList.forEach((css: string) => this.injectCSS(css));    
+            cssList.forEach((css: string) => this.injectCSS(css));    
+        }
     }
 
     attributeChangedCallback(name:string, _oldValue:string, newValue:string) {
