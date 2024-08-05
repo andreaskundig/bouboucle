@@ -28,7 +28,9 @@ async function main(){
         "pause-button",
         "export-button",
     ];
-    setupDomForVariant(variant, undefined, mirabiliaButtonOrder);
+    const cssToInject = setupDomForVariant(variant, undefined, mirabiliaButtonOrder);
+    cssToInject.forEach(injectCSS);
+    
     // 2 setup looper
     const urlParams = urlUtils.getUrlParams(location.href);
     const newTiming = 'new-timing' in urlParams || config.newTiming;

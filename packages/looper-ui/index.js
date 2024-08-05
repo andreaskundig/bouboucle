@@ -76,15 +76,7 @@ export function setupDomForVariant(uiVariant,
         throw new Error(`unsupported UI variant ${uiVariant}`)
     }
     const { css, html } = UIVariantCode[uiVariant];
-    setupDomAndCss(html, css, targetDomElement, buttonOrder);
+    setupDom(targetDomElement, html, buttonOrder);
+    return css ? [simpleCSS] : [simpleCSS, css];
 }
 
-export function setupDomAndCss(htmlTemplate,
-                               additionalCSS,
-                               targetDomElement=document.body,
-                               buttonOrder=undefined)
-{
-  const cssToInject = additionalCSS ? [simpleCSS] : [simpleCSS, additionalCSS];
-  cssToInject.forEach(injectCSS);
-  setupDom(targetDomElement, htmlTemplate, buttonOrder);
-}
