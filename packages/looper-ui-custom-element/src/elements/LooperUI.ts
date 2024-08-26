@@ -105,41 +105,6 @@ class LooperUI extends HTMLElement {
         this.looper.scale(dimension);
     }
 
-    /**
-     * 
-     * @param {("default", "local", "advanced")} uiVariant 
-     * @param { HTMLElement } targetDomElement root element of ui
-     */
-    setupDomForVariant(uiVariant: any,
-        targetDomElement: HTMLElement,
-        buttonOrder = undefined) {
-        if (!(uiVariant in UIVariantCode)) {
-            throw new Error(`unsupported UI variant ${uiVariant}`)
-        }
-        const { css, html } = (UIVariantCode as any)[uiVariant];
-        this.setupDomAndCss(html, css, targetDomElement, buttonOrder);
-    }
-
-    setupDomAndCss(htmlTemplate: (bo: any) => string,
-        additionalCSS: string,
-        targetDomElement = document.body,
-        buttonOrder = undefined) {
-        const cssToInject = additionalCSS ? [simpleCSS] : [simpleCSS, additionalCSS];
-        for(const cssStr of cssToInject){
-            this.injectCSS(cssStr);
-        }
-        this.setupDom(targetDomElement, htmlTemplate, buttonOrder);
-    }
-
-    /**
-     * 
-     * @param {HTMLElement} targetElement target dom element for ui instance (defaults to document.body)
-     * @param htmlTemplate function producing the ui 
-     */
-    setupDom(targetElement = document.body, htmlTemplate: (bo: any) => string, buttonOrder = undefined) {
-        targetElement.innerHTML += htmlTemplate(buttonOrder);
-    }
-
     injectCSS(cssStr: string) {
         const sheet = new CSSStyleSheet();
         sheet.replaceSync(cssStr); 
