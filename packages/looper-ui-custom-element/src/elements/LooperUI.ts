@@ -93,6 +93,9 @@ class LooperUI extends HTMLElement {
 
             cssList.forEach((css: string) => this.injectCSS(css));    
         }
+
+        const menuElement = this.rootDiv.querySelector(".menu");
+        menuElement?.appendChild(document.createElement('slot'));
     }
 
     attributeChangedCallback(name:string, _oldValue:string, newValue:string) {

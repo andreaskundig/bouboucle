@@ -20,13 +20,22 @@ body {
     background-color: #bbbbbb;
 }
 
+.menu{
+    display:flex;
+
+    div {
+        flex:1;
+    }
+}
+
+/*
 .nine-buttons > div {
-    width: 11.1111%; /* 9 buttons */
+     width: 11.1111%; /* 9 buttons */
 }
 
 .ten-buttons > div {
-    width: 10%; 
-}
+     width: 10%; 
+}*/
 
 #stroke-submenu > div, #timing-submenu > div.old {
     width: 16.66666%; /* 6 buttons */
@@ -37,6 +46,7 @@ body {
 .submenu > div {
     line-height: 0;
 }
+    
 .menu > div > img,
 .menu svg,
 .menu > div > div,

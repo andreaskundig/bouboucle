@@ -10,6 +10,7 @@
     <!-- <script type="module" src="./src/main.ts"></script> -->
     <script type="module"> 
       import "./src/elements/LooperUI.ts";
+      import "./src/elements/TestButton.ts";
       const looperUi = document.getElementById("looper-ui");
 
       window.addEventListener('resize', () => {
@@ -17,7 +18,10 @@
         looperUi.setAttribute("height", window.innerHeight.toString());
       });
     </script>
-    <looper-ui id="looper-ui"></looper-ui>
+    
+    <looper-ui id="looper-ui">
+      <test-button></test-button>
+    </looper-ui>
     <!-- <div id="my-div">
       <svg-button style="stroke:red;fill:white">
         <svg version="1.1" id="Calque_1" xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink" x="0px" y="0px"
