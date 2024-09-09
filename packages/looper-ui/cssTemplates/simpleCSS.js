@@ -26,7 +26,18 @@ body {
     div {
         flex:1;
     }
+    ::slotted(div[slot='menu']){
+        display: flex;
+        justify-content: space-around;
+        /* background-color:pink; */
+        * {
+        /* TODO try something like this ??
+            width: 100%;
+            */
+        }
+    }
 }
+
 
 /*
 .nine-buttons > div {

@@ -95,7 +95,15 @@ class LooperUI extends HTMLElement {
         }
 
         const menuElement = this.rootDiv.querySelector(".menu");
-        menuElement?.appendChild(document.createElement('slot'));
+        menuElement?.insertAdjacentHTML( 'beforeend',
+             '<div class="slot-root"><slot name="menu"></slot></div>' );
+
+        const slot = this.rootDiv.querySelector('slot[name="menu"]');
+        slot?.addEventListener('slotchange', (e) => {
+           const childCount = slot.assignedNodes()[0].childElementCount;
+           menuElement!.querySelector('.slot-root')!.style.flex = `${childCount}`;
+
+        });
     }
 
     attributeChangedCallback(name:string, _oldValue:string, newValue:string) {
