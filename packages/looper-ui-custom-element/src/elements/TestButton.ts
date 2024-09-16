@@ -4,17 +4,6 @@
 enum AttributeName {
     ICON_SRC = "icon-src",
 }
-const style = `
-div {
-  display: flex;
-  border: 1px solid #dddddd;
-}
-div > svg {
-  height: 39px;
-  padding: 20px 0px;
-  border-bottom: 1px solid #dddddd;
-}
-`;
 
 const svgIcon = `
      <svg version="1.1" id="Calque_1" xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink" 
@@ -39,23 +28,19 @@ class TestButton extends HTMLElement {
 
     constructor() {
         super();
-        this.attachShadow({ mode: "open" });
+        // this.attachShadow({ mode: "open" });
     }
 
     connectedCallback(){
-        this.render();
+        this.render(this);
     }
     
-    render(){
-        this.shadowRoot!.innerHTML = "";
+    render(parent: HTMLElement){
+        parent.innerHTML = "";
 
         const container = document.createElement('div');
         container.innerHTML = svgIcon;
-        this.shadowRoot?.appendChild(container);
-        
-        const styleElem = document.createElement("style");
-        styleElem.textContent = style;
-        this.shadowRoot?.appendChild(styleElem);
+        parent.appendChild(container);
     }
 }
 

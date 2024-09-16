@@ -5,12 +5,6 @@ const simpleCSS = `
   --font-size: 21px;
 }
 
-body {
-    margin:0;
-    position: fixed;
-    width: 100%;
-    height: 100%;
-}
 .hidden { display: none !important;}
 .menu > div, #stroke-submenu > div, #timing-submenu > div {
     margin: 0;
@@ -22,31 +16,12 @@ body {
 
 .menu{
     display:flex;
-
-    div {
+    width: 100%;
+    div, test-button {
         flex:1;
     }
-    ::slotted(div[slot='menu']){
-        display: flex;
-        justify-content: space-around;
-        /* background-color:pink; */
-        * {
-        /* TODO try something like this ??
-            width: 100%;
-            */
-        }
-    }
+
 }
-
-
-/*
-.nine-buttons > div {
-     width: 11.1111%; /* 9 buttons */
-}
-
-.ten-buttons > div {
-     width: 10%; 
-}*/
 
 #stroke-submenu > div, #timing-submenu > div.old {
     width: 16.66666%; /* 6 buttons */

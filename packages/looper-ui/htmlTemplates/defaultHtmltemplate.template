@@ -1,7 +1,7 @@
 import { buttonMap } from './buttons.js';
 
 const defaultHtmlTemplateStr = ` 
-    <div class="menu nine-buttons">
+    <div class="menu">
       <div id="color-button"><img src="icons/1_couleur+2_taille_5.svg">
       </div><div id="stroke-button" ><img src="icons/2_taille_3.svg">
       </div><div id="timing-button"><img src="icons/3_trait_1.svg">

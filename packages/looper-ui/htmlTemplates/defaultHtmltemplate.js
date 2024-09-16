@@ -13,7 +13,7 @@ const defaultButtonOrder = [
 ];
 
 const defaultHtmlTemplateStr = (buttonOrder=defaultButtonOrder) => ` 
-    <div class="menu nine-buttons">
+    <div class="menu">
      ${buttonOrder.map(b => buttonMap[b]).join('')}
     </div>
     
