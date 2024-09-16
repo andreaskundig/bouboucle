@@ -15,19 +15,31 @@ When a button is clicked it sends an event. A modal can also trigger events.
 The events arrive in a MenuEventHandler which knows what button belongs to what modal and tells both to update.
 (~ buttons and modals are children of the MenuEventHandler)
 
-Custom buttons and modals are added in the looper's slot 
+slots don't work, try something else
 
-    <looper-ui> 
-       <custom-button-a id="aa"/>
-       <custom-modal-a for="aa"/>
-       
-       <custom-button-b id="bb"/>
-       <custom-modal-b for="bb"/>
-    </looper-ui>
+<div class=menu>
+  <looper-buttons variant="local"/><test-button-1/><test-button-1/>
+</div>
+<div class="modals">
+<looper-modals variant="local"/><test-modal-1/><test-modal-2/>
+</div>
+<looper>
 
+or use properties, attributes? 
 
+<script>
+      import "./src/elements/TestButton1.ts";
+</script>
 
+<!--beuark-->
+<looper-ui buttons="<test-button-1>"/>
 
-
-
+OR?
+<script>
+   const looper = document.getElementById("looper-ui");
+   // beuark
+   looper.buttons = `
+   <test-button-1>
+   <test-button-2>`;
+</script>
 
