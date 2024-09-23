@@ -43,3 +43,5 @@ OR?
    <test-button-2>`;
 </script>
 
+### Reference for using slots with light-dom custom elements
+- https://frontendmasters.com/blog/light-dom-only/  

@@ -1,4 +1,4 @@
-import { makeSimpleUi, UIVariant, ExportInfoUIMaker,  UIVariantCode, setupDomForVariant} from '@andreaskundig/looper-ui';
+import { makeSimpleUi, UIVariant, ExportInfoUIMaker,  UIVariantCode, setupDomForVariant, injectCSS} from '@andreaskundig/looper-ui';
 import { io, urlUtils, makeLooper } from '@andreaskundig/looper';
 import paper from 'paper/dist/paper-core';
 import simpleCSS from '@andreaskundig/looper-ui/cssTemplates/simpleCSS';
@@ -18,7 +18,7 @@ class LooperUI extends HTMLElement {
 
     constructor() {
         super();
-        this.attachShadow({ mode: "open" });
+        // this.attachShadow({ mode: "open" });
     }
 
     dimensionCalc(width: number, height: number, ratio?: number){
@@ -36,14 +36,14 @@ class LooperUI extends HTMLElement {
     }
 
     connectedCallback() {
-        this.shadowRoot?.appendChild(this.rootDiv);
+        //this.appendChild(this.rootDiv);
 
         // 1 choose ui variant and setup dom accordingly
         // TODO take name of variant from attritube
         const variant = UIVariant.default;
         {
             const cssList = setupDomForVariant(variant, this.rootDiv);
-            cssList.forEach(css => this.injectCSS(css));
+            cssList.forEach(injectCSS);
         }
         // this.setupDomForVariant(variant, this.rootDiv);
         // 2 setup looper
@@ -91,12 +91,17 @@ class LooperUI extends HTMLElement {
             const cssList = makeSimpleUi(this.looper, makeExportAndInfoUi, newTiming, dimension, showGallery,
                 this.rootDiv as any, this.rootDiv as any);
 
-            cssList.forEach((css: string) => this.injectCSS(css));    
+            cssList.forEach(injectCSS);    
         }
 
         const menuElement = this.rootDiv.querySelector(".menu");
-        menuElement?.insertAdjacentHTML( 'beforeend',
-            '<test-button></test-button><test-button></test-button>' );
+        // Move existing children into the new div
+        while (this.firstChild) {
+            menuElement!.appendChild(this.firstChild);
+        }
+
+        // Append the new div back to the parent
+        this.appendChild(this.rootDiv);
     }
 
     attributeChangedCallback(name:string, _oldValue:string, newValue:string) {
@@ -109,11 +114,11 @@ class LooperUI extends HTMLElement {
         this.looper.scale(dimension);
     }
 
-    injectCSS(cssStr: string) {
-        const sheet = new CSSStyleSheet();
-        sheet.replaceSync(cssStr); 
-        this.shadowRoot!.adoptedStyleSheets.push(sheet); 
-    }
+    // injectCSS(cssStr: string) {
+    //     const sheet = new CSSStyleSheet();
+    //     sheet.replaceSync(cssStr); 
+    //     this.shadowRoot!.adoptedStyleSheets.push(sheet); 
+    // }
 }
 
 
