@@ -14,13 +14,12 @@ const simpleCSS = `
     background-color: #bbbbbb;
 }
 
-.menu{
+.menu {
     display:flex;
     width: 100%;
-    div, test-button {
+    > * {
         flex:1;
     }
-
 }
 
 #stroke-submenu > div, #timing-submenu > div.old {

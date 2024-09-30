@@ -1,6 +1,9 @@
 import { actions } from '@andreaskundig/looper';
 import { getAssetString } from './assetsDB.js';
 
+
+
+
 /**
  * generates looper's ui 
  * @param {*} looper - looper instance 
@@ -13,9 +16,11 @@ import { getAssetString } from './assetsDB.js';
  * @param {boolean} showGallery - flag controlling gallery display
  */
 export default function makeSimpleUi(looper, makeExportAndInfoUi,
-                            newTiming, dimension, showGallery, overlayParent = undefined, looperParent = undefined){
+                            newTiming, dimension, showGallery, overlayParent = undefined, 
+                            looperParent = undefined, theMenu = undefined){
 
-    
+
+
 var colors = [
     ['#ffebee', '#FCE4EC', '#F3E5F5', '#EDE7F6', '#E8EAF6', '#E3F2FD', '#E1F5FE', '#E0F7FA', '#E0F2F1', '#E8F5E9', '#F1F8E9', '#F9FBE7', '#FFFDE7', '#FFF8E1', '#FFF3E0', '#FBE9E7', '#EFEBE9', 'white', /*'#FAFAFA',*/ '#ECEFF1'],
 ['#ffcdd2', '#F8BBD0', '#E1BEE7', '#D1C4E9', '#C5CAE9', '#BBDEFB', '#B3E5FC', '#B2EBF2', '#B2DFDB', '#C8E6C9', '#DCEDC8', '#F0F4C3', '#FFF9C4', '#FFECB3', '#FFE0B2', '#FFCCBC', '#D7CCC8', '#F5F5F5', '#CFD8DC'],
@@ -29,51 +34,51 @@ var colors = [
     ['#b71c1c', '#880E4F', '#4A148C', '#311B92', '#1A237E', '#0D47A1', '#01579B', '#006064', '#004D40', '#1B5E20', '#33691E', '#827717', '#F57F17', '#FF6F00', '#E65100', '#BF360C', '#3E2723', 'black',/*'#212121'*/, '#263238']],
     overlayParent = overlayParent || document,
     looperParent = looperParent || document,
-    makeMenu = function(){
-        var selectedSubmenuDiv = null,
-            overlayDiv = overlayParent.querySelector('#overlay'),
-            activeMenuButton,
-            showSubmenu = function(submenuDiv, button){
-                hideSubmenu();
-                activeMenuButton = button;
-                activeMenuButton.classList.add('active');
-                overlayDiv.classList.remove('hidden');
-                selectedSubmenuDiv = submenuDiv;
-                selectedSubmenuDiv.classList.remove('hidden');
-            },
-            hideSubmenu = function(){
-                overlayDiv.classList.add('hidden');
-                if(activeMenuButton){
-                    activeMenuButton.classList.remove('active');
-                }
-                if(selectedSubmenuDiv){
-                    selectedSubmenuDiv.classList.add('hidden');
-                    selectedSubmenuDiv = null;
-                }
-            },
-            isSubmenuShown = function(submenuDiv){
-                return selectedSubmenuDiv === submenuDiv;
-            },
-            initShowSubmenu = function(menuDiv, buttonDiv, beforeShow){
-                var showThisSubmenu = function(){
-                    if(isSubmenuShown(menuDiv)){
-                        hideSubmenu();
-                    }else{
-                        if(beforeShow){
-                            beforeShow();
-                        }
-                        showSubmenu(menuDiv, buttonDiv);
-                    }
-                };
-                menuDiv.classList.add('hidden');
-                // menuDiv.addEventListener('click', hideSubmenu);
-                buttonDiv.addEventListener('click', showThisSubmenu);
-                return showThisSubmenu;
-            };
-        overlayDiv.addEventListener('click', hideSubmenu);
-        return {initShowSubmenu: initShowSubmenu,
-                hideSubmenu: hideSubmenu};
-    },
+    // makeMenu = function(){
+    //     var selectedSubmenuDiv = null,
+    //         overlayDiv = overlayParent.querySelector('#overlay'),
+    //         activeMenuButton,
+    //         showSubmenu = function(submenuDiv, button){
+    //             hideSubmenu();
+    //             activeMenuButton = button;
+    //             activeMenuButton.classList.add('active');
+    //             overlayDiv.classList.remove('hidden');
+    //             selectedSubmenuDiv = submenuDiv;
+    //             selectedSubmenuDiv.classList.remove('hidden');
+    //         },
+    //         hideSubmenu = function(){
+    //             overlayDiv.classList.add('hidden');
+    //             if(activeMenuButton){
+    //                 activeMenuButton.classList.remove('active');
+    //             }
+    //             if(selectedSubmenuDiv){
+    //                 selectedSubmenuDiv.classList.add('hidden');
+    //                 selectedSubmenuDiv = null;
+    //             }
+    //         },
+    //         isSubmenuShown = function(submenuDiv){
+    //             return selectedSubmenuDiv === submenuDiv;
+    //         },
+    //         initShowSubmenu = function(menuDiv, buttonDiv, beforeShow){
+    //             var showThisSubmenu = function(){
+    //                 if(isSubmenuShown(menuDiv)){
+    //                     hideSubmenu();
+    //                 }else{
+    //                     if(beforeShow){
+    //                         beforeShow();
+    //                     }
+    //                     showSubmenu(menuDiv, buttonDiv);
+    //                 }
+    //             };
+    //             menuDiv.classList.add('hidden');
+    //             // menuDiv.addEventListener('click', hideSubmenu);
+    //             buttonDiv.addEventListener('click', showThisSubmenu);
+    //             return showThisSubmenu;
+    //         };
+    //     overlayDiv.addEventListener('click', hideSubmenu);
+    //     return {initShowSubmenu: initShowSubmenu,
+    //             hideSubmenu: hideSubmenu};
+    // },
     
     initColorButton = function(colorHandler, menu){
         var colorMenuDiv = looperParent.querySelector('#color-submenu'),
@@ -383,7 +388,7 @@ var colors = [
     },
     
     init = function(looper){
-        var menu = makeMenu();
+        var menu = theMenu || makeMenu(overlayParent);
         initColorButton({initial: looper.getLineColor(), 
                          handle: function(c){ looper.setLineColor(c); }},
                          menu);
@@ -423,12 +428,49 @@ var colors = [
     return init(looper);
 };
 
+export function makeMenu(overlayParent) {
 
-
-
-
-
-
-
-
-
+    var selectedSubmenuDiv = null,
+        overlayDiv = overlayParent.querySelector('#overlay'),
+        activeMenuButton,
+        showSubmenu = function(submenuDiv, button){
+            hideSubmenu();
+            activeMenuButton = button;
+            activeMenuButton.classList.add('active');
+            overlayDiv.classList.remove('hidden');
+            selectedSubmenuDiv = submenuDiv;
+            selectedSubmenuDiv.classList.remove('hidden');
+        },
+        hideSubmenu = function(){
+            overlayDiv.classList.add('hidden');
+            if(activeMenuButton){
+                activeMenuButton.classList.remove('active');
+            }
+            if(selectedSubmenuDiv){
+                selectedSubmenuDiv.classList.add('hidden');
+                selectedSubmenuDiv = null;
+            }
+        },
+        isSubmenuShown = function(submenuDiv){
+            return selectedSubmenuDiv === submenuDiv;
+        },
+        initShowSubmenu = function(menuDiv, buttonDiv, beforeShow){
+            var showThisSubmenu = function(){
+                if(isSubmenuShown(menuDiv)){
+                    hideSubmenu();
+                }else{
+                    if(beforeShow){
+                        beforeShow();
+                    }
+                    showSubmenu(menuDiv, buttonDiv);
+                }
+            };
+            menuDiv.classList.add('hidden');
+            // menuDiv.addEventListener('click', hideSubmenu);
+            buttonDiv.addEventListener('click', showThisSubmenu);
+            return showThisSubmenu;
+        };
+    overlayDiv.addEventListener('click', hideSubmenu);
+    return {initShowSubmenu: initShowSubmenu,
+            hideSubmenu: hideSubmenu};
+};

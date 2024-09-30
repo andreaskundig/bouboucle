@@ -1,4 +1,4 @@
-import makeSimpleUi from './simple-ui.js';
+import makeSimpleUi, { makeMenu } from './simple-ui.js';
 import webMakeExportAndInfoUi from './web-export-info-ui.js'; // ??
 import localMakeExportAndInfoUi from './local-export-info-ui.js';
 
@@ -13,7 +13,7 @@ import { injectCSS } from './setup.js'
 import * as assDB from "./assetsDB.js";
 
 export const getAssetString = assDB.getAssetString;
-export { injectCSS, makeSimpleUi };
+export { injectCSS, makeSimpleUi, makeMenu };
 export const ExportInfoUIMaker = {web: webMakeExportAndInfoUi,
                                   local: localMakeExportAndInfoUi}
 /**

@@ -1,9 +1,15 @@
-import { makeSimpleUi, UIVariant, ExportInfoUIMaker,  UIVariantCode, setupDomForVariant, injectCSS} from '@andreaskundig/looper-ui';
+import { makeSimpleUi, makeMenu, UIVariant, ExportInfoUIMaker,  UIVariantCode, setupDomForVariant, injectCSS } from '@andreaskundig/looper-ui';
 import { io, urlUtils, makeLooper } from '@andreaskundig/looper';
 import paper from 'paper/dist/paper-core';
 import simpleCSS from '@andreaskundig/looper-ui/cssTemplates/simpleCSS';
 
 const makeExportAndInfoUi = ExportInfoUIMaker.web;
+
+function moveChildrenToParent(fromParent: HTMLElement, toParent: HTMLElement){
+    while (fromParent.firstChild) {
+        toParent.appendChild(fromParent.firstChild);
+    }
+}
 
 class LooperUI extends HTMLElement {
     static observedAttributes = ["width", "height"];
@@ -36,7 +42,6 @@ class LooperUI extends HTMLElement {
     }
 
     connectedCallback() {
-        //this.appendChild(this.rootDiv);
 
         // 1 choose ui variant and setup dom accordingly
         // TODO take name of variant from attritube
@@ -88,17 +93,16 @@ class LooperUI extends HTMLElement {
         }
 
         {
+            const menu = makeMenu(this.rootDiv);
             const cssList = makeSimpleUi(this.looper, makeExportAndInfoUi, newTiming, dimension, showGallery,
-                this.rootDiv as any, this.rootDiv as any);
+                this.rootDiv as any, this.rootDiv as any, menu as any);
 
             cssList.forEach(injectCSS);    
         }
 
-        const menuElement = this.rootDiv.querySelector(".menu");
+        const menuElement = this.rootDiv.querySelector(".menu") as HTMLElement;
         // Move existing children into the new div
-        while (this.firstChild) {
-            menuElement!.appendChild(this.firstChild);
-        }
+        moveChildrenToParent(this, menuElement);
 
         // Append the new div back to the parent
         this.appendChild(this.rootDiv);

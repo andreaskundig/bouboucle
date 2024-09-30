@@ -1,10 +1,3 @@
-
-// import iconUrl from '/assets/icons/2_taille_1.svg';
-
-enum AttributeName {
-    ICON_SRC = "icon-src",
-}
-
 const svgIcon = `
      <svg version="1.1" id="Calque_1" xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink" 
           x="0px" y="0px"  
@@ -28,7 +21,6 @@ class TestButton extends HTMLElement {
 
     constructor() {
         super();
-        // this.attachShadow({ mode: "open" });
     }
 
     connectedCallback(){
@@ -36,11 +28,7 @@ class TestButton extends HTMLElement {
     }
     
     render(parent: HTMLElement){
-        parent.innerHTML = "";
-
-        const container = document.createElement('div');
-        container.innerHTML = svgIcon;
-        parent.appendChild(container);
+        parent.innerHTML = svgIcon;
     }
 }
 
