@@ -101,6 +101,9 @@ class LooperUI extends HTMLElement {
         }
 
         const menuElement = this.rootDiv.querySelector(".menu") as HTMLElement;
+        for(const child of this.children){
+            child.addEventListener("buttonclick", (e) => console.log("super", e.detail));
+        }
         // Move existing children into the new div
         moveChildrenToParent(this, menuElement);
 
