@@ -20,6 +20,7 @@
       import "./src/elements/LooperUI.ts";
       import "./src/elements/TestButton.ts";
       import "./src/elements/ParentComponent.ts";
+      import "./src/elements/InfoContent.ts";
       const looperUi = document.getElementById("looper-ui");
 
       window.addEventListener('resize', () => {
@@ -29,8 +30,8 @@
     </script>
 
     <looper-ui id="looper-ui">
-      <test-button></test-button>
-      <test-button></test-button>
+      <test-button data-for="info-content"></test-button>
+      <info-content></info-content>
     </looper-ui>
     <!-- <div id="my-div">
       <svg-button style="stroke:red;fill:white">

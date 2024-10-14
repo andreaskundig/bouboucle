@@ -5,12 +5,6 @@ import simpleCSS from '@andreaskundig/looper-ui/cssTemplates/simpleCSS';
 
 const makeExportAndInfoUi = ExportInfoUIMaker.web;
 
-function moveChildrenToParent(fromParent: HTMLElement, toParent: HTMLElement){
-    while (fromParent.firstChild) {
-        toParent.appendChild(fromParent.firstChild);
-    }
-}
-
 class LooperUI extends HTMLElement {
     static observedAttributes = ["width", "height"];
     static titleHeight = 79.67; // related to selected html ?
@@ -92,20 +86,26 @@ class LooperUI extends HTMLElement {
             (io as any).gists.load(urlParams.gist, this.looper.importData);
         }
 
+        const menu = makeMenu(this.rootDiv);
         {
-            const menu = makeMenu(this.rootDiv);
             const cssList = makeSimpleUi(this.looper, makeExportAndInfoUi, newTiming, dimension, showGallery,
                 this.rootDiv as any, this.rootDiv as any, menu as any);
-
             cssList.forEach(injectCSS);    
         }
 
         const menuElement = this.rootDiv.querySelector(".menu") as HTMLElement;
-        for(const child of this.children){
-            child.addEventListener("buttonclick", (e) => console.log("super", e.detail));
+        // TODO don't use #info-submenu, it's only for button (i)
+        // TODO create a parent for all modalContent .modalContent instead
+        const modalDiv = this.rootDiv.querySelector('#info-submenu');
+
+        for(const button of this.querySelectorAll('[data-for]')){
+            menuElement.appendChild(button);
+            const modalContentSelector = (button as any).dataset.for;
+            const modalContent = this.querySelector(modalContentSelector);
+            modalDiv?.appendChild(modalContent);
+            menu.initShowSubmenu(modalDiv, button);
+            //TODO set menu on modalcontent 
         }
-        // Move existing children into the new div
-        moveChildrenToParent(this, menuElement);
 
         // Append the new div back to the parent
         this.appendChild(this.rootDiv);
