@@ -36,11 +36,13 @@ class InfoContent extends HTMLElement {
     set menu(value:any){
         if(!this.#menu){
             this.#menu = value;
+            console.log("setting menu to ", value);
             this.addEventListener('click', this.#handleClick);
         }
     }
 
     #handleClick(){
+        console.log("click");
         this.#menu.hideSubmenu();
     }
 

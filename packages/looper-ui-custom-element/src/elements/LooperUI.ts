@@ -5,6 +5,8 @@ import simpleCSS from '@andreaskundig/looper-ui/cssTemplates/simpleCSS';
 
 const makeExportAndInfoUi = ExportInfoUIMaker.web;
 
+const justASec = () => new Promise((resolve, _) => setTimeout(resolve, 0));
+
 class LooperUI extends HTMLElement {
     static observedAttributes = ["width", "height"];
     static titleHeight = 79.67; // related to selected html ?
@@ -35,7 +37,7 @@ class LooperUI extends HTMLElement {
         return result;
     }
 
-    connectedCallback() {
+    async connectedCallback() {
 
         // 1 choose ui variant and setup dom accordingly
         // TODO take name of variant from attritube
@@ -94,17 +96,20 @@ class LooperUI extends HTMLElement {
         }
 
         const menuElement = this.rootDiv.querySelector(".menu") as HTMLElement;
-        // TODO don't use #info-submenu, it's only for button (i)
-        // TODO create a parent for all modalContent .modalContent instead
-        const modalDiv = this.rootDiv.querySelector('#info-submenu');
+        const modalsElement = this.rootDiv.querySelector(".modals");
 
+        // let custom elements register properly 
+        await justASec();
         for(const button of this.querySelectorAll('[data-for]')){
-            menuElement.appendChild(button);
             const modalContentSelector = (button as any).dataset.for;
+            menuElement.appendChild(button);
+            modalsElement!.insertAdjacentHTML('beforeend', `<div class="submenu" data-for="${modalContentSelector}"></div>`);
+            const modalDiv = modalsElement!.querySelector(`[data-for='${modalContentSelector}']`);
+            modalsElement!.appendChild(modalDiv!);
             const modalContent = this.querySelector(modalContentSelector);
-            modalDiv?.appendChild(modalContent);
+            modalDiv!.appendChild(modalContent);
             menu.initShowSubmenu(modalDiv, button);
-            //TODO set menu on modalcontent 
+            modalContent.menu = menu;
         }
 
         // Append the new div back to the parent

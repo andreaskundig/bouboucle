@@ -25,13 +25,14 @@ const advancedHtmlTemplateStr = (buttonOrder=defaultButtonOrder) => `
     </div>
     
     <div id="overlay" class="hidden"> </div>
-    <div id="color-submenu" class="submenu hidden"> </div>
-    <div id="timing-submenu" class="submenu hidden">
+    <div class="modals">
+      <div id="color-submenu" class="submenu hidden"> </div>
+      <div id="timing-submenu" class="submenu hidden"></div>
+      <div id="stroke-submenu" class="submenu hidden"> </div>
+      <div id="info-submenu" class="submenu hidden"></div>
+      <div id="export-submenu" class="submenu hidden"></div>
+      <div id="dialog-submenu"></div>
     </div>
-    <div id="stroke-submenu" class="submenu hidden"> </div>
-    <div id="info-submenu" class="submenu hidden"></div>
-    <div id="export-submenu" class="submenu hidden"></div>
-    <div id="dialog-submenu"></div>
     <div id="canvas-parent"><canvas  id="main-canvas"></canvas></div>
     <div class="hidden"><canvas id="hidden-canvas"></canvas></div>
 `;
