@@ -114,10 +114,14 @@ class LooperUI extends HTMLElement {
             const modalDiv = modalsElement!.querySelector(`[data-for='${modalContentSelector}']`);
             modalsElement!.appendChild(modalDiv!);
             const modalContent = this.querySelector(modalContentSelector);
-            modalDiv!.appendChild(modalContent);
-            menu.initShowSubmenu(modalDiv, button);
-            console.log(modalContent);
-            modalContent.menu = menu;
+            if(!modalContent){
+                console.error(`unable to find modal '${modalContentSelector}'`);
+            } else {
+                modalDiv!.appendChild(modalContent);
+                menu.initShowSubmenu(modalDiv, button);
+                console.log(modalContent);
+                modalContent.menu = menu;
+            }
         }
 
         // Append the new div back to the parent
