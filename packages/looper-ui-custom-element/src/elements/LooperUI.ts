@@ -40,7 +40,17 @@ class LooperUI extends HTMLElement {
         // TODO take name of variant from attritube
         const variant = UIVariant.default;
         {
-            const cssList = setupDomForVariant(variant, this.rootDiv);
+            const buttonOrder = [
+                "color-button",
+                "stroke-button",
+                "timing-button",
+                "clear-button",
+                "undo-button",
+                "redo-button",
+                "pause-button",
+                "export-button",
+            ];
+            const cssList = setupDomForVariant(variant, this.rootDiv, buttonOrder);
             cssList.forEach(injectCSS);
         }
         // this.setupDomForVariant(variant, this.rootDiv);

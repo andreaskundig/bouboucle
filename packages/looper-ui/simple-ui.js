@@ -422,7 +422,7 @@ export function makeMenu(overlayParent) {
             };
             menuDiv.classList.add('hidden');
             // menuDiv.addEventListener('click', hideSubmenu);
-            buttonDiv.addEventListener('click', showThisSubmenu);
+            buttonDiv?.addEventListener('click', showThisSubmenu);
             return showThisSubmenu;
         };
     overlayDiv.addEventListener('click', hideSubmenu);
