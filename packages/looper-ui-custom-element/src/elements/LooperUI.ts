@@ -5,8 +5,6 @@ import simpleCSS from '@andreaskundig/looper-ui/cssTemplates/simpleCSS';
 
 const makeExportAndInfoUi = ExportInfoUIMaker.web;
 
-const justASec = () => new Promise((resolve, _) => setTimeout(resolve, 0));
-
 class LooperUI extends HTMLElement {
     static observedAttributes = ["width", "height"];
     static titleHeight = 79.67; // related to selected html ?
@@ -20,7 +18,6 @@ class LooperUI extends HTMLElement {
 
     constructor() {
         super();
-        // this.attachShadow({ mode: "open" });
     }
 
     dimensionCalc(width: number, height: number, ratio?: number){
@@ -99,7 +96,7 @@ class LooperUI extends HTMLElement {
         const modalsElement = this.rootDiv.querySelector(".modals");
 
         // let custom elements register properly 
-        await justASec();
+
         for(const button of this.querySelectorAll('[data-for]')){
             const modalContentSelector = (button as any).dataset.for;
             menuElement.appendChild(button);
@@ -109,6 +106,7 @@ class LooperUI extends HTMLElement {
             const modalContent = this.querySelector(modalContentSelector);
             modalDiv!.appendChild(modalContent);
             menu.initShowSubmenu(modalDiv, button);
+            console.log(modalContent);
             modalContent.menu = menu;
         }
 

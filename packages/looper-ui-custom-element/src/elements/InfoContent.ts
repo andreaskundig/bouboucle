@@ -30,24 +30,22 @@ const htmlContent = `
     </div>'
     `;
 
+type Menu = {
+    hideSubmenu: () => void; 
+}
+
 class InfoContent extends HTMLElement {
 
-    #menu: any;
-    set menu(value:any){
-        if(!this.#menu){
-            this.#menu = value;
-            console.log("setting menu to ", value);
-            this.addEventListener('click', this.#handleClick);
-        }
-    }
-
+    menu?: Menu;
     #handleClick(){
         console.log("click");
-        this.#menu.hideSubmenu();
+        this.menu?.hideSubmenu();
     }
 
     connectedCallback(){
+        console.log('InfoContent connectedCallback')
         this.render(this);
+        this.addEventListener('click', this.#handleClick);
     }
 
     disconnectedCallback(){
