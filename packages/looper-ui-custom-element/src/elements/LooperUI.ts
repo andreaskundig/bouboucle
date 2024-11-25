@@ -37,7 +37,7 @@ class LooperUI extends HTMLElement {
     async connectedCallback() {
 
         // 1 choose ui variant and setup dom accordingly
-        // TODO take name of variant from attritube
+        // TODO take name of variant from attribute
         const variant = UIVariant.default;
         {
             const buttonOrder = [
@@ -118,9 +118,10 @@ class LooperUI extends HTMLElement {
                 console.error(`unable to find modal '${modalContentSelector}'`);
             } else {
                 modalDiv!.appendChild(modalContent);
-                menu.initShowSubmenu(modalDiv, button);
+                menu.initShowSubmenu(modalDiv, button, modalContent.beforeShow);
                 console.log(modalContent);
                 modalContent.menu = menu;
+                modalContent.looper = this.looper;
             }
         }
 

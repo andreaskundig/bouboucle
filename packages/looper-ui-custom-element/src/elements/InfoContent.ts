@@ -1,3 +1,4 @@
+import { Menu, Looper } from '../types.ts';
 
 const htmlContent = `
     <div class="info">
@@ -30,12 +31,9 @@ const htmlContent = `
     </div>'
     `;
 
-type Menu = {
-    hideSubmenu: () => void; 
-}
 
 class InfoContent extends HTMLElement {
-
+    looper?: Looper;
     menu?: Menu;
     #handleClick(){
         console.log("click");

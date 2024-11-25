@@ -34,7 +34,7 @@ export const eraseIcon = `
 </svg>
 `;
 
-const downloadIcon = `
+export const downloadIcon = `
 <svg version="1.1" id="Calque_1" xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink" x="0px" y="0px"
 	 width="113.387px" height="113.387px" viewBox="0 0 113.387 113.387" enable-background="new 0 0 113.387 113.387"
 	 xml:space="preserve">
