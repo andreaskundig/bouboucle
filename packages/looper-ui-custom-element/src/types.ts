@@ -7,8 +7,8 @@ export type Looper = {
     record: (config:any) => Promise<string>;
 }
 
-// export type Io = {
-//     gists: {
-//         save: (exportData: any) => Promise<any>
-//     }
-// }
+export type Io = {
+    gists: {
+        save: (exportData: any) => Promise<any>
+    }
+}

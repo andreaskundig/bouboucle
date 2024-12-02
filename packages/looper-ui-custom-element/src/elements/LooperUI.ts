@@ -1,9 +1,7 @@
-import { makeSimpleUi, makeMenu, UIVariant, ExportInfoUIMaker,  UIVariantCode, setupDomForVariant, injectCSS } from '@andreaskundig/looper-ui';
+import { makeSimpleUi, makeMenu, UIVariant, setupDomForVariant, injectCSS } from '@andreaskundig/looper-ui';
 import { io, urlUtils, makeLooper } from '@andreaskundig/looper';
 import paper from 'paper/dist/paper-core';
-import simpleCSS from '@andreaskundig/looper-ui/cssTemplates/simpleCSS';
 
-const makeExportAndInfoUi = ExportInfoUIMaker.web;
 
 class LooperUI extends HTMLElement {
     static observedAttributes = ["width", "height"];
@@ -48,7 +46,6 @@ class LooperUI extends HTMLElement {
                 "undo-button",
                 "redo-button",
                 "pause-button",
-                "export-button",
             ];
             const cssList = setupDomForVariant(variant, this.rootDiv, buttonOrder);
             cssList.forEach(injectCSS);
@@ -96,17 +93,13 @@ class LooperUI extends HTMLElement {
         }
 
         const menu = makeMenu(this.rootDiv);
-        {
-            const cssList = makeSimpleUi(this.looper, makeExportAndInfoUi, newTiming, dimension, showGallery,
-                this.rootDiv as any, this.rootDiv as any, menu as any);
-            cssList.forEach(injectCSS);    
-        }
+        makeSimpleUi(this.looper, undefined, newTiming, dimension, showGallery,
+            this.rootDiv as any, this.rootDiv as any, menu as any);
 
         const menuElement = this.rootDiv.querySelector(".menu") as HTMLElement;
         const modalsElement = this.rootDiv.querySelector(".modals");
 
         // let custom elements register properly 
-
         for(const button of this.querySelectorAll('[data-for]')){
             const modalContentSelector = (button as any).dataset.for;
             menuElement.appendChild(button);
@@ -119,9 +112,9 @@ class LooperUI extends HTMLElement {
             } else {
                 modalDiv!.appendChild(modalContent);
                 menu.initShowSubmenu(modalDiv, button, modalContent.beforeShow);
-                console.log(modalContent);
                 modalContent.menu = menu;
                 modalContent.looper = this.looper;
+                injectCSS(modalContent.css);
             }
         }
 

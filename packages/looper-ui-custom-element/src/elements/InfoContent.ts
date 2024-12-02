@@ -32,16 +32,42 @@ const htmlContent = `
     `;
 
 
+const CSS = `
+info-content {
+    .info {
+        font: 21px arial, sans-serif;
+        text-align: center;
+        line-height:130%;
+        padding-top: 40px;
+        bottom: 0;
+    }
+    .info p{
+        margin: 6px;
+    }
+    .info div {
+        margin-bottom: 40px;
+    }
+    .info-fr, .info-de {
+        font-weight: bold;
+    }
+    .info .link {
+        color: rgb(77, 208, 225);
+        text-decoration: none;
+    }
+}
+`;
+
 class InfoContent extends HTMLElement {
     looper?: Looper;
     menu?: Menu;
+    css = CSS;
+
     #handleClick(){
         console.log("click");
         this.menu?.hideSubmenu();
     }
 
     connectedCallback(){
-        console.log('InfoContent connectedCallback')
         this.render(this);
         this.addEventListener('click', this.#handleClick);
     }

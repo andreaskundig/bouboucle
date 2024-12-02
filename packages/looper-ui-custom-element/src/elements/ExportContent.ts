@@ -46,8 +46,47 @@ const htmlContent = `
  </div>
 `;
 
+const CSS = `
+export-content {
+    .info {
+        font: 21px arial, sans-serif;
+        text-align: center;
+        line-height:130%;
+        padding-top: 40px;
+        bottom: 0;
+    }
+    .info p{
+        margin: 6px;
+    }
+    .info div {
+        margin-bottom: 40px;
+    }
+    .info-fr {
+        font-weight: bold;
+    }
+    .info .link {
+        color: rgb(77, 208, 225);
+        text-decoration: none;
+    }
+    #gif-progress-bar{
+        width: 500px;
+        background-color: darkGrey;
+        margin: 0 auto;
+    }
+    #gif-progress-bar > div{
+        height: 10px;
+        background-color: darkCyan;
+    }
+    #gif {
+    border: 1px solid #dddddd;
+    }
+    #export-3 > div{
+        text-align: center; /* WTF */
+    }
+}
+`;
 const requestAnimationFramePromise = function () {
-  return new Promise(function (resolve, reject) {
+  return new Promise(function (resolve, _reject) {
     requestAnimationFrame(resolve);
   });
 };
@@ -58,16 +97,28 @@ class ExportContent extends HTMLElement {
 
   looper?: Looper;
   menu?: Menu;
+  css = CSS;
   fullSizeGif = false;
   beforeShow?: () => void;
 
-  connectedCallback() {
-    console.log('ExportContent connectedCallback');
-    this.render(this);
-    this.init();
+  #handleClick(event: MouseEvent) {
+    const target = (event.target as any)
+    if (target!.nodeName === 'DIV') {
+      this.menu?.hideSubmenu();
+    }
   }
 
-  attributeChangedCallback(name:string, oldValue: any, newValue: any) {
+  connectedCallback() {
+    this.render(this);
+    this.init();
+    this.addEventListener('click', this.#handleClick);
+  }
+
+  disconnectedCallback() {
+    this.removeEventListener('click', this.#handleClick);
+  }
+
+  attributeChangedCallback(name:string, _oldValue: any, _newValue: any) {
     if(name === 'fullsizGif'){
       this.fullSizeGif = true;
     }
@@ -81,7 +132,7 @@ class ExportContent extends HTMLElement {
       
       this.beforeShow = () => {
         this.showElements(undefined, 'export-0');
-        (io as any).gists.save(this.looper!.exportData)
+        (io as Io).gists.save(this.looper!.exportData)
           .then((id:string) => {
             if (!id) {
               this.menu!.hideSubmenu();
