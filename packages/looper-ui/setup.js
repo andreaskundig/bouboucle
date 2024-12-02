@@ -12,7 +12,9 @@ export default function setupDom(targetElement = document.body, htmlTemplate, bu
  * @param {string} cssStr string in css injected in document's head
  */
 export function injectCSS(cssStr){
-    const styleSheet = document.createElement("style");
-    styleSheet.innerText = cssStr;
-    document.head.appendChild(styleSheet);
+    if(cssStr) {
+        const styleSheet = document.createElement("style");
+        styleSheet.innerText = cssStr;
+        document.head.appendChild(styleSheet);
+    }
 }
