@@ -9,15 +9,14 @@ const htmlContent = `
             <p>pour qu'elle soit projetée régulièrement sur le mur?</p>
           </div>
           <div class="dialog-buttons">
-            <div id="export-cancel-button"><img src="${eraseIcon}">
-            </div><div id="export-ok-button">
-                <img src="${doneIcon}"></div>
+            <div id="export-cancel-button">${eraseIcon}</div>
+            <div id="export-ok-button">${doneIcon}</div>
           </div>
         </div>
 `;
 
 const CSS = `
-loca-export-content {
+local-export-content {
     .info {
         font: 21px arial, sans-serif;
         text-align: center;
@@ -41,20 +40,13 @@ loca-export-content {
 }
 `;
 
-const requestAnimationFramePromise = function () {
-  return new Promise(function (resolve, _reject) {
-    requestAnimationFrame(resolve);
-  });
-};
-
-
-
 class LocalExportContent extends HTMLElement {
 
   looper?: Looper;
   menu?: Menu;
   css = CSS;
-  beforeShow?: () => void;
+
+  #handleExport?: () => void;
 
   #handleClick(event: MouseEvent) {
     const target = (event.target as any)
@@ -81,11 +73,11 @@ class LocalExportContent extends HTMLElement {
 
     exportCancelBtnDiv.addEventListener('click',
       () => this.menu?.hideSubmenu());
-    const handleExport =  this.makeSaver() ;
-        exportOkBtnDiv.addEventListener('click', () => {
-            this.menu?.hideSubmenu();
-            handleExport();
-        });
+    exportOkBtnDiv.addEventListener('click', () => {
+      this.menu?.hideSubmenu();
+      this.#handleExport = this.#handleExport || this.makeSaver();
+      this.#handleExport();
+    });
   };
 
   makeSaver() {
