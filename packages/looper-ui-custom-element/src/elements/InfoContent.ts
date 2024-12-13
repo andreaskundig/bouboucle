@@ -1,6 +1,8 @@
 import { Menu, Looper } from '../types.ts';
+import "./ModalContent.ts";
 
 const htmlContent = `
+<modal-content>
     <div class="info">
     <div class="info-fr">
     <p>Bouboucle est un projet
@@ -28,54 +30,25 @@ const htmlContent = `
         href="http://www.ivangulizia.com/" target="_blank"
         class="link">Ivan</a> est impeccable.</p>
     </div>
-    </div>'
+    </div>
+</modal-content>
     `;
 
 
-const CSS = `
-info-content {
-    .info {
-        font: 21px arial, sans-serif;
-        text-align: center;
-        line-height:130%;
-        padding-top: 40px;
-        bottom: 0;
-    }
-    .info p{
-        margin: 6px;
-    }
-    .info div {
-        margin-bottom: 40px;
-    }
-    .info-fr, .info-de {
-        font-weight: bold;
-    }
-    .info .link {
-        color: rgb(77, 208, 225);
-        text-decoration: none;
-    }
-}
-`;
 
 class InfoContent extends HTMLElement {
     looper?: Looper;
     menu?: Menu;
     css = CSS;
 
-    #handleClick(){
-        console.log("click");
-        this.menu?.hideSubmenu();
-    }
-
     connectedCallback(){
+        console.log('i-c connected');
         this.render(this);
-        this.addEventListener('click', this.#handleClick);
+        const modalC = this.querySelector('modal-content') as any;
+        this.css = modalC.css;
+        modalC.menu = this.menu;
     }
 
-    disconnectedCallback(){
-        this.removeEventListener('click', this.#handleClick);
-    }
-    
     render(parent: HTMLElement){
         parent.innerHTML = htmlContent;
     }

@@ -23,6 +23,7 @@
       import "./src/elements/InfoContent.ts";
       import "./src/elements/ExportContent.ts";
       import "./src/elements/LocalExportContent.ts";
+      import "./src/elements/LocalInfoContent.ts";
       // LooperUi must come after its children
       import "./src/elements/LooperUI.ts";
       const looperUi = document.getElementById("looper-ui");
@@ -35,11 +36,13 @@
 
     <looper-ui id="looper-ui">
       <export-button data-for="export-content"></export-button>
-      <export-button data-for="local-export-content"></export-button>
       <info-button data-for="info-content"></info-button>
+      <export-button data-for="local-export-content"></export-button>
+      <info-button data-for="local-info-content"></info-button>
       <info-content></info-content>
       <export-content></export-content>
-      <local-export-content></export-content>
+      <local-export-content></local-export-content>
+      <local-info-content></local-info-content>
     </looper-ui>
     <!-- <div id="my-div">
       <svg-button style="stroke:red;fill:white">
