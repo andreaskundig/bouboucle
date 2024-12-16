@@ -42,7 +42,6 @@ class InfoContent extends HTMLElement {
     css = CSS;
 
     connectedCallback(){
-        console.log('i-c connected');
         this.render(this);
         const modalC = this.querySelector('modal-content') as any;
         this.css = modalC.css;

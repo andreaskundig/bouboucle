@@ -1,6 +1,5 @@
 class SVGButton extends HTMLElement {
 
-    private _slot = document.createElement('slot');
     constructor() {
         super();
         this.attachShadow({ mode: "open" });

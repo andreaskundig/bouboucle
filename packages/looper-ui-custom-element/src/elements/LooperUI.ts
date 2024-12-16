@@ -1,7 +1,13 @@
 import { makeSimpleUi, makeMenu, UIVariant, setupDomForVariant, injectCSS } from '@andreaskundig/looper-ui';
 import { io, urlUtils, makeLooper } from '@andreaskundig/looper';
 import paper from 'paper/dist/paper-core';
-
+import "./InfoButton.ts";
+import "./ExportButton.ts";
+import "./ParentComponent.ts";
+import "./InfoContent.ts";
+import "./ExportContent.ts";
+import "./LocalExportContent.ts";
+import "./LocalInfoContent.ts";
 
 class LooperUI extends HTMLElement {
     static observedAttributes = ["width", "height"];
@@ -47,7 +53,7 @@ class LooperUI extends HTMLElement {
                 "redo-button",
                 "pause-button",
             ];
-            const cssList = setupDomForVariant(variant, this.rootDiv, buttonOrder);
+            const cssList = setupDomForVariant(variant, this.rootDiv, buttonOrder as any);
             cssList.forEach(injectCSS);
         }
         // this.setupDomForVariant(variant, this.rootDiv);

@@ -1,5 +1,5 @@
 import { doneIcon, eraseIcon, downloadIcon } from "./svgButtons";
-import { Menu, Looper, Io } from '../types.ts';
+import { Menu, Looper } from '../types.ts';
 import { io } from '@andreaskundig/looper';
 
 const htmlContent = `
@@ -132,7 +132,7 @@ class ExportContent extends HTMLElement {
       
       this.beforeShow = () => {
         this.showElements(undefined, 'export-0');
-        (io as Io).gists.save(this.looper!.exportData)
+        (io as any).gists.save(this.looper!.exportData)
           .then((id:string) => {
             if (!id) {
               this.menu!.hideSubmenu();

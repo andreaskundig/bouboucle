@@ -1,0 +1,42 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Vite App</title>
+    <style>
+      body {
+          margin:0;
+          position: fixed;
+          width: 100%;
+          height: 100%;
+      }
+    </style>
+  </head>
+  <body>
+    <script type="text/javascript">
+      const config = {
+        variant: "default",
+        newTiming: false,
+        backgroundColor: "azure", // #ffffff"
+      }
+    </script>
+    <script type="module">
+      import 'looper-ui-custom-element';
+
+      const looperUi = document.getElementById("looper-ui");
+
+      window.addEventListener('resize', () => {
+        looperUi.setAttribute("width", window.innerWidth.toString());
+        looperUi.setAttribute("height", window.innerHeight.toString());
+      });
+
+    </script>
+    <looper-ui id="looper-ui">
+      <export-button data-for="export-content"></export-button>
+      <info-button data-for="info-content"></info-button>
+      <info-content></info-content>
+      <export-content></export-content>
+    </looper-ui>
+  </body>
+</html>

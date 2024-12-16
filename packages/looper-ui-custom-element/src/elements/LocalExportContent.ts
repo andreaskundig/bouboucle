@@ -1,5 +1,5 @@
 import { doneIcon, eraseIcon } from "./svgButtons";
-import { Menu, Looper, Io } from '../types.ts';
+import { Menu, Looper } from '../types.ts';
 import { io } from '@andreaskundig/looper';
 
 const htmlContent = `
@@ -81,13 +81,13 @@ class LocalExportContent extends HTMLElement {
   };
 
   makeSaver() {
-    var lastSaveTime = this.looper.getLastUpdateTime();
+    var lastSaveTime = this.looper!.getLastUpdateTime();
     return () => {
-      var lastUpdateTime = this.looper.getLastUpdateTime();
+      var lastUpdateTime = this.looper!.getLastUpdateTime();
       if (lastSaveTime < lastUpdateTime) {
         var toSave = 'saved/' + Date.now() + '.js';
         console.log('save', toSave, lastUpdateTime);
-        io.server.save(this.looper.exportData, toSave);
+        (io as any).server.save(this.looper!.exportData, toSave);
         lastSaveTime = lastUpdateTime;
       }
     };

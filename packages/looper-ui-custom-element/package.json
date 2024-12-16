@@ -8,6 +8,9 @@
     "build": "tsc && vite build",
     "preview": "vite preview"
   },
+  "exports": {
+    "." : "./dist/looperUi.js"
+  },
   "dependencies": {
     "@andreaskundig/looper": "^1.0.0",
     "@andreaskundig/looper-ui": "^2.1.0",

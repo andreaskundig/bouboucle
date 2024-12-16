@@ -5,7 +5,9 @@ export type Menu = {
 export type Looper = {
     exportData: any;
     record: (config:any) => Promise<string>;
+    getLastUpdateTime: () => number;
 }
+
 
 export type Io = {
     gists: {

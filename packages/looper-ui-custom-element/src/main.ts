@@ -9,14 +9,6 @@ const makeExportAndInfoUi = ExportInfoUIMaker.web;
 
 // console.log("running config", config);
 
-async function loadImage(url: string) {
-    return new Promise((resolve, reject) => {
-        const image = new Image();
-        image.onload = () => resolve(image);
-        image.onerror = reject;
-        image.src = url;
-    });
-}
 
 async function main(){
     // 1 choose ui variant and setup dom accordingly
