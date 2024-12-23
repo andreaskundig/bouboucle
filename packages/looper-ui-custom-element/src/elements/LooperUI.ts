@@ -1,8 +1,10 @@
 import { makeSimpleUi, makeMenu, UIVariant, setupDomForVariant, injectCSS } from '@andreaskundig/looper-ui';
 import { io, urlUtils, makeLooper } from '@andreaskundig/looper';
 import paper from 'paper/dist/paper-core';
+import "./ColorButton.ts";
 import "./InfoButton.ts";
 import "./ExportButton.ts";
+import "./ColorContent.ts";
 import "./ParentComponent.ts";
 import "./InfoContent.ts";
 import "./ExportContent.ts";
@@ -119,6 +121,7 @@ class LooperUI extends HTMLElement {
                 modalDiv!.appendChild(modalContent);
                 menu.initShowSubmenu(modalDiv, button, modalContent.beforeShow);
                 modalContent.menu = menu;
+                modalContent.button = button;
                 modalContent.looper = this.looper;
                 injectCSS(modalContent.css);
             }

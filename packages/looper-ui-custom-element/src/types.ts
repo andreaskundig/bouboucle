@@ -6,6 +6,8 @@ export type Looper = {
     exportData: any;
     record: (config:any) => Promise<string>;
     getLastUpdateTime: () => number;
+    setLineColor: (color: string) => void;
+    getLineColor: () => string;
 }
 
 
