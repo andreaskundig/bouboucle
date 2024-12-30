@@ -36,14 +36,17 @@ var colors = [
     looperParent = looperParent || document,
     
     initColorButton = function(colorHandler, menu){
-        var colorMenuDiv = looperParent.querySelector('#color-submenu'),
-            colorButtonDiv = looperParent.querySelector('#color-button'),
-            pickColor = function(color){
-                colorButtonDiv.style.fill = color;
-                colorButtonDiv.style.stroke = color;
-                menu.hideSubmenu();
-                colorHandler.handle(color);
-            };
+        const colorButtonDiv = looperParent.querySelector('#color-button');
+        if(!colorButtonDiv){
+            return;
+        }
+        const colorMenuDiv = looperParent.querySelector('#color-submenu');
+        const pickColor = function(color){
+            colorButtonDiv.style.fill = color;
+            colorButtonDiv.style.stroke = color;
+            menu.hideSubmenu();
+            colorHandler.handle(color);
+        };
         menu.initShowSubmenu(colorMenuDiv, colorButtonDiv);
         makeColorMenu(colorMenuDiv, colors, colorHandler.initial, pickColor);
     },

@@ -47,7 +47,6 @@ class LooperUI extends HTMLElement {
         const variant = UIVariant.default;
         {
             const buttonOrder = [
-                "color-button",
                 "stroke-button",
                 "timing-button",
                 "clear-button",
