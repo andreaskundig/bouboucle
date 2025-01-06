@@ -4,12 +4,12 @@ export const colorIcon = `
 	 xml:space="preserve">
 <g>
 	<defs>
-		<circle id="SVGID_21_" cx="56.692" cy="56.693" r="44.628"/>
+		<circle id="SVGID_21_col" cx="56.692" cy="56.693" r="44.628"/>
 	</defs>
-	<clipPath id="SVGID_2_">
-		<use xlink:href="#SVGID_21_"  overflow="visible"/>
+	<clipPath id="SVGID_2_col">
+		<use xlink:href="#SVGID_21_col"  overflow="visible"/>
 	</clipPath>
-	<use xlink:href="#SVGID_21_"  overflow="visible" fill="none" stroke="#1D1D1B" stroke-width="2" stroke-miterlimit="10"/>
+	<use xlink:href="#SVGID_21_col"  overflow="visible" fill="none" stroke="#1D1D1B" stroke-width="2" stroke-miterlimit="10"/>
 </g>
 <path d="M101.322,56.699c0,24.648-19.98,44.622-44.629,44.622S12.064,81.348,12.064,56.699
 	c0-24.649,19.98-44.636,44.629-44.636S101.322,32.05,101.322,56.699z"/>
@@ -23,12 +23,12 @@ export const doneIcon = `
 	 xml:space="preserve">
 <g>
 	<defs>
-		<circle id="SVGID_25_" cx="56.693" cy="56.693" r="44.628"/>
+		<circle id="SVGID_25_done" cx="56.693" cy="56.693" r="44.628"/>
 	</defs>
-	<clipPath id="SVGID_2_">
-		<use xlink:href="#SVGID_25_"  overflow="visible"/>
+	<clipPath id="SVGID_2_done">
+		<use xlink:href="#SVGID_25_done"  overflow="visible"/>
 	</clipPath>
-	<use xlink:href="#SVGID_25_"  overflow="visible" fill="none" stroke="#1D1D1B" stroke-width="2" stroke-miterlimit="10"/>
+	<use xlink:href="#SVGID_25_done"  overflow="visible" fill="none" stroke="#1D1D1B" stroke-width="2" stroke-miterlimit="10"/>
 </g>
 <line fill="none" stroke="#1D1D1B" stroke-width="4" stroke-linecap="round" stroke-miterlimit="10" x1="46.079" y1="65.832" x2="75.47" y2="47.554"/>
 <line fill="none" stroke="#1D1D1B" stroke-width="4" stroke-linecap="round" stroke-miterlimit="10" x1="46.079" y1="65.832" x2="37.917" y2="54.47"/>
@@ -41,12 +41,12 @@ export const eraseIcon = `
 	 xml:space="preserve">
 <g>
 	<defs>
-		<circle id="SVGID_6_" cx="56.693" cy="56.693" r="44.628"/>
+		<circle id="SVGID_6_erase" cx="56.693" cy="56.693" r="44.628"/>
 	</defs>
-	<clipPath id="SVGID_2_">
-		<use xlink:href="#SVGID_6_"  overflow="visible"/>
+	<clipPath id="SVGID_2_erase">
+		<use xlink:href="#SVGID_6_erase"  overflow="visible"/>
 	</clipPath>
-	<use xlink:href="#SVGID_6_"  overflow="visible" fill="none" stroke="#1D1D1B" stroke-width="2" stroke-miterlimit="10"/>
+	<use xlink:href="#SVGID_6_erase"  overflow="visible" fill="none" stroke="#1D1D1B" stroke-width="2" stroke-miterlimit="10"/>
 </g>
 <line fill="none" stroke="#1D1D1B" stroke-width="4" stroke-linecap="round" stroke-miterlimit="10" x1="41.998" y1="41.997" x2="71.389" y2="71.389"/>
 <line fill="none" stroke="#1D1D1B" stroke-width="4" stroke-linecap="round" stroke-miterlimit="10" x1="41.998" y1="71.389" x2="71.389" y2="41.997"/>
@@ -59,12 +59,12 @@ export const downloadIcon = `
 	 xml:space="preserve">
 <g>
 	<defs>
-		<circle id="SVGID_10_" cx="56.693" cy="56.693" r="44.628"/>
+		<circle id="SVGID_10_download" cx="56.693" cy="56.693" r="44.628"/>
 	</defs>
-	<clipPath id="SVGID_12_">
-		<use xlink:href="#SVGID_10_"  overflow="visible"/>
+	<clipPath id="SVGID_12_download">
+		<use xlink:href="#SVGID_10_download"  overflow="visible"/>
 	</clipPath>
-	<use xlink:href="#SVGID_10_"  overflow="visible" fill="none" stroke="#1D1D1B" stroke-width="2" stroke-miterlimit="10"/>
+	<use xlink:href="#SVGID_10_download"  overflow="visible" fill="none" stroke="#1D1D1B" stroke-width="2" stroke-miterlimit="10"/>
 </g>
 <g>
 	<g>
@@ -86,12 +86,12 @@ export const infoIcon = `
 	 xml:space="preserve">
 <g>
 	<defs>
-		<circle id="SVGID_29_" cx="56.693" cy="56.693" r="44.628"/>
+		<circle id="SVGID_29_info" cx="56.693" cy="56.693" r="44.628"/>
 	</defs>
-	<clipPath id="SVGID_2_">
-		<use xlink:href="#SVGID_29_"  overflow="visible"/>
+	<clipPath id="SVGID_2_info">
+		<use xlink:href="#SVGID_29_info"  overflow="visible"/>
 	</clipPath>
-	<use xlink:href="#SVGID_29_"  overflow="visible" fill="none" stroke="#1D1D1B" stroke-width="2" stroke-miterlimit="10"/>
+	<use xlink:href="#SVGID_29_info"  overflow="visible" fill="none" stroke="#1D1D1B" stroke-width="2" stroke-miterlimit="10"/>
 </g>
 <line fill="none" stroke="#1D1D1B" stroke-width="4" stroke-linecap="round" stroke-miterlimit="10" x1="56.693" y1="71.001" x2="56.693" y2="53.443"/>
 <line fill="none" stroke="#1D1D1B" stroke-width="4" stroke-linecap="round" stroke-miterlimit="10" x1="56.693" y1="44.109" x2="56.693" y2="42.385"/>
@@ -104,12 +104,12 @@ export const stroke1Icon = `
 	 xml:space="preserve">
 <g>
 	<defs>
-		<circle id="SVGID_2_" cx="56.693" cy="56.693" r="44.628"/>
+		<circle id="SVGID_2_s1" cx="56.693" cy="56.693" r="44.628"/>
 	</defs>
-	<clipPath id="SVGID_4_">
-		<use xlink:href="#SVGID_2_"  overflow="visible"/>
+	<clipPath id="SVGID_4_s1">
+		<use xlink:href="#SVGID_2_s1"  overflow="visible"/>
 	</clipPath>
-	<use xlink:href="#SVGID_2_"  overflow="visible" fill="none" stroke="#1D1D1B" stroke-width="2" stroke-miterlimit="10"/>
+	<use xlink:href="#SVGID_2_s1"  overflow="visible" fill="none" stroke="#1D1D1B" stroke-width="2" stroke-miterlimit="10"/>
 </g>
 <circle fill="#1D1D1B" cx="56.693" cy="56.693" r="2.789"/>
 </svg>
@@ -121,12 +121,12 @@ export const stroke2Icon = `
 	 xml:space="preserve">
 <g>
 	<defs>
-		<circle id="SVGID_5_" cx="56.693" cy="56.693" r="44.628"/>
+		<circle id="SVGID_5_s2" cx="56.693" cy="56.693" r="44.628"/>
 	</defs>
-	<clipPath id="SVGID_2_">
-		<use xlink:href="#SVGID_5_"  overflow="visible"/>
+	<clipPath id="SVGID_2_s2">
+		<use xlink:href="#SVGID_5_s2"  overflow="visible"/>
 	</clipPath>
-	<use xlink:href="#SVGID_5_"  overflow="visible" fill="none" stroke="#1D1D1B" stroke-width="2" stroke-miterlimit="10"/>
+	<use xlink:href="#SVGID_5_s2"  overflow="visible" fill="none" stroke="#1D1D1B" stroke-width="2" stroke-miterlimit="10"/>
 </g>
 <circle fill="#1D1D1B" cx="56.693" cy="56.694" r="11.157"/>
 </svg>
@@ -138,12 +138,12 @@ export const stroke3Icon = `
 	 xml:space="preserve">
 <g>
 	<defs>
-		<circle id="SVGID_17_" cx="56.692" cy="56.693" r="44.628"/>
+		<circle id="SVGID_17_s3" cx="56.692" cy="56.693" r="44.628"/>
 	</defs>
-	<clipPath id="SVGID_2_">
-		<use xlink:href="#SVGID_17_"  overflow="visible"/>
+	<clipPath id="SVGID_2_s3">
+		<use xlink:href="#SVGID_17_s3"  overflow="visible"/>
 	</clipPath>
-	<use xlink:href="#SVGID_17_"  overflow="visible" fill="none" stroke="#1D1D1B" stroke-width="2" stroke-miterlimit="10"/>
+	<use xlink:href="#SVGID_17_s3"  overflow="visible" fill="none" stroke="#1D1D1B" stroke-width="2" stroke-miterlimit="10"/>
 </g>
 <path fill="#1D1D1B" d="M79.008,56.696c0,12.323-9.99,22.31-22.314,22.31c-12.323,0-22.313-9.986-22.313-22.31
 	c0-12.325,9.99-22.317,22.313-22.317C69.018,34.379,79.008,44.371,79.008,56.696z"/>
@@ -156,12 +156,12 @@ export const stroke4Icon = `
 	 xml:space="preserve">
 <g>
 	<defs>
-		<circle id="SVGID_19_" cx="56.692" cy="56.693" r="44.628"/>
+		<circle id="SVGID_19_s4" cx="56.692" cy="56.693" r="44.628"/>
 	</defs>
-	<clipPath id="SVGID_2_">
-		<use xlink:href="#SVGID_19_"  overflow="visible"/>
+	<clipPath id="SVGID_2_s4">
+		<use xlink:href="#SVGID_19_s4"  overflow="visible"/>
 	</clipPath>
-	<use xlink:href="#SVGID_19_"  overflow="visible" fill="none" stroke="#1D1D1B" stroke-width="2" stroke-miterlimit="10"/>
+	<use xlink:href="#SVGID_19_s4"  overflow="visible" fill="none" stroke="#1D1D1B" stroke-width="2" stroke-miterlimit="10"/>
 </g>
 <path fill="#1D1D1B" d="M90.164,56.697c0,18.486-14.984,33.467-33.471,33.467s-33.472-14.98-33.472-33.467
 	s14.985-33.477,33.472-33.477S90.164,38.211,90.164,56.697z"/>
@@ -174,12 +174,12 @@ export const stroke5Icon = `
 	 xml:space="preserve">
 <g>
 	<defs>
-		<circle id="SVGID_26_" cx="56.693" cy="56.693" r="44.628"/>
+		<circle id="SVGID_26_s5" cx="56.693" cy="56.693" r="44.628"/>
 	</defs>
-	<clipPath id="SVGID_6_">
-		<use xlink:href="#SVGID_26_"  overflow="visible"/>
+	<clipPath id="SVGID_6_s5">
+		<use xlink:href="#SVGID_26_s5"  overflow="visible"/>
 	</clipPath>
-	<use xlink:href="#SVGID_26_"  overflow="visible" fill="none" stroke="#1D1D1B" stroke-width="2" stroke-miterlimit="10"/>
+	<use xlink:href="#SVGID_26_s5"  overflow="visible" fill="none" stroke="#1D1D1B" stroke-width="2" stroke-miterlimit="10"/>
 </g>
 <path fill="#1D1D1B" d="M95.744,56.697c0,21.568-17.481,39.046-39.05,39.046c-21.567,0-39.051-17.478-39.051-39.046
 	c0-21.567,17.483-39.056,39.051-39.056C78.263,17.642,95.744,35.13,95.744,56.697z"/>
@@ -192,12 +192,12 @@ export const stroke6Icon = `
 	 xml:space="preserve">
 <g>
 	<defs>
-		<circle id="SVGID_21_" cx="56.692" cy="56.693" r="44.628"/>
+		<circle id="SVGID_21_s6" cx="56.692" cy="56.693" r="44.628"/>
 	</defs>
-	<clipPath id="SVGID_2_">
-		<use xlink:href="#SVGID_21_"  overflow="visible"/>
+	<clipPath id="SVGID_2_s6">
+		<use xlink:href="#SVGID_21_s6"  overflow="visible"/>
 	</clipPath>
-	<use xlink:href="#SVGID_21_"  overflow="visible" fill="none" stroke="#1D1D1B" stroke-width="2" stroke-miterlimit="10"/>
+	<use xlink:href="#SVGID_21_s6"  overflow="visible" fill="none" stroke="#1D1D1B" stroke-width="2" stroke-miterlimit="10"/>
 </g>
 <path fill="#1D1D1B" d="M101.322,56.699c0,24.648-19.98,44.622-44.629,44.622S12.064,81.348,12.064,56.699
 	c0-24.649,19.98-44.636,44.629-44.636S101.322,32.05,101.322,56.699z"/>

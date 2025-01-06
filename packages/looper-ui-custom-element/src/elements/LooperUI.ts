@@ -1,5 +1,6 @@
 import { makeSimpleUi, makeMenu, UIVariant, setupDomForVariant, injectCSS } from '@andreaskundig/looper-ui';
 import { io, urlUtils, makeLooper } from '@andreaskundig/looper';
+import { Menu } from '../types';
 import paper from 'paper/dist/paper-core';
 import "./ColorButton.ts";
 import "./InfoButton.ts";
@@ -100,35 +101,42 @@ class LooperUI extends HTMLElement {
             (io as any).gists.load(urlParams.gist, this.looper.importData);
         }
 
-        const menu = makeMenu(this.rootDiv);
+        const menu = makeMenu(this.rootDiv) as Menu;
         makeSimpleUi(this.looper, undefined, newTiming, dimension, showGallery,
             this.rootDiv as any, this.rootDiv as any, menu as any);
 
         const menuElement = this.rootDiv.querySelector(".menu") as HTMLElement;
-        const modalsElement = this.rootDiv.querySelector(".modals");
 
         // let custom elements register properly 
-        for(const button of this.querySelectorAll('[data-for]')){
-            const modalContentSelector = (button as any).dataset.for;
+        for(const button of this.querySelectorAll('.buttons > *')){
             menuElement.appendChild(button);
-            modalsElement!.insertAdjacentHTML('beforeend', `<div class="submenu" data-for="${modalContentSelector}"></div>`);
-            const modalDiv = modalsElement!.querySelector(`[data-for='${modalContentSelector}']`);
-            modalsElement!.appendChild(modalDiv!);
-            const modalContent = this.querySelector(modalContentSelector);
-            if(!modalContent){
-                console.error(`unable to find modal '${modalContentSelector}'`);
-            } else {
-                modalDiv!.appendChild(modalContent);
-                menu.initShowSubmenu(modalDiv, button, modalContent.beforeShow);
-                modalContent.menu = menu;
-                modalContent.button = button;
-                modalContent.looper = this.looper;
-                injectCSS(modalContent.css);
-            }
+            this.initializeModalContent(button, menu);
         }
 
         // Append the new div back to the parent
         this.appendChild(this.rootDiv);
+    }
+
+    initializeModalContent(button: Element, menu: Menu){
+        const modalContentSelector = (button as any).dataset.for;
+        if(!modalContentSelector){
+            return;
+        }
+        const modalsElement = this.rootDiv.querySelector(".modals");
+        modalsElement!.insertAdjacentHTML('beforeend', `<div class="submenu" data-for="${modalContentSelector}"></div>`);
+        const modalDiv = modalsElement!.querySelector(`[data-for='${modalContentSelector}']`);
+        modalsElement!.appendChild(modalDiv!);
+        const modalContent = this.querySelector(modalContentSelector);
+        if(!modalContent){
+            console.error(`unable to find modal '${modalContentSelector}'`);
+        } else {
+            modalDiv!.appendChild(modalContent);
+            menu.initShowSubmenu(modalDiv!, button, modalContent.beforeShow);
+            modalContent.menu = menu;
+            modalContent.button = button;
+            modalContent.looper = this.looper;
+            injectCSS(modalContent.css);
+        }
     }
 
     attributeChangedCallback(name:string, _oldValue:string, newValue:string) {

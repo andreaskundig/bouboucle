@@ -1,5 +1,6 @@
 export type Menu = {
     hideSubmenu: () => void; 
+    initShowSubmenu: (modalDiv: Element, button: Element, beforeShow: () => void) => void;
 }
 
 export type Looper = {
