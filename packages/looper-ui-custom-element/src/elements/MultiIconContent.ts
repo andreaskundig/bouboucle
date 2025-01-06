@@ -7,6 +7,7 @@ export class MultiIconContent extends HTMLElement {
     button?: MultiIconButton;
     css = CSS;
 
+
     set icons(icons: string[]){
         this.innerHTML = icons.map(i => `<div>${i}</div`).join('\n');
         const selected = this.getAttribute('selected');     
@@ -35,9 +36,6 @@ export class MultiIconContent extends HTMLElement {
             }
         }
     }
-
-
-
 }
 
 customElements.define("multi-icon-content", MultiIconContent);

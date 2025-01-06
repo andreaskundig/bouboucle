@@ -1,4 +1,5 @@
 import "./MultiIconButton";
+import "./StrokeSizeContent";
 import {
     stroke1Icon,
     stroke2Icon,
@@ -6,7 +7,6 @@ import {
     stroke4Icon,
     stroke5Icon,
     stroke6Icon,
-    infoIcon
 } from "./svgButtons"
 
 export class StrokeSizeButton extends HTMLElement {

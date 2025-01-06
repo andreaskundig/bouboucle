@@ -1,5 +1,6 @@
 import { Menu, Looper } from '../types.ts';
 import { MultiIconContent } from  "./MultiIconContent.ts";
+import "./MultiIconContent.ts";
 import {
     stroke1Icon,
     stroke2Icon,

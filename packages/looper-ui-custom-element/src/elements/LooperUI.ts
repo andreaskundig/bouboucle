@@ -110,6 +110,7 @@ class LooperUI extends HTMLElement {
         // let custom elements register properly 
         for(const button of this.querySelectorAll('.buttons > *')){
             menuElement.appendChild(button);
+            (button as any).looper = this.looper;
             this.initializeModalContent(button, menu);
         }
 
