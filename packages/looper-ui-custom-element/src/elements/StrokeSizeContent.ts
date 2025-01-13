@@ -1,6 +1,7 @@
-import { Menu, Looper } from '../types.ts';
+import { Menu } from '../types.ts';
 import { MultiIconContent } from  "./MultiIconContent.ts";
 import "./MultiIconContent.ts";
+import { StrokeSizeButton } from './StrokeSizeButton.ts';
 import {
     stroke1Icon,
     stroke2Icon,
@@ -10,42 +11,47 @@ import {
     stroke6Icon,
 } from "./svgButtons"
 
-const CSS = `
-`;
-
 export class StrokeSizeContent extends HTMLElement {
-    #looper!: Looper;
+    button?: StrokeSizeButton;
     menu?: Menu;
-    button?: HTMLElement;
-    css = CSS;
+    // #button?: StrokeSizeButton;
+    // set button(button:StrokeSizeButton){
+    //     this.#button = button;
+    //     this.init();
+    // }
+    // get button(): StrokeSizeButton|undefined{
+    //     return this.#button;
+    // }
+    
+    css?: string;
 
 
     connectedCallback(){
         this.render();
-        const multiIconContent = this.querySelector('multi-icon-content');
-        (multiIconContent as MultiIconContent).icons = [
+        const multiIconContent = this.querySelector('multi-icon-content') as MultiIconContent;
+
+        //TODO this button is undefined !
+        const initialSelectedIndex = this.button?.selectedIndex;
+        this.css = multiIconContent!.css;
+        (multiIconContent as MultiIconContent).initIcons([
             stroke1Icon, 
             stroke2Icon, 
             stroke3Icon,
             stroke4Icon,
             stroke5Icon,
             stroke6Icon,
-        ];
-        // TODO implement logic to set stroke size of looper
-        // and correspondence between button stroke index and looper stroke size.
-        // (see simple-ui.js)
+        ], initialSelectedIndex);
     }
 
-    get looper(): Looper{
-        return this.#looper;
-    }
-
-    set looper(looper:Looper){
-        this.#looper = looper;
+    onIconSelected(e:any){
+        const {detail: { index }} = e;
+        this.button!.selectedIndex = index;
+        this.menu?.hideSubmenu();
     }
 
     render() {
         this.innerHTML = `<multi-icon-content></multi-icon-content>`;
+        this.addEventListener('selecticon', this.onIconSelected);
     }
 }
 

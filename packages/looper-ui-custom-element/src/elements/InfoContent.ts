@@ -39,7 +39,7 @@ const htmlContent = `
 class InfoContent extends HTMLElement {
     looper?: Looper;
     menu?: Menu;
-    css = CSS;
+    css?: string;
 
     connectedCallback(){
         this.render(this);

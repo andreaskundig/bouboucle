@@ -1,4 +1,6 @@
+import { Looper } from '../types.ts';
 import "./MultiIconButton";
+import { MultiIconButton } from "./MultiIconButton";
 import "./StrokeSizeContent";
 import {
     stroke1Icon,
@@ -9,8 +11,20 @@ import {
     stroke6Icon,
 } from "./svgButtons"
 
+
+const strokeWidths = [2, 7, 20, 50, 200, 600];
+
 export class StrokeSizeButton extends HTMLElement {
-    
+    #looper!: Looper;
+
+    get looper(): Looper{
+        return this.#looper;
+    }
+
+    set looper(looper:Looper){
+        this.#looper = looper;
+    }
+
     static get observedAttributes() { 
         return ['stroke-index']; 
     }
@@ -19,10 +33,24 @@ export class StrokeSizeButton extends HTMLElement {
         this.render();
     }
 
-    get iconButton(){
-        return this.querySelector("multi-icon-button");
+    get iconButton(): MultiIconButton{
+        return this.querySelector("multi-icon-button") as MultiIconButton;
+    }
+
+    get selectedIndex():number{
+        const selectedWidth = this.looper.getStrokeWidth();
+        const selectedIndex = strokeWidths.indexOf(selectedWidth);
+        return selectedIndex;
+    }
+
+    set selectedIndex(index:number){
+        this.iconButton.showOnlySelected(index);
+        const strokeWidth = strokeWidths[index];
+        this.looper.setStrokeWidth(strokeWidth);
+        //TODO set class selected
     }
     
+    //TODO remove this
     attributeChangedCallback(name:string, _oldValue: any, newValue: any) {
         if(name === "stroke-index"){
             this.iconButton?.setAttribute("selected", newValue);

@@ -1,17 +1,35 @@
 import { MultiIconButton } from './MultiIconButton.ts';
 
 const CSS = `
+    multi-icon-content{
+        display: flex;
+        
+        div {
+            flex: 1;
+        }
+    
+        div > svg {
+            width: 100%;
+            height: 39px;
+            padding: 20px 0px;
+            border-bottom: 1px solid #dddddd;
+            border-right: 1px solid #dddddd;
+        }
+    }
 `;
 
 export class MultiIconContent extends HTMLElement {
-    button?: MultiIconButton;
+    // button?: MultiIconButton;
     css = CSS;
 
-
-    set icons(icons: string[]){
-        this.innerHTML = icons.map(i => `<div>${i}</div`).join('\n');
-        const selected = this.getAttribute('selected');     
-        const selectedIndex = selected ? parseInt(selected) : 0;
+    initIcons(icons: string[], selectedIndex = 0){
+        for (let i = 0; i < icons.length; i++) {
+            this.insertAdjacentHTML('beforeend', `<div>${icons[i]}</div>`);
+            const div = this.lastChild as HTMLElement;
+            div?.addEventListener('click', () => {
+                this.selectIndex(i);
+            });
+        }
         this.selectIndex(selectedIndex);
     }
     
@@ -27,6 +45,7 @@ export class MultiIconContent extends HTMLElement {
     }
 
     selectIndex(index: number){
+        console.log("selecting index", index);
         for (let i = 0; i < this.children.length; i++) {
             const child = this.children[i];
             if(i === index) {
@@ -35,6 +54,8 @@ export class MultiIconContent extends HTMLElement {
                 child.classList.remove('active');
             }
         }
+
+        this.dispatchEvent(new CustomEvent("selecticon", { bubbles: true, detail: { index }}));
     }
 }
 

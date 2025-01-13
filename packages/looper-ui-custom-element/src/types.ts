@@ -9,6 +9,8 @@ export type Looper = {
     getLastUpdateTime: () => number;
     setLineColor: (color: string) => void;
     getLineColor: () => string;
+    setStrokeWidth: (strokeWidth: number) => void;
+    getStrokeWidth: () => number;
 }
 
 
