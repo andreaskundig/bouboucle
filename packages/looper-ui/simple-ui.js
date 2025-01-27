@@ -76,19 +76,22 @@ var colors = [
     },
 
     initStrokeButton = function(strokeHandler, menu){
-        var strokeButtonDiv = looperParent.querySelector('#stroke-button'),
-            strokeMenuDiv = looperParent.querySelector('#stroke-submenu'),
-            strokes =[2, 7, 20, 50, 200, 600].map(function(width, index){
+        const strokeButtonDiv = looperParent.querySelector('#stroke-button');
+        const strokeMenuDiv = looperParent.querySelector('#stroke-submenu');
+        if(!strokeButtonDiv){
+            return;
+        }
+        const strokes =[2, 7, 20, 50, 200, 600].map(function(width, index){
                 const assetname = `2_taille_${index + 1}.svg`;
                 return {width: width,
                         icon: getAssetString(assetname)};
-            }),
-            pickStroke = function(stroke){
+            });
+        const pickStroke = function(stroke){
                 strokeButtonDiv.innerHTML = "<img/>";
                 strokeButtonDiv.firstChild.src = stroke.icon;
                 menu.hideSubmenu();
                 strokeHandler.handle(stroke.width);
-            };
+        };
         menu.initShowSubmenu(strokeMenuDiv, strokeButtonDiv);
         makeStrokeMenu(strokeMenuDiv, strokes,
                        strokeHandler.initial, pickStroke);
