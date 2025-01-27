@@ -20,7 +20,7 @@ const CSS = `
 
 export class MultiIconContent extends HTMLElement {
     // button?: MultiIconButton;
-    css = CSS;
+    static css = CSS;
 
     initIcons(icons: string[], selectedIndex = 0){
         for (let i = 0; i < icons.length; i++) {

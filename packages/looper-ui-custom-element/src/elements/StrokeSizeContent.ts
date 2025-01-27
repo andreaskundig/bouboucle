@@ -23,17 +23,17 @@ export class StrokeSizeContent extends HTMLElement {
     //     return this.#button;
     // }
     
-    css?: string;
-
+    css = MultiIconContent.css;
 
     connectedCallback(){
-        this.render();
+        if(!this.button) {
+            return;
+        }
+        this.innerHTML = `<multi-icon-content></multi-icon-content>`;
+        this.addEventListener('selecticon', this.onIconSelected);
         const multiIconContent = this.querySelector('multi-icon-content') as MultiIconContent;
-
-        //TODO this button is undefined !
-        const initialSelectedIndex = this.button?.selectedIndex;
-        this.css = multiIconContent!.css;
-        (multiIconContent as MultiIconContent).initIcons([
+        const initialSelectedIndex = this.button.selectedIndex;
+        multiIconContent.initIcons([
             stroke1Icon, 
             stroke2Icon, 
             stroke3Icon,
@@ -47,11 +47,6 @@ export class StrokeSizeContent extends HTMLElement {
         const {detail: { index }} = e;
         this.button!.selectedIndex = index;
         this.menu?.hideSubmenu();
-    }
-
-    render() {
-        this.innerHTML = `<multi-icon-content></multi-icon-content>`;
-        this.addEventListener('selecticon', this.onIconSelected);
     }
 }
 
