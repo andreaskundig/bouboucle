@@ -47,14 +47,6 @@ export class StrokeSizeButton extends HTMLElement {
         this.iconButton.showOnlySelected(index);
         const strokeWidth = strokeWidths[index];
         this.looper.setStrokeWidth(strokeWidth);
-        //TODO set class selected
-    }
-    
-    //TODO remove this
-    attributeChangedCallback(name:string, _oldValue: any, newValue: any) {
-        if(name === "stroke-index"){
-            this.iconButton?.setAttribute("selected", newValue);
-        }
     }
     
     render(){
