@@ -11,6 +11,10 @@ export type Looper = {
     getLineColor: () => string;
     setStrokeWidth: (strokeWidth: number) => void;
     getStrokeWidth: () => number;
+    getBeat: () => number;
+    setBeat: (beat: number) => void;
+    getLifetime: () => number;
+    setLifetime: (lifetime: number) => void;
 }
 
 

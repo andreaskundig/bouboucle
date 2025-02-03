@@ -25,10 +25,6 @@ export class StrokeSizeButton extends HTMLElement {
         this.#looper = looper;
     }
 
-    static get observedAttributes() { 
-        return ['stroke-index']; 
-    }
-
     connectedCallback(){
         this.render();
     }

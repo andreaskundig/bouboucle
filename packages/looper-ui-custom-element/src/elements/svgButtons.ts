@@ -203,3 +203,59 @@ export const stroke6Icon = `
 	c0-24.649,19.98-44.636,44.629-44.636S101.322,32.05,101.322,56.699z"/>
 </svg>
 `;
+
+export const timing1Icon = `
+<svg version="1.1" id="Calque_1" xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink" x="0px" y="0px"
+	 width="113.387px" height="113.387px" viewBox="0 0 113.387 113.387" enable-background="new 0 0 113.387 113.387"
+	 xml:space="preserve">
+<g>
+		<circle fill="none" stroke="#1D1D1B" stroke-width="6" stroke-linecap="round" stroke-linejoin="round" stroke-dasharray="0,14.0165" cx="56.692" cy="56.693" r="44.628"/>
+</g>
+</svg>
+`;
+
+export const timing2Icon = `
+<svg version="1.1" id="Calque_1" xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink" x="0px" y="0px"
+	 width="113.387px" height="113.387px" viewBox="0 0 113.387 113.387" enable-background="new 0 0 113.387 113.387"
+	 xml:space="preserve">
+<g>
+		<circle fill="none" stroke="#1D1D1B" stroke-width="6" stroke-linecap="round" stroke-linejoin="round" stroke-dasharray="7.787,15.5741" cx="56.693" cy="56.693" r="44.628"/>
+</g>
+</svg>
+`;
+
+export const timing3Icon = `
+	<svg version="1.1" id="Calque_1" xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink" x="0px" y="0px"
+	 width="113.387px" height="113.387px" viewBox="0 0 113.387 113.387" enable-background="new 0 0 113.387 113.387"
+	 xml:space="preserve">
+<g>
+		<circle fill="none" stroke="#1D1D1B" stroke-width="6" stroke-linecap="round" stroke-linejoin="round" stroke-dasharray="23.3609,23.3609" cx="56.693" cy="56.693" r="44.628"/>
+</g>
+</svg>
+`;
+
+export const timing4Icon = `
+<svg version="1.1" id="Calque_1" xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink" x="0px" y="0px"
+	 width="113.387px" height="113.387px" viewBox="0 0 113.387 113.387" enable-background="new 0 0 113.387 113.387"
+	 xml:space="preserve">
+<g>
+		<circle fill="none" stroke="#1D1D1B" stroke-width="6" stroke-linecap="round" stroke-linejoin="round" stroke-dasharray="46.7218,46.7218" cx="56.692" cy="56.693" r="44.628"/>
+</g>
+</svg>
+`;
+
+export const timing5Icon = `
+<svg version="1.1" id="Calque_1" xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink" x="0px" y="0px"
+	 width="113.387px" height="113.387px" viewBox="0 0 113.387 113.387" enable-background="new 0 0 113.387 113.387"
+	 xml:space="preserve">
+<circle fill="none" stroke="#1D1D1B" stroke-width="6" stroke-linecap="round" stroke-linejoin="round" stroke-miterlimit="10" stroke-dasharray="72,68" cx="56.692" cy="56.693" r="44.628"/>
+</svg>
+`;
+
+export const timing6Icon = `
+<svg version="1.1" id="Calque_1" xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink" x="0px" y="0px"
+	 width="113.387px" height="113.387px" viewBox="0 0 113.387 113.387" enable-background="new 0 0 113.387 113.387"
+	 xml:space="preserve">
+<circle fill="none" stroke="#1D1D1B" stroke-width="6" stroke-linecap="round" stroke-linejoin="round" stroke-miterlimit="10" cx="56.692" cy="56.693" r="44.628"/>
+</svg>
+`;

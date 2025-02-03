@@ -12,6 +12,8 @@ import "./ExportContent.ts";
 import "./LocalExportContent.ts";
 import "./LocalInfoContent.ts";
 import "./StrokeSizeButton.ts";
+import "./TimingMultiButton.ts";
+import "./TimingSimpleContent.ts";
 
 class LooperUI extends HTMLElement {
     static observedAttributes = ["width", "height"];
