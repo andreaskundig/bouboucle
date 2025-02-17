@@ -12,6 +12,8 @@ import "./ExportContent.ts";
 import "./LocalExportContent.ts";
 import "./LocalInfoContent.ts";
 import "./StrokeSizeButton.ts";
+import "./TimingButton.ts";
+import "./TimingDynamicContent.ts";
 import "./TimingMultiButton.ts";
 import "./TimingSimpleContent.ts";
 

@@ -1,3 +1,13 @@
+export type Dimension = {
+    width: number; 
+    height: number;
+}
+
+export type Timing = {
+    lifetime: number; 
+    beat: number;
+}
+
 export type Menu = {
     hideSubmenu: () => void; 
     initShowSubmenu: (modalDiv: Element, button: Element, beforeShow: () => void) => void;
@@ -15,6 +25,8 @@ export type Looper = {
     setBeat: (beat: number) => void;
     getLifetime: () => number;
     setLifetime: (lifetime: number) => void;
+    makeTimingDemo: (canvas: HTMLCanvasElement, timings: Timing[][], dimension: Dimension) => Looper;
+    setSpeed: (speed: number) => void;
 }
 
 
