@@ -20,7 +20,7 @@ async function main(){
     // const configRatioCode = urlParams.ratio || null;
     const backgroundColor = '#ffffff';
     const showGallery = !!urlParams.gallery;
-    const titleHeight = 79.67; // related to selected html ?
+    const titleHeight = 80;//79.67; // related to selected html ?
     // const fullSizeGif = !!urlParams['big-gif'];
     // const foregroundUrl = 'Coloriage_Assiette-polaire.png';
     // const foregroundImage = await loadImage(foregroundUrl);
@@ -30,7 +30,6 @@ async function main(){
     //     ratio = eval(configRatioCode);
     // }
     const calculateDimension = () => {
-        const targetHeight = window.innerHeight - titleHeight;
         return {width: window.innerWidth,
                 height: targetHeight,
                 ratio};

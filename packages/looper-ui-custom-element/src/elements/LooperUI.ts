@@ -16,10 +16,10 @@ import "./TimingButton.ts";
 import "./TimingDynamicContent.ts";
 import "./TimingMultiButton.ts";
 import "./TimingSimpleContent.ts";
+import { TITLE_HEIGHT } from './Constants.ts';
 
 class LooperUI extends HTMLElement {
     static observedAttributes = ["width", "height"];
-    static titleHeight = 79.67; // related to selected html ?
 
     width = 0;
     height = 0;
@@ -33,7 +33,7 @@ class LooperUI extends HTMLElement {
     }
 
     dimensionCalc(width: number, height: number, ratio?: number){
-        const targetHeight = height - LooperUI.titleHeight;
+        const targetHeight = height - TITLE_HEIGHT;
         const result:any = {
             width,
             height: targetHeight,
@@ -53,7 +53,6 @@ class LooperUI extends HTMLElement {
         const variant = UIVariant.default;
         {
             const buttonOrder = [
-                "timing-button",
                 "clear-button",
                 "undo-button",
                 "redo-button",

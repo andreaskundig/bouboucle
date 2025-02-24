@@ -1,4 +1,5 @@
 import { Looper, Menu, Timing, Dimension } from '../types.ts';
+import { TITLE_HEIGHT } from './Constants.ts';
 
 export class TimingDynamicContent extends HTMLElement {
     menu?: Menu;
@@ -21,8 +22,10 @@ export class TimingDynamicContent extends HTMLElement {
             this.menu?.hideSubmenu();
             handle(timing);
         }; 
-        //TODO: take dimension from somewhere
-        const dimension = {height: 500, width: 500};
+        const dimension = {
+            width: window.innerWidth,
+            height: window.innerHeight - TITLE_HEIGHT,
+        };
         this.render(this, initial, pickTiming, looper, dimension);
     }
 

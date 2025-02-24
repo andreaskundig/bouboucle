@@ -27,6 +27,7 @@ export type Looper = {
     setLifetime: (lifetime: number) => void;
     makeTimingDemo: (canvas: HTMLCanvasElement, timings: Timing[][], dimension: Dimension) => Looper;
     setSpeed: (speed: number) => void;
+    getDimension: () => Dimension;
 }
 
 

@@ -229,6 +229,11 @@ var makeLooper = function(opts){
         }
     };
 
+    var getDimension = function(){
+        console.log({width: availableWidth, height: availableHeight});
+        return {width: availableWidth, height: availableHeight};
+    }
+
     var setBackground = function(backgroundColor){
         ps.activate();
         if(backgroundColor){
@@ -441,12 +446,14 @@ var makeLooper = function(opts){
     };
     
     var makeStraightLineData = function(opts, from, size, speed){
+        speed = speed || 1/40; // pixels/ms,
         var distX = size.width,
             distY = size.height,
             dist = Math.sqrt(Math.pow(distX,2) + Math.pow(distY,2)),
             dXRatio = distX / dist,
             dYRatio = distY / dist,
-            interval = 1000 / 50, // ms
+            interval = 1000 / 50,
+             // ms
             step = speed * interval,
             lineData = {start: opts.start || 0,
                     last: opts.last || opts.beat,
@@ -455,7 +462,6 @@ var makeLooper = function(opts){
                     color: "#000000",
                     multiPeriod: 1,
                     strokeWidth: opts.strokeWidth};
-        speed = speed || 1/40, // pixels/ms,
         lineData.times = [];
         lineData.segments = [];
         for(var d = 0; d < dist; d += step ){
@@ -530,6 +536,7 @@ var makeLooper = function(opts){
         getLifetime: function() { return lifetime; },
         setPeriods: function(p) { periods = p; },
         scale: scale,
+        getDimension: getDimension,
         getTime: timeKeeper.getTime.bind(timeKeeper),
         setSpeed: timeKeeper.setSpeed.bind(timeKeeper),
         setBeat: timeKeeper.setBeat.bind(timeKeeper),
