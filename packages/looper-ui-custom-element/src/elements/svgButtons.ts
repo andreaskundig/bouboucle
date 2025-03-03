@@ -259,3 +259,119 @@ export const timing6Icon = `
 <circle fill="none" stroke="#1D1D1B" stroke-width="6" stroke-linecap="round" stroke-linejoin="round" stroke-miterlimit="10" cx="56.692" cy="56.693" r="44.628"/>
 </svg>
 `;
+
+export const redoIcon = `
+<svg version="1.1" id="Calque_1" xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink" x="0px" y="0px"
+	 width="113.387px" height="113.387px" viewBox="0 0 113.387 113.387" enable-background="new 0 0 113.387 113.387"
+	 xml:space="preserve">
+<g>
+	<defs>
+		<circle id="SVGID_39_" cx="56.693" cy="56.693" r="44.628"/>
+	</defs>
+	<clipPath id="SVGID_2_">
+		<use xlink:href="#SVGID_39_"  overflow="visible"/>
+	</clipPath>
+	<use xlink:href="#SVGID_39_"  overflow="visible" fill="none" stroke="#1D1D1B" stroke-width="2" stroke-miterlimit="10"/>
+</g>
+<g>
+	<g>
+		<path fill="none" stroke="#1D1D1B" stroke-width="4" stroke-linecap="round" stroke-miterlimit="10" d="M77.671,50.683
+			c-15.25,0-24.884,0-32.384,0"/>
+		
+			<line fill="none" stroke="#1D1D1B" stroke-width="4" stroke-linecap="round" stroke-miterlimit="10" x1="77.671" y1="50.683" x2="72.671" y2="43.558"/>
+		
+			<line fill="none" stroke="#1D1D1B" stroke-width="4" stroke-linecap="round" stroke-miterlimit="10" x1="72.671" y1="57.808" x2="77.671" y2="50.683"/>
+	</g>
+	<path fill="none" stroke="#1D1D1B" stroke-width="4" stroke-linecap="round" stroke-miterlimit="10" d="M45.287,50.683
+		c-5.286,0-9.572,4.286-9.572,9.573c0,5.286,4.286,9.572,9.572,9.572"/>
+</g>
+</svg>`;
+
+export const undoIcon = `
+<svg version="1.1" id="Calque_1" xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink" x="0px" y="0px"
+	 width="113.387px" height="113.387px" viewBox="0 0 113.387 113.387" enable-background="new 0 0 113.387 113.387"
+	 xml:space="preserve">
+<g>
+	<defs>
+		<circle id="SVGID_31_" cx="56.693" cy="56.693" r="44.628"/>
+	</defs>
+	<clipPath id="SVGID_2_">
+		<use xlink:href="#SVGID_31_"  overflow="visible"/>
+	</clipPath>
+	<use xlink:href="#SVGID_31_"  overflow="visible" fill="none" stroke="#1D1D1B" stroke-width="2" stroke-miterlimit="10"/>
+</g>
+<g>
+	<g>
+		<path fill="none" stroke="#1D1D1B" stroke-width="4" stroke-linecap="round" stroke-miterlimit="10" d="M35.716,50.683
+			c15.25,0,24.884,0,32.384,0"/>
+		
+			<line fill="none" stroke="#1D1D1B" stroke-width="4" stroke-linecap="round" stroke-miterlimit="10" x1="35.716" y1="50.683" x2="40.716" y2="43.558"/>
+		
+			<line fill="none" stroke="#1D1D1B" stroke-width="4" stroke-linecap="round" stroke-miterlimit="10" x1="40.716" y1="57.808" x2="35.716" y2="50.683"/>
+	</g>
+	<path fill="none" stroke="#1D1D1B" stroke-width="4" stroke-linecap="round" stroke-miterlimit="10" d="M68.1,50.683
+		c5.286,0,9.572,4.286,9.572,9.573c0,5.286-4.286,9.572-9.572,9.572"/>
+</g>
+</svg>`;
+
+export const pauseIcon = `<svg version="1.1" id="Calque_1" xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink" x="0px" y="0px"
+	 width="113.387px" height="113.387px" viewBox="0 0 113.387 113.387" enable-background="new 0 0 113.387 113.387"
+	 xml:space="preserve">
+<g>
+	<defs>
+		<circle id="SVGID_27_" cx="56.693" cy="56.693" r="44.628"/>
+	</defs>
+	<clipPath id="SVGID_2_">
+		<use xlink:href="#SVGID_27_"  overflow="visible"/>
+	</clipPath>
+	<use xlink:href="#SVGID_27_"  overflow="visible" fill="none" stroke="#1D1D1B" stroke-width="2" stroke-miterlimit="10"/>
+</g>
+<line fill="none" stroke="#1D1D1B" stroke-width="4" stroke-linecap="round" stroke-miterlimit="10" x1="47.796" y1="71.001" x2="47.796" y2="42.385"/>
+<line fill="none" stroke="#1D1D1B" stroke-width="4" stroke-linecap="round" stroke-miterlimit="10" x1="65.591" y1="71.001" x2="65.591" y2="42.385"/>
+</svg>
+`;
+
+export const playIcon = `
+<svg version="1.1" id="Calque_1" xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink" x="0px" y="0px"
+	 width="113.387px" height="113.387px" viewBox="0 0 113.387 113.387" enable-background="new 0 0 113.387 113.387"
+	 xml:space="preserve">
+<g>
+	<defs>
+		<circle id="SVGID_4_" cx="56.693" cy="56.693" r="44.628"/>
+	</defs>
+	<clipPath id="SVGID_6_">
+		<use xlink:href="#SVGID_4_"  overflow="visible"/>
+	</clipPath>
+	<use xlink:href="#SVGID_4_"  overflow="visible" fill="none" stroke="#1D1D1B" stroke-width="2" stroke-miterlimit="10"/>
+</g>
+<polygon fill="none" stroke="#1D1D1B" stroke-width="4" stroke-linecap="round" stroke-linejoin="round" stroke-miterlimit="10" points="
+	45.922,41.945 71.466,56.693 45.922,71.441 "/>
+</svg>
+`;
+
+export const rewindIcon = `<div id="rewind-button" ><svg version="1.1" id="Calque_1" xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink" x="0px" y="0px"
+	 viewBox="0 0 113.4 113.4" enable-background="new 0 0 113.4 113.4" xml:space="preserve">
+<g>
+	<g>
+		<circle id="SVGID_4_" fill="none" stroke="#1D1D1B" stroke-width="2" stroke-miterlimit="10" cx="56.7" cy="56.7" r="44.6"/>
+	</g>
+</g>
+<polyline fill="none" stroke="#1D1D1B" stroke-width="4" stroke-linecap="round" stroke-linejoin="round" stroke-miterlimit="10" transform="translate(20,0)" points="
+	54.9,41.9 29.3,56.7 54.9,71.4 "/>
+<polyline fill="none" stroke="#1D1D1B" stroke-width="4" stroke-linecap="round" stroke-linejoin="round" stroke-miterlimit="10" transform="translate(20,0)" points="
+	37.9,41.9 12.3,56.7 37.9,71.4 "/>
+</svg>`;
+
+export const forwardIcon = `<svg version="1.1" id="Calque_1" xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink" x="0px" y="0px"
+	 viewBox="0 0 113.4 113.4" enable-background="new 0 0 113.4 113.4" xml:space="preserve">
+<g>
+	<g>
+		<circle id="SVGID_4_" fill="none" stroke="#1D1D1B" stroke-width="2" stroke-miterlimit="10" cx="56.7" cy="56.7" r="44.6"/>
+	</g>
+</g>
+<polyline fill="none" stroke="#1D1D1B" stroke-width="4" stroke-linecap="round" stroke-linejoin="round" stroke-miterlimit="10" points="
+	54.9,41.9 80.5,56.7 54.9,71.4 "/>
+<polyline fill="none" stroke="#1D1D1B" stroke-width="4" stroke-linecap="round" stroke-linejoin="round" stroke-miterlimit="10" points="
+	37.9,41.9 63.5,56.7 37.9,71.4 "/>
+</svg>`;
+

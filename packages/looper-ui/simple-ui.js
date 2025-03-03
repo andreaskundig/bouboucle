@@ -132,7 +132,7 @@ var colors = [
                             icon: getAssetString(`3_trait_${index+1}.svg`)};
                 }),
             pickTiming = function(timing){
-                if(timing.icon){
+                if(timing.icon && timingButtonDiv){
                     timingButtonDiv.innerHTML = "";
                     const img = document.createElement("img");
                     img.src = timing.icon;
@@ -313,19 +313,19 @@ var colors = [
     },
 
     initControlButtons = function(controls, menu){
-        var clearButtonDiv = looperParent.querySelector('#clear-button'),
-            undoButtonDiv = looperParent.querySelector('#undo-button'),
-            redoButtonDiv = looperParent.querySelector('#redo-button'),
-            exportButtonDiv = looperParent.querySelector('#export-button');
-        clearButtonDiv.addEventListener('click', function(){
+        const clearButtonDiv = looperParent.querySelector('#clear-button');
+        const undoButtonDiv = looperParent.querySelector('#undo-button');
+        const redoButtonDiv = looperParent.querySelector('#redo-button');
+        const exportButtonDiv = looperParent.querySelector('#export-button');
+        clearButtonDiv?.addEventListener('click', function(){
             menu.hideSubmenu();
             controls.clear();
         });
-        undoButtonDiv.addEventListener('click', function(){
+        undoButtonDiv?.addEventListener('click', function(){
             menu.hideSubmenu();
             controls.undo();
         });
-        redoButtonDiv.addEventListener('click', function(){
+        redoButtonDiv?.addEventListener('click', function(){
             menu.hideSubmenu();
             controls.redo();
         });

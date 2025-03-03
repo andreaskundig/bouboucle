@@ -15,6 +15,7 @@ export type Menu = {
 
 export type Looper = {
     exportData: any;
+    clear: () => void,
     record: (config:any) => Promise<string>;
     getLastUpdateTime: () => number;
     setLineColor: (color: string) => void;
@@ -26,6 +27,7 @@ export type Looper = {
     getLifetime: () => number;
     setLifetime: (lifetime: number) => void;
     makeTimingDemo: (canvas: HTMLCanvasElement, timings: Timing[][], dimension: Dimension) => Looper;
+    getSpeed: () => number;
     setSpeed: (speed: number) => void;
     getDimension: () => Dimension;
 }

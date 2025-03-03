@@ -539,6 +539,7 @@ var makeLooper = function(opts){
         getDimension: getDimension,
         getTime: timeKeeper.getTime.bind(timeKeeper),
         setSpeed: timeKeeper.setSpeed.bind(timeKeeper),
+        getSpeed: timeKeeper.getSpeed.bind(timeKeeper),
         setBeat: timeKeeper.setBeat.bind(timeKeeper),
         getBeat: timeKeeper.getBeat.bind(timeKeeper),
         tapTempo: function(){ return timeKeeper.tapTempo(now()); },

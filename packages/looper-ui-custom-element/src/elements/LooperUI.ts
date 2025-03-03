@@ -16,6 +16,10 @@ import "./TimingButton.ts";
 import "./TimingDynamicContent.ts";
 import "./TimingMultiButton.ts";
 import "./TimingSimpleContent.ts";
+import "./ClearButton.ts";
+import "./UndoButton.ts";
+import "./RedoButton.ts";
+import "./PlayPauseButton.ts";
 import { TITLE_HEIGHT } from './Constants.ts';
 
 class LooperUI extends HTMLElement {
@@ -53,9 +57,6 @@ class LooperUI extends HTMLElement {
         const variant = UIVariant.default;
         {
             const buttonOrder = [
-                "clear-button",
-                "undo-button",
-                "redo-button",
                 "pause-button",
             ];
             const cssList = setupDomForVariant(variant, this.rootDiv, buttonOrder as any);
