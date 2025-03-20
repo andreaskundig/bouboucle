@@ -20,6 +20,7 @@ import "./ClearButton.ts";
 import "./UndoButton.ts";
 import "./RedoButton.ts";
 import "./PlayPauseButton.ts";
+import "./SpeedButtons.ts";
 import { TITLE_HEIGHT } from './Constants.ts';
 
 class LooperUI extends HTMLElement {
@@ -111,9 +112,10 @@ class LooperUI extends HTMLElement {
         const menuElement = this.rootDiv.querySelector(".menu") as HTMLElement;
 
         // let custom elements register properly 
-        for(const button of this.querySelectorAll('.buttons > *')){
+        for(const button of this.querySelectorAll('.buttons > *') as any){
             menuElement.appendChild(button);
-            (button as any).looper = this.looper;
+            button.looper = this.looper;
+            injectCSS(button.css);
             this.initializeModalContent(button, menu);
         }
 
