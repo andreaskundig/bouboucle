@@ -1,5 +1,3 @@
-import { MultiIconButton } from './MultiIconButton.ts';
-
 const CSS = `
     multi-icon-content{
         display: flex;

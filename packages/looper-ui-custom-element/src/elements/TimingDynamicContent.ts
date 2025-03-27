@@ -29,7 +29,7 @@ export class TimingDynamicContent extends HTMLElement {
         this.render(this, initial, pickTiming, looper, dimension);
     }
 
-    onIconSelected(e:any){
+    onIconSelected(){
         this.menu?.hideSubmenu();
     }
 
@@ -80,7 +80,7 @@ export class TimingDynamicContent extends HTMLElement {
                     activeDisplay = displayTd;
                     activeDisplay.classList.add('active');
                 }
-                buttonTd.addEventListener('click', function (e) {
+                buttonTd.addEventListener('click', function () {
                     if (activeDisplay) {
                         activeDisplay.classList.remove('active');
                     }
