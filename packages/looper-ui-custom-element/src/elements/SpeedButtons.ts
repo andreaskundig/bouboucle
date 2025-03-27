@@ -1,10 +1,14 @@
 import { playIcon, pauseIcon, forwardIcon, rewindIcon } from "./svgButtons";
 import { Looper } from "../types";
+import { MultiIconButton } from "./MultiIconButton";
 
 const CSS = `
 speed-buttons.speed-buttons {
     flex: 3;
     display: flex;
+}
+.speed-buttons multi-icon-button {
+    width: 100%;
 }
 `;
 class SpeedButtons extends HTMLElement {
@@ -19,7 +23,7 @@ class SpeedButtons extends HTMLElement {
 
     set looper(looper:Looper){
         this.#looper = looper;
-        this.#speed = looper.getSpeed();
+        this.speed = looper.getSpeed();
     }
 
     connectedCallback(){
@@ -36,22 +40,22 @@ class SpeedButtons extends HTMLElement {
     }
 
     #onSlowDown = () => {
-        console.log('slow',this);
+        this.#speedUp(-1);
     }
     
     #onPlayPause = () => {
-        console.log('pause',this);
+        this.#togglePause();
     };
     
     #onSpeedUp = () => {
-        console.log('speed', this);
+        this.#speedUp(1);
     };
 
     get slowDownButton(){
         return this.firstElementChild;
     }
-    get playPauseButton(){
-        return this.children[1];
+    get playPauseButton(): MultiIconButton{
+        return this.querySelector("multi-icon-button") as MultiIconButton;
     }
     get speedUpButton(){
         return this.lastElementChild;
@@ -60,7 +64,10 @@ class SpeedButtons extends HTMLElement {
     render(){
         this.innerHTML = `
             ${rewindIcon}
-            ${playIcon}
+            <multi-icon-button>
+                ${pauseIcon}
+                ${playIcon}
+            </multi-icon-button>
             ${forwardIcon}
         `;
         this.classList.add("speed-buttons"); 
@@ -76,13 +83,15 @@ class SpeedButtons extends HTMLElement {
         }
     }
     
+    get speed():number{
+        return this.#speed;
+    }
+
     set speed(speed:number){
         this.#speed = speed;
         this.looper.setSpeed(speed);
         const activeButton = this.determineActiveButton(speed);
-        const playPauseIcon = speed ? pauseIcon : playIcon;
-        const ppButton = document.createRange().createContextualFragment(playPauseIcon);
-        this.replaceChild(this.playPauseButton, ppButton);
+        this.playPauseButton.showOnlySelected(speed ? 0 : 1);
         for(const button of this.children){
             if (button === activeButton) {
                 button.classList.add('active');
@@ -92,6 +101,21 @@ class SpeedButtons extends HTMLElement {
         }
     }
 
+    #speedUp(direction: number) {
+        var increase = this.#speed === 0;
+        increase = increase || Math.sign(this.speed) == Math.sign(direction);
+        var delta;
+        if (Math.abs(this.speed) <= 0.125) {
+            delta = direction * 0.125; //slomo
+        } else {
+            delta = increase ? this.speed : this.speed * -0.5;
+        }
+        this.speed += delta;
+    }
+
+    #togglePause() {
+        this.speed = this.speed ? 0 : 1;
+    }
 }
 
 customElements.define("speed-buttons", SpeedButtons);
