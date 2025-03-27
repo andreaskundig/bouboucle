@@ -57,9 +57,7 @@ class LooperUI extends HTMLElement {
         // TODO take name of variant from attribute
         const variant = UIVariant.default;
         {
-            const buttonOrder = [
-                "pause-button",
-            ];
+            const buttonOrder:any = [];
             const cssList = setupDomForVariant(variant, this.rootDiv, buttonOrder as any);
             cssList.forEach(injectCSS);
         }

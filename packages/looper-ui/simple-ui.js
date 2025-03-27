@@ -303,13 +303,9 @@ var colors = [
                 set(speed);
             };
         setSpeed(speed);
-        pauseButtonDiv.addEventListener('click', togglePause);
-        if(rewindButtonDiv){
-            rewindButtonDiv.addEventListener('click', function(){incr(-1);});
-        }
-        if(forwardButtonDiv){
-            forwardButtonDiv.addEventListener('click', function(){incr(1);});
-        }
+        pauseButtonDiv?.addEventListener('click', togglePause);
+        rewindButtonDiv?.addEventListener('click', function () { incr(-1); });
+        forwardButtonDiv?.addEventListener('click', function () { incr(1); });
     },
 
     initControlButtons = function(controls, menu){
