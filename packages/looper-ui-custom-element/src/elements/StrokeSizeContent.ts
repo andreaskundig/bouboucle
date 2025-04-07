@@ -1,7 +1,7 @@
-import { Menu } from '../types.ts';
-import { MultiIconContent } from  "./MultiIconContent.ts";
-import "./MultiIconContent.ts";
-import { StrokeSizeButton } from './StrokeSizeButton.ts';
+import { Menu } from '../types';
+import { MultiIconContent } from  "./MultiIconContent";
+import "./MultiIconContent";
+import { StrokeSizeButton } from './StrokeSizeButton';
 import {
     stroke1Icon,
     stroke2Icon,

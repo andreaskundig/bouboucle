@@ -1,5 +1,5 @@
-import { Looper, Menu, Timing, Dimension } from '../types.ts';
-import { TITLE_HEIGHT } from './Constants.ts';
+import { Looper, Menu, Timing, Dimension } from '../types';
+import { TITLE_HEIGHT } from './Constants';
 
 export class TimingDynamicContent extends HTMLElement {
     menu?: Menu;

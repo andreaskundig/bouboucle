@@ -1,5 +1,5 @@
 import { doneIcon, eraseIcon } from "./svgButtons";
-import { Menu, Looper } from '../types.ts';
+import { Menu, Looper } from '../types';
 import { io } from '@andreaskundig/looper';
 
 const htmlContent = `

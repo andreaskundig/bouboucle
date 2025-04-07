@@ -1,7 +1,7 @@
-import { Menu } from '../types.ts';
-import { MultiIconContent } from  "./MultiIconContent.ts";
-import "./MultiIconContent.ts";
-import { TimingMultiButton } from './TimingMultiButton.ts';
+import { Menu } from '../types';
+import { MultiIconContent } from  "./MultiIconContent";
+import "./MultiIconContent";
+import { TimingMultiButton } from './TimingMultiButton';
 import {
     timing1Icon,
     timing2Icon,

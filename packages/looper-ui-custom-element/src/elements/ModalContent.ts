@@ -1,4 +1,4 @@
-import { Menu, Looper } from '../types.ts';
+import { Menu, Looper } from '../types';
 
 const CSS = `
 modal-content {

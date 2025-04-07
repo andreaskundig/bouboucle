@@ -1,4 +1,4 @@
-import { Looper } from '../types.ts';
+import { Looper } from '../types';
 import "./MultiIconButton";
 import { MultiIconButton } from "./MultiIconButton";
 import "./StrokeSizeContent";
