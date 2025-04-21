@@ -6,7 +6,6 @@ import "./ColorButton";
 import "./InfoButton";
 import "./ExportButton";
 import "./ColorContent";
-import "./ParentComponent";
 import "./InfoContent";
 import "./ExportContent";
 import "./LocalExportContent";
