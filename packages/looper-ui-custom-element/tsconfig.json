@@ -8,6 +8,9 @@
     "allowJs": true,
     "checkJs": false,
     "allowSyntheticDefaultImports": true,
+    /* we define the following paths so the dts plugin can resolve the references
+       see vite.config.js.
+    */
     "paths": {
       "@andreaskundig/looper": ["../looper/index.js"],
       "@andreaskundig/looper-ui": ["../looper-ui/index.js"],
