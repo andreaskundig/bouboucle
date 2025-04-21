@@ -8,8 +8,9 @@
     "allowJs": true,
     "checkJs": false,
     "allowSyntheticDefaultImports": true,
-    /* we define the following paths so the dts plugin can resolve the references
+    /* We define the following paths so the dts plugin can resolve the references
        see vite.config.js.
+       https://github.com/qmhc/vite-plugin-dts/issues/343
     */
     "paths": {
       "@andreaskundig/looper": ["../looper/index.js"],
