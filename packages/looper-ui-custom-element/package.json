@@ -6,7 +6,7 @@
   "scripts": {
     "dev": "vite",
     "build": "tsc && vite build && npm run types",
-    "types": "npx -p typescript tsc dist/looperUi.js --declaration --allowJs --emitDeclarationOnly --outDir dist",
+    "types": "npx -p typescript tsc dist/looperUi.js --lib es2020 --declaration --allowJs --emitDeclarationOnly --outDir dist",
     "preview": "vite preview"
   },
   "files": [
