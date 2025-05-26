@@ -21,14 +21,19 @@ import "./RedoButton";
 import "./PlayPauseButton";
 import "./SpeedButtons";
 import { TITLE_HEIGHT } from './Constants';
+import { Looper } from '../types';
 
-class LooperUI extends HTMLElement {
+export { type Looper, type Menu } from "../types";
+export {type ClearButton } from "./ClearButton"
+export { injectCSS } from "@andreaskundig/looper-ui";
+
+export class LooperUI extends HTMLElement {
     static observedAttributes = ["width", "height"];
 
     width = 0;
     height = 0;
 
-    looper: any;
+    looper?: Looper;
     
     rootDiv = document.createElement('div');
 
@@ -96,10 +101,10 @@ class LooperUI extends HTMLElement {
         }, dimension);
 
         this.looper = makeLooper(looperConfig as any);
-        this.looper.setLineColor('#E1BEE7')
-        this.looper.start();
+        this.looper?.setLineColor('#E1BEE7')
+        this.looper?.start();
         if (urlParams.gist) {
-            (io as any).gists.load(urlParams.gist, this.looper.importData);
+            (io as any).gists.load(urlParams.gist, this.looper?.importData);
         }
 
         const menu = makeMenu(this.rootDiv) as Menu;
@@ -149,7 +154,7 @@ class LooperUI extends HTMLElement {
             this.height = Number(newValue);
         }
         const dimension = this.dimensionCalc(this.width, this.height);
-        this.looper.scale(dimension);
+        this.looper?.scale(dimension);
     }
 
     // injectCSS(cssStr: string) {

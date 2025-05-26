@@ -30,8 +30,18 @@ export type Looper = {
     getSpeed: () => number;
     setSpeed: (speed: number) => void;
     getDimension: () => Dimension;
+    start: () => void;
+    scale: (dimension: Dimension) => void;
+    importData: (importData: ImportData) => void;
 }
 
+export type ImportData = {
+    width: number;
+    height: number;
+    speed: number;
+    foregroundUrl: string;
+    lineData: number[][];
+}
 
 export type Io = {
     gists: {

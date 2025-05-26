@@ -19,6 +19,7 @@
     <script type="module">
       // LooperUi must come after its children
       import "@andreaskundig/looper-custom-element";
+      import "./src/elements/MyInfoContent.ts";
       const looperUi = document.getElementById("looper-ui");
 
       window.addEventListener('resize', () => {
@@ -36,13 +37,13 @@
         <redo-button></redo-button>
         <play-pause-button></play-pause-button>
         <export-button data-for="export-content"></export-button>
-        <info-button data-for="info-content"></info-button>
+        <info-button data-for="my-info-content"></info-button>
       </div>
       <color-content></color-content>
       <stroke-size-content></stroke-size-content>
       <timing-simple-content></timing-simple-content>
       <timing-dynamic-content></timing-dynamic-content>
-      <info-content></info-content>
+      <my-info-content></my-info-content>
       <export-content></export-content>
     </looper-ui>
   </body>

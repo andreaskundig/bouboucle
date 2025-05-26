@@ -5,7 +5,7 @@
   "type": "module",
   "scripts": {
     "dev": "vite",
-    "build": "tsc && vite build && npm run types",
+    "build": "tsc && vite build",
     "types": "npx -p typescript tsc dist/looperUi.js --lib es2020 --declaration --allowJs --emitDeclarationOnly --outDir dist",
     "preview": "vite preview"
   },
@@ -18,7 +18,8 @@
   "dependencies": {
     "@andreaskundig/looper": "^1.0.0",
     "@andreaskundig/looper-ui": "^2.1.0",
-    "paper": "^0.12.17"
+    "paper": "^0.12.17",
+    "vite-plugin-dts": "^4.5.4"
   },
   "devDependencies": {
     "typescript": "^5.2.2",

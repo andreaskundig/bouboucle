@@ -1,7 +1,7 @@
 import { Looper } from "../types";
 import { eraseIcon } from "./svgButtons";
 
-class ClearButton extends HTMLElement {
+export class ClearButton extends HTMLElement {
     looper?: Looper;
 
     connectedCallback(){

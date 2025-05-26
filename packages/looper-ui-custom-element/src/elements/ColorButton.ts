@@ -1,7 +1,7 @@
 import { colorIcon } from "./svgButtons";
 
 
-class ColorButton extends HTMLElement {
+export class ColorButton extends HTMLElement {
 
     constructor() {
         super();

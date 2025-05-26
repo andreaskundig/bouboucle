@@ -1,6 +1,6 @@
 import { resolve } from 'path'
 import { defineConfig } from 'vite'
-// import dts from 'vite-plugin-dts';
+import dts from 'vite-plugin-dts';
 
 export default defineConfig({
   build: {
@@ -11,6 +11,11 @@ export default defineConfig({
       fileName: 'looperUi',
     },
   },
-  // plugins: [dts()],
-  plugins: [],
+  plugins: [dts({
+    include: ['src'],
+    staticImport: true,
+    insertTypesEntry: true,
+    rollupTypes: true,
+  })],
+  // plugins: [],
 })
