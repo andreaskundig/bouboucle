@@ -114,7 +114,10 @@ export class LooperUI extends HTMLElement {
         const menuElement = this.rootDiv.querySelector(".menu") as HTMLElement;
 
         // let custom elements register properly 
-        for(const button of this.querySelectorAll('.buttons > *') as any){
+        const buttons = [...this.querySelectorAll('.buttons > *')] as any[];
+        await Promise.all(buttons.map(b => customElements.whenDefined(b.localName)));
+        // b.tagName returns the upper case tag name.
+        for(const button of buttons){
             menuElement.appendChild(button);
             button.looper = this.looper;
             injectCSS(button.css);
@@ -125,7 +128,7 @@ export class LooperUI extends HTMLElement {
         this.appendChild(this.rootDiv);
     }
 
-    initializeModalContent(button: Element, menu: Menu){
+    async initializeModalContent(button: Element, menu: Menu){
         const modalContentSelector = (button as any).dataset.for;
         if(!modalContentSelector){
             return;
@@ -139,6 +142,7 @@ export class LooperUI extends HTMLElement {
             console.error(`unable to find modal '${modalContentSelector}'`);
         } else {
             modalDiv!.appendChild(modalContent);
+            await customElements.whenDefined(modalContent!.localName);
             menu.initShowSubmenu(modalDiv!, button, modalContent.beforeShow);
             modalContent.menu = menu;
             modalContent.button = button;

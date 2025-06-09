@@ -1,4 +1,4 @@
-import { Looper, Menu, injectCSS } from "@andreaskundig/looper-custom-element";
+import { Looper, Menu } from "@andreaskundig/looper-custom-element";
 
 import "./VideoCarousel";
 
@@ -16,7 +16,7 @@ const htmlContent = `
 </modal-content>
     `;
 
-const css = `
+const myCss = `
  my-info-content {
   .container {
     display: flex;
@@ -37,18 +37,16 @@ const css = `
 class MyInfoContent extends HTMLElement {
     looper?: Looper;
     menu?: Menu;
-    css?: string;
+    css = myCss;
 
     connectedCallback(){
         this.render(this);
         const modalC = this.querySelector('modal-content') as any;
-        this.css = modalC.css;
         modalC.menu = this.menu;
     }
 
     render(parent: HTMLElement){
         parent.innerHTML = htmlContent;
-        injectCSS(css);
     }
 }
 

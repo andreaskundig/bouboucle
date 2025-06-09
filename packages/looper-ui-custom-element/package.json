@@ -5,8 +5,7 @@
   "type": "module",
   "scripts": {
     "dev": "vite",
-    "build": "tsc && vite build",
-    "types": "npx -p typescript tsc dist/looperUi.js --lib es2020 --declaration --allowJs --emitDeclarationOnly --outDir dist",
+    "build": "tsc --noEmit && vite build",
     "preview": "vite preview"
   },
   "files": [

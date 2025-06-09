@@ -172,7 +172,7 @@ function addSlideListeners (slides:any, listener:any) {
 
 function addListener(element: any, event: any, listener: any) {
     element.addEventListener(event, listener, false);
-    return () => element.removeEventListener(listener);
+    return () => element.removeEventListener(event, listener);
 }
 
 
