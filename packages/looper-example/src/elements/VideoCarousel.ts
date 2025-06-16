@@ -1,4 +1,4 @@
-import { Menu, injectCSS } from "@andreaskundig/looper-custom-element";
+import { Menu } from "@andreaskundig/looper-custom-element";
 
 const slideVideos = [
     {
@@ -176,14 +176,14 @@ function addListener(element: any, event: any, listener: any) {
 }
 
 
-class VideoCarousel extends HTMLElement {
+export class VideoCarousel extends HTMLElement {
     menu?: Menu;
+    static css = carouselCss;
     
     removeListeners?: () => void;
     connectedCallback(){
         this.render();
         this.removeListeners = this.addListeners(this);
-
     }
     
     disconnectedCallback() {
@@ -194,7 +194,6 @@ class VideoCarousel extends HTMLElement {
 
     render(){
         this.innerHTML = carouselHtml;
-        injectCSS(carouselCss);
     }
 
     addListeners(parentElement:HTMLElement) {

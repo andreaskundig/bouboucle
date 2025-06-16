@@ -1,4 +1,5 @@
 import { Looper, Menu } from "@andreaskundig/looper-custom-element";
+import { VideoCarousel } from "./VideoCarousel";
 
 import "./VideoCarousel";
 
@@ -37,7 +38,7 @@ const myCss = `
 class MyInfoContent extends HTMLElement {
     looper?: Looper;
     menu?: Menu;
-    css = myCss;
+    css = myCss + VideoCarousel.css;
 
     connectedCallback(){
         this.render(this);
