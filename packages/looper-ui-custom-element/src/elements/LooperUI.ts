@@ -121,7 +121,7 @@ export class LooperUI extends HTMLElement {
             menuElement.appendChild(button);
             button.looper = this.looper;
             injectCSS(button.css);
-            this.initializeModalContent(button, menu);
+            await this.initializeModalContent(button, menu);
         }
 
         // Append the new div back to the parent
