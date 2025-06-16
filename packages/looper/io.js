@@ -161,8 +161,9 @@ io.gists = {
         }
     },
     
-    load: function(id, loadFunction){
-        const load = loadFunction;
+    load: function(id, loadFunction) {
+        // the code in eval calls a function named load.
+        globalThis['load'] = loadFunction;
         return this.loadContent(id).then(function(content){
             console.log(content);
             eval(content);
