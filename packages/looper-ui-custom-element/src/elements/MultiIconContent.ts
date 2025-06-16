@@ -1,5 +1,6 @@
 const CSS = `
     multi-icon-content{
+        line-height: 0;
         display: flex;
         
         div {

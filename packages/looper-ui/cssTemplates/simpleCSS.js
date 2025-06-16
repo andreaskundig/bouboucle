@@ -25,13 +25,16 @@ const simpleCSS = `
 #stroke-submenu > div, #timing-submenu > div.old {
     width: 16.66666%; /* 6 buttons */
 }
-.menu,
-.menu > div,
-.submenu,
-.submenu > div {
-    line-height: 0;
-}
     
+/*
+ .menu,
+ .menu > div,
+ .submenu,
+ .submenu > div {
+     line-height: 0;
+ }
+*/
+
 .menu > div > img,
 .menu svg,
 .menu > div > div,

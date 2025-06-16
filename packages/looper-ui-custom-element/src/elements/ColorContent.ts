@@ -17,6 +17,7 @@ const colors: string[][] = [
 const CSS = `
 color-content {
     background-color: #eeeeee;
+    line-height: 0;
 
     div > div {
         display: inline-block;
