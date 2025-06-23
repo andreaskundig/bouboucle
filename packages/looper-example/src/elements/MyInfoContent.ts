@@ -22,6 +22,8 @@ const myCss = `
   .container {
     display: flex;
     flex-direction: column;
+    align-content: center;
+    flex-wrap: wrap;
     /* WTF?? 
     justify-content: space-between;
     */

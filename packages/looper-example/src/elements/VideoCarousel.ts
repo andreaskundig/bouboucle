@@ -43,11 +43,11 @@ function makeSlideContent(slideVideo:any) {
     </div>
    `};
 
-const parentClass = 'slider-wrapper';
+const wrapperClass = 'slider-wrapper';
 const slideContainerClass = 'slides-container';
 const slideClass = 'slide';
 const carouselHtml = `
-<div class="${ parentClass }">
+<div class="${ wrapperClass }">
    <button class="slide-arrow slide-arrow-prev">
      &#8249;
    </button>
@@ -66,13 +66,13 @@ video-carousel {
     box-sizing: border-box;
  }
 
- .slider-wrapper {
+ .${ wrapperClass } {
      /* margin: 1rem; */
     position: relative;
      /* overflow: hidden; */
  }
 
- .slides-container {
+ .${ slideContainerClass } {
      /* height: calc(100vh - 2rem); */
     width: 100%;
     display: flex;
@@ -197,11 +197,12 @@ export class VideoCarousel extends HTMLElement {
     }
 
     addListeners(parentElement:HTMLElement) {
-        const slideParent = parentElement.querySelector(`.${parentClass}`) as Element;
+        const slideParent = parentElement.querySelector(`.${wrapperClass}`) as Element;
         const slides = slideParent!.querySelectorAll(`.${slideClass}`) as NodeListOf<Element>;
         const state = { slideIndex: 0 }
         // next button
-        const nextClick = () => {
+        const nextClick = (e:Event) => {
+            e.stopPropagation();
             const nextSlideIndex = (state.slideIndex + 1) % slides.length
             scrollToSlide(state, slideParent, nextSlideIndex);
         };
@@ -209,7 +210,8 @@ export class VideoCarousel extends HTMLElement {
         const rmNextL = addListener(arrowNext, 'click', nextClick);
 
         // previous button
-        const prevClick = () => {
+        const prevClick = (e:Event) => {
+            e.stopPropagation();
             const firstIdx = state.slideIndex == 0
             const nextSlideIndex = (firstIdx ? slides.length : state.slideIndex) - 1;
             scrollToSlide(state, slideParent, nextSlideIndex);
