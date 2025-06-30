@@ -37,7 +37,7 @@ function makeSlideContent(slideVideo:any) {
     <div class="${ slideClass }">
         <p class="text"><b>${slideVideo.title}</b></p>
         <video controls muted playsinline>
-            <source src="${ basePath }/videos/${ slideVideo.src }"}
+            <source src="${ basePath }/videos/${ slideVideo.src }"
                     type="video/mp4" />
         </video>
     </div>
