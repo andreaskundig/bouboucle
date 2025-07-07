@@ -43,18 +43,20 @@ function makeSlideContent(slideVideo:any) {
     </div>
    `};
 
-const wrapperClass = 'slider-wrapper';
-const slideContainerClass = 'slides-container';
+const trackClass = 'track';
+const containerClass = 'container';
 const slideClass = 'slide';
 const carouselHtml = `
-<div class="${ wrapperClass }">
+<div class="${ containerClass }">
+
    <button class="slide-arrow slide-arrow-prev">
      &#8249;
    </button>
    <button class="slide-arrow slide-arrow-next">
      &#8250;
    </button>
-   <div class="${ slideContainerClass }">
+   
+   <div class="${ trackClass }">
      ${ slideVideos.map(makeSlideContent).join('') }
    </div>
 </div>
@@ -62,25 +64,28 @@ const carouselHtml = `
 
 const carouselCss = `
 video-carousel {
- .slides-container * {
+  * {
     box-sizing: border-box;
- }
-
- .${ wrapperClass } {
-     /* margin: 1rem; */
-    position: relative;
-     /* overflow: hidden; */
- }
-
- .${ slideContainerClass } {
-     /* height: calc(100vh - 2rem); */
-    width: 100%;
-    display: flex;
+  }
+  
+ .${ containerClass } {
     overflow: hidden;
-    scroll-behavior: smooth;
-    list-style: none;
-     /* margin: 0 15px ; */
-    padding: 0;
+    width: 100%;
+    /*TODO make min/max size configurable as attribute ?*/
+    min-width: 320px;
+    max-width: 600px;
+ }
+
+ .${ trackClass } {
+     display: flex;
+ }
+
+ .${ slideClass } {
+    flex: 0 0 100%;
+    video {
+      object-fit: contain;
+      width: 100%;
+    }
  }
 
  .slide-arrow {
@@ -120,31 +125,10 @@ video-carousel {
     border-radius: 2rem 0 0 2rem;
  }
 
- .${ slideClass } {
-    width: 100%;
-    height: 100%;
-    flex: 1 0 100%;
- }
-
- .${ slideClass } > video {
-    width: 100%;
- }
 }
 
 `;
 
-function scrollToSlide(state:any, slideParent:any, index: any) {
-  const slideContainer =
-        slideParent.querySelector(`.${ slideContainerClass }`);
-  const slides = slideContainer.querySelectorAll(`.${ slideClass }`)
-  const currentSlide = slides[state.slideIndex];
-  console.log('scroll',state, slideContainer.scrollLeft, index)
-  console.log('sc',slideContainer);
-  console.log('sl', currentSlide.clientWidth);
-  const slideWidth = currentSlide.clientWidth;
-  state.slideIndex = index;
-  slideContainer.scrollLeft = state.slideIndex * slideWidth;
-}
 
 function playWhenVisible(entries:any[]) {
   entries.forEach(({ isIntersecting, target }) => {
@@ -180,6 +164,7 @@ export class VideoCarousel extends HTMLElement {
     menu?: Menu;
     static css = carouselCss;
     
+    slideIndex = 0;
     removeListeners?: () => void;
     connectedCallback(){
         this.render();
@@ -192,19 +177,30 @@ export class VideoCarousel extends HTMLElement {
         }
     }
 
+    scrollToSlide() {
+      const track = this.querySelector(`.${trackClass}`) as HTMLElement;
+      const slides = track.querySelectorAll(`.${slideClass}`);
+      const currentSlide = slides[this.slideIndex];
+      console.log('scroll', track.scrollLeft, this.slideIndex);
+      console.log('sc', track);
+      console.log('sl', currentSlide.clientWidth);
+      const slideWidth = currentSlide.clientWidth;
+      const offsetX = -this.slideIndex * slideWidth;
+      track.style = `transform: translateX(${offsetX}px)`;
+    }
+
     render(){
         this.innerHTML = carouselHtml;
     }
 
     addListeners(parentElement:HTMLElement) {
-        const slideParent = parentElement.querySelector(`.${wrapperClass}`) as Element;
+        const slideParent = parentElement.querySelector(`.${containerClass}`) as Element;
         const slides = slideParent!.querySelectorAll(`.${slideClass}`) as NodeListOf<Element>;
-        const state = { slideIndex: 0 }
         // next button
         const nextClick = (e:Event) => {
             e.stopPropagation();
-            const nextSlideIndex = (state.slideIndex + 1) % slides.length
-            scrollToSlide(state, slideParent, nextSlideIndex);
+            this.slideIndex = (this.slideIndex + 1) % slides.length
+            this.scrollToSlide();
         };
         const arrowNext = slideParent!.querySelector('.slide-arrow-next');
         const rmNextL = addListener(arrowNext, 'click', nextClick);
@@ -212,9 +208,9 @@ export class VideoCarousel extends HTMLElement {
         // previous button
         const prevClick = (e:Event) => {
             e.stopPropagation();
-            const firstIdx = state.slideIndex == 0
-            const nextSlideIndex = (firstIdx ? slides.length : state.slideIndex) - 1;
-            scrollToSlide(state, slideParent, nextSlideIndex);
+            const firstIdx = this.slideIndex == 0
+            this.slideIndex = (firstIdx ? slides.length : this.slideIndex) - 1;
+            this.scrollToSlide();
         }
         const arrowPrev = slideParent.querySelector('.slide-arrow-prev');
         const rmPrevL = addListener(arrowPrev, 'click', prevClick);
@@ -222,10 +218,14 @@ export class VideoCarousel extends HTMLElement {
         // slides
         const removeSlideListeners = addSlideListeners(slides, nextClick);
 
+        const handleResize = () => this.scrollToSlide();
+        window.addEventListener('resize', handleResize);
+
         return () => {
             rmPrevL();
             rmNextL();
             removeSlideListeners();
+            window.removeEventListener('resize', handleResize);
         };
     }
 }

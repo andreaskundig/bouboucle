@@ -7,20 +7,26 @@
     <title>Test to understand the structure of the carousel</title>
     <style>
         .slides-container{
-            display: flex;
-            flex-direction: row;
-            max-width: 600px;
+            width: 100%;
+            min-width: 320px;
+                max-width: 600px;
+
             border: dotted 1px black;
             overflow: hidden;
         }
 
+        .slides-track{
+            display: flex;
+        }
+
         .slide {
             border: dashed 1px red;
-            flex: 0 1 100%;
-        }
+            flex: 0 0 100%;
+          }
 
         video{
             object-fit: contain;
+            width:100%;
         }
     </style>
   </head>
@@ -34,7 +40,7 @@
      ›
    </button>
    <div class="slides-container">
-     
+     <div class="slides-track"> 
     <div class="slide">
         <p class="text"><b>Choisir la combinaison fréquence / durée de vie</b></p>
         <video controls="" muted="" playsinline="">
@@ -83,7 +89,7 @@
             <source src="/videos/chenille-clignotante.mp4" type="video/mp4">
         </video>
     </div>
-   
+   </div>  
    </div>
 </div>
   </body>
