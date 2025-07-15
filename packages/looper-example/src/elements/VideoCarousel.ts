@@ -44,6 +44,7 @@ function makeSlideContent(slideVideo:any) {
    `};
 
 const trackClass = 'track';
+const animateSlidesClass = 'animate-slides';
 const containerClass = 'container';
 const slideClass = 'slide';
 const carouselHtml = `
@@ -56,7 +57,7 @@ const carouselHtml = `
      &#8250;
    </button>
    
-   <div class="${ trackClass }">
+   <div class="${ trackClass } ${ animateSlidesClass }">
      ${ slideVideos.map(makeSlideContent).join('') }
    </div>
 </div>
@@ -74,10 +75,15 @@ video-carousel {
     /*TODO make min/max size configurable as attribute ?*/
     min-width: 320px;
     max-width: 600px;
+    position: relative;
  }
 
  .${ trackClass } {
      display: flex;
+ }
+
+ .${ animateSlidesClass }{
+    transition: transform 0.65s ease;
  }
 
  .${ slideClass } {
@@ -218,7 +224,13 @@ export class VideoCarousel extends HTMLElement {
         // slides
         const removeSlideListeners = addSlideListeners(slides, nextClick);
 
-        const handleResize = () => this.scrollToSlide();
+        const handleResize = () => {
+          const track = document.querySelector(`.${trackClass}`);
+          track?.classList.remove(animateSlidesClass);
+          this.scrollToSlide();
+          requestAnimationFrame(() => track?.classList.add(animateSlidesClass));
+        }
+
         window.addEventListener('resize', handleResize);
 
         return () => {

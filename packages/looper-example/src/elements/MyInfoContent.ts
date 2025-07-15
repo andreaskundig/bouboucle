@@ -15,7 +15,7 @@ const htmlContent = `
   </div>
 </div>
 </modal-content>
-    `;
+`;
 
 const myCss = `
  my-info-content {
@@ -24,15 +24,11 @@ const myCss = `
     flex-direction: column;
     align-content: center;
     flex-wrap: wrap;
-    /* WTF?? 
-    justify-content: space-between;
-    */
-        div {
-
-     max-width: 600px;
-        }
+    div {
+      max-width: 600px;
+      width: 100%;
+    }
   }
-    
  }
 `;
 
