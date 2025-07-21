@@ -5,6 +5,11 @@ const simpleCSS = `
   --font-size: 21px;
 }
 
+html {
+    font-family: var(--font-family);
+    font-size: var(--font-size);
+}
+
 .hidden { display: none !important;}
 .menu > div, #stroke-submenu > div, #timing-submenu > div {
     margin: 0;

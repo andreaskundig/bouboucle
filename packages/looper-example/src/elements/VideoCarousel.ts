@@ -45,7 +45,7 @@ function makeSlideContent(slideVideo:any) {
 
 const trackClass = 'track';
 const animateSlidesClass = 'animate-slides';
-const containerClass = 'container';
+const containerClass = 'carousel-container';
 const slideClass = 'slide';
 const carouselHtml = `
 <button class="slide-arrow slide-arrow-prev">&#8249;</button>
@@ -75,6 +75,7 @@ video-carousel {
       width: 100%;
       /*TODO make min/max size configurable as attribute ?*/
       min-width: 320px;
+      /* TODO make the width configurable by the user of this component */
       max-width: 600px;
     }
   }
@@ -115,8 +116,7 @@ video-carousel {
     z-index: 1;
  }
 
- .slide-arrow:hover,
- .slide-arrow:focus {
+ .slide-arrow:hover {
     opacity: 0.75;
     background-color: #bfbfbf;
  }
