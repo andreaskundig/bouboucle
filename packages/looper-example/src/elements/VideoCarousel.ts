@@ -48,35 +48,37 @@ const animateSlidesClass = 'animate-slides';
 const containerClass = 'container';
 const slideClass = 'slide';
 const carouselHtml = `
+<button class="slide-arrow slide-arrow-prev">&#8249;</button>
+<button class="slide-arrow slide-arrow-next">&#8250;</button>
 <div class="${ containerClass }">
-
-   <button class="slide-arrow slide-arrow-prev">
-     &#8249;
-   </button>
-   <button class="slide-arrow slide-arrow-next">
-     &#8250;
-   </button>
-   
-   <div class="${ trackClass } ${ animateSlidesClass }">
-     ${ slideVideos.map(makeSlideContent).join('') }
-   </div>
+  <div>
+    <div class="${ trackClass } ${ animateSlidesClass }">
+      ${ slideVideos.map(makeSlideContent).join('') }
+    </div>
+  </div>
 </div>
 ` ;
 
 const carouselCss = `
 video-carousel {
+  position: relative;
+  display: block;
+
   * {
     box-sizing: border-box;
   }
   
- .${ containerClass } {
-    overflow: hidden;
-    width: 100%;
-    /*TODO make min/max size configurable as attribute ?*/
-    min-width: 320px;
-    max-width: 600px;
-    position: relative;
- }
+  .${ containerClass }  {
+    padding: 0 15px;
+    > div {
+      overflow: hidden;
+      width: 100%;
+      /*TODO make min/max size configurable as attribute ?*/
+      min-width: 320px;
+      max-width: 600px;
+    }
+  }
+
 
  .${ trackClass } {
      display: flex;
@@ -208,7 +210,7 @@ export class VideoCarousel extends HTMLElement {
             this.slideIndex = (this.slideIndex + 1) % slides.length
             this.scrollToSlide();
         };
-        const arrowNext = slideParent!.querySelector('.slide-arrow-next');
+        const arrowNext = this!.querySelector('.slide-arrow-next');
         const rmNextL = addListener(arrowNext, 'click', nextClick);
 
         // previous button
@@ -218,7 +220,7 @@ export class VideoCarousel extends HTMLElement {
             this.slideIndex = (firstIdx ? slides.length : this.slideIndex) - 1;
             this.scrollToSlide();
         }
-        const arrowPrev = slideParent.querySelector('.slide-arrow-prev');
+        const arrowPrev = this.querySelector('.slide-arrow-prev');
         const rmPrevL = addListener(arrowPrev, 'click', prevClick);
 
         // slides
