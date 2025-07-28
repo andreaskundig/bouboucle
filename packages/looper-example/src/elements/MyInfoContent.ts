@@ -7,26 +7,24 @@ const htmlContent = `
 <modal-content>
 <div class="container">
   <div class="tutorial">
+    <h3>Tutoriel</h3>
     <video-carousel></video-carousel>
   </div>
   <div class="info">
-    <p><strong>Qu'est-ce que c'est que ça</strong></p>
-    <p>Bouboucle est un projet d'Andréas Kündig, Ivan Gulizia et David Hodgetts.</p>
+    <h3>À propos</strong></h3>
+    <p>Bouboucle est un projet 
+       d'<a href="https://andreaskundig.ch" target="_blank"
+          class="link">Andréas Kündig</a>, 
+       <a href="http://www.ivangulizia.com/" target="_blank"
+          class="link">Ivan Gulizia</a> 
+       et 
+       <a href="https://davidhodgetts.ch" target="_blank"
+          class="link">David Hodgetts</a>.
+    </p>
     <p>Visite la
         <a class="link"
             href="http://www.bouboucle.com/gallery.html">galerie</a>
-        d'animations créées spécialement pour notre exposition à BDFIL.</p>  
-    <p>Le site d'<a
-        href="https://andreaskundig.ch" target="_blank"
-        class="link">Andréas</a>
-        présente un certain intérêt paléontologique.</p>
-    <p>Celui d'<a
-        href="http://www.ivangulizia.com/" target="_blank"
-        class="link">Ivan</a> est impeccable et sera sûrement de retour bientôt.</p>
-    <p><a
-        href="https://davidhodgetts.ch" target="_blank"
-        class="link">David</a> a un vrai site
-        professionnel.</p>
+        d'animations créées pour notre exposition à BDFIL.</p>  
   </div>
 </div>
 </modal-content>
@@ -38,19 +36,19 @@ const myCss = `
     display: flex;
     flex-direction: column;
     align-content: center;
+    margin: auto;
     flex-wrap: wrap;
-    div {
+    padding: 0 15px;
+    max-width: 600px;
+    > div {
       width: 100%;
-      /* TODO avoid having to set here 
-         the width needed for the carousel */
-      max-width: 600px;
-
+      margin-bottom: 20px;
     }
-    .info{
-      padding: 0 15px;
-
+    .info > p {
+      padding-left: 15px;
     }
   }
+
  }
 `;
 

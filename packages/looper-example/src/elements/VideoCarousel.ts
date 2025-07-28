@@ -35,7 +35,7 @@ const basePath = '';
 function makeSlideContent(slideVideo:any) {
   return `
     <div class="${ slideClass }">
-        <p class="text"><b>${slideVideo.title}</b></p>
+        <div class="text">${slideVideo.title}</div>
         <video controls muted playsinline>
             <source src="${ basePath }/videos/${ slideVideo.src }"
                     type="video/mp4" />
@@ -73,10 +73,6 @@ video-carousel {
     > div {
       overflow: hidden;
       width: 100%;
-      /*TODO make min/max size configurable as attribute ?*/
-      min-width: 320px;
-      /* TODO make the width configurable by the user of this component */
-      max-width: 600px;
     }
   }
 
@@ -91,6 +87,9 @@ video-carousel {
 
  .${ slideClass } {
     flex: 0 0 100%;
+    .text {
+      margin-bottom: 10px;
+    }
     video {
       object-fit: contain;
       width: 100%;
