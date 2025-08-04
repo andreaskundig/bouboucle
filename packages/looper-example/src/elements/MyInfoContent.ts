@@ -1,7 +1,4 @@
-import { Looper, Menu } from "@andreaskundig/looper-custom-element";
-import { VideoCarousel } from "./VideoCarousel";
-
-import "./VideoCarousel";
+import { Looper, Menu, VideoCarousel } from "@andreaskundig/looper-custom-element";
 
 const htmlContent = `
 <modal-content>

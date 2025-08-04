@@ -1,4 +1,4 @@
-import { Menu } from "@andreaskundig/looper-custom-element";
+import { Menu } from "../types";
 
 const slideVideos = [
     {
@@ -193,7 +193,7 @@ export class VideoCarousel extends HTMLElement {
       console.log('sl', currentSlide.clientWidth);
       const slideWidth = currentSlide.clientWidth;
       const offsetX = -this.slideIndex * slideWidth;
-      track.style = `transform: translateX(${offsetX}px)`;
+      track.style.cssText = `transform: translateX(${offsetX}px)`;
     }
 
     render(){

@@ -26,6 +26,7 @@ import { Looper } from '../types';
 export { type Looper, type Menu } from "../types";
 export {type ClearButton } from "./ClearButton"
 export { injectCSS } from "@andreaskundig/looper-ui";
+export { VideoCarousel } from "./VideoCarousel";
 
 export class LooperUI extends HTMLElement {
     static observedAttributes = ["width", "height"];
