@@ -9,10 +9,12 @@
     "preview": "vite preview"
   },
   "files": [
-    "./dist/*"
+    "./dist/*",
+    "./assets/**/*"
   ],
   "exports": {
-    ".": "./dist/looperUi.js"
+    ".": "./dist/looperUi.js",
+    "./assets/*": "./assets/*"
   },
   "dependencies": {
     "@andreaskundig/looper": "^1.0.0",

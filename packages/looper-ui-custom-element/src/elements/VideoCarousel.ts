@@ -1,35 +1,5 @@
 import { Menu } from "../types";
 
-const slideVideos = [
-    {
-        title: 'Choisir la combinaison fréquence / durée de vie',
-        src: 'rythmes.mp4'
-    },
-    {
-        title: 'Dessiner plus vite allonge les traits',
-        src: 'vitesses.mp4'
-    },
-    {
-        title: 'Mettre en pause pour dessiner des traits qui clignotent',
-        src: 'explosion.mp4'
-    },
-    {
-        title: "Ceci est dessiné d'un seul long trait",
-        src: 'etoile.mp4'
-    },
-    {
-        title: 'Ceci est dessiné avec beaucoup de traits courts',
-        src: 'vagues-reculent.mp4'
-    },
-    {
-        title: 'Varier les couleurs',
-        src: 'arc-en-ciel.mp4'
-    },
-    {
-        title: 'Varier la vitesse de dessin',
-        src: 'chenille-clignotante.mp4'
-    }];
-
 const basePath = '';
 
 function makeSlideContent(slideVideo:any) {
@@ -47,18 +17,20 @@ const trackClass = 'track';
 const animateSlidesClass = 'animate-slides';
 const containerClass = 'carousel-container';
 const slideClass = 'slide';
-const carouselHtml = `
-<button class="slide-arrow slide-arrow-prev">&#8249;</button>
-<button class="slide-arrow slide-arrow-next">&#8250;</button>
-<div class="${ containerClass }">
-  <div>
-    <div class="${ trackClass } ${ animateSlidesClass }">
-      ${ slideVideos.map(makeSlideContent).join('') }
-    </div>
-  </div>
-</div>
-` ;
 
+function makeCarouselHtml(slides:any[]){
+  return `
+    <button class="slide-arrow slide-arrow-prev">&#8249;</button>
+    <button class="slide-arrow slide-arrow-next">&#8250;</button>
+    <div class="${ containerClass }">
+      <div>
+        <div class="${ trackClass } ${ animateSlidesClass }">
+          ${ slides.map(makeSlideContent).join('') }
+        </div>
+      </div>
+    </div>
+    ` ;
+}  
 const carouselCss = `
 video-carousel {
   position: relative;
@@ -170,19 +142,15 @@ function addListener(element: any, event: any, listener: any) {
 export class VideoCarousel extends HTMLElement {
     menu?: Menu;
     static css = carouselCss;
+
+    #slides:any[] = []
+    set slides(slides:any[]){
+      this.#slides = slides;
+      this.render();
+    }
     
     slideIndex = 0;
     removeListeners?: () => void;
-    connectedCallback(){
-        this.render();
-        this.removeListeners = this.addListeners(this);
-    }
-    
-    disconnectedCallback() {
-        if (this.removeListeners) {
-            this.removeListeners();
-        }
-    }
 
     scrollToSlide() {
       const track = this.querySelector(`.${trackClass}`) as HTMLElement;
@@ -197,7 +165,11 @@ export class VideoCarousel extends HTMLElement {
     }
 
     render(){
-        this.innerHTML = carouselHtml;
+      if (this.removeListeners){
+        this.removeListeners();
+      }
+      this.innerHTML = makeCarouselHtml(this.#slides);
+      this.removeListeners = this.addListeners(this);
     }
 
     addListeners(parentElement:HTMLElement) {
