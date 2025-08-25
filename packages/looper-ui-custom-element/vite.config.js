@@ -9,6 +9,7 @@ export default defineConfig({
       name: 'LooperUi',
       // the proper extensions will be added
       fileName: 'looperUi',
+      emitAsset: true,
     },
   },
   plugins: [dts({

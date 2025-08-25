@@ -14,7 +14,7 @@ import chenilleClignotanteMp4 from "@andreaskundig/looper-custom-element/assets/
 const slides = [
     {
         title: 'Choisir la combinaison fréquence / durée de vie',
-        src: rythmesMp4,
+        src: "/images/videos/rythmes.mp4",
     },
     {
         title: 'Dessiner plus vite allonge les traits',

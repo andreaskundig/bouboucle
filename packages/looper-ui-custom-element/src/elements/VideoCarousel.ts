@@ -1,13 +1,11 @@
 import { Menu } from "../types";
 
-const basePath = '';
-
 function makeSlideContent(slideVideo:any) {
   return `
     <div class="${ slideClass }">
         <div class="text">${slideVideo.title}</div>
         <video controls muted playsinline>
-            <source src="${ basePath }/videos/${ slideVideo.src }"
+            <source src="${ slideVideo.src }"
                     type="video/mp4" />
         </video>
     </div>
