@@ -29,26 +29,16 @@ const htmlContent = `
 </modal-content>
     `;
 
-const myCss = `
- my-info-content {
-    .info > p {
-      padding-left: 15px;
-    }
-  }
-
- }
-`;
-
-
 class MyInfoContent extends HTMLElement {
     looper?: Looper;
     menu?: Menu;
     css?: string;
 
-    connectedCallback(){
+    async connectedCallback(){
         this.render(this);
+        await customElements.whenDefined("modal-content");
         const modalC = this.querySelector('modal-content') as any;
-        this.css = myCss + modalC.css;
+        this.css = modalC.css;
         modalC.menu = this.menu;
     }
 
