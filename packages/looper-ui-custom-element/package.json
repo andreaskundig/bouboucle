@@ -5,7 +5,7 @@
   "type": "module",
   "scripts": {
     "dev": "vite",
-    "build": "tsc --noEmit && vite build && cp -r ./src/videos/ ./dist/",
+    "build": "tsc --noEmit && vite build && cp -r ./public/videos/ ./dist/",
     "preview": "vite preview"
   },
   "files": [

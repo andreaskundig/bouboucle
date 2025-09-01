@@ -1,43 +1,34 @@
 import { Looper, Menu } from "../types";
 import { VideoCarousel } from "./VideoCarousel";
 
-import rythmesMp4 from "../videos/rythmes.mp4";
-import vitessesMp4 from "../videos/vitesses.mp4";
-import explosionMp4 from "../videos/explosion.mp4";
-import etoileMp4 from "../videos/etoile.mp4";
-import vaguesReculentMp4 from "../videos/vagues-reculent.mp4";
-import arcEnCielMp4 from "../videos/arc-en-ciel.mp4";
-import chenilleClignotanteMp4 from "../videos/chenille-clignotante.mp4";
-
-
 const slides = [
     {
         title: 'Choisir la combinaison fréquence / durée de vie',
-        src: rythmesMp4,
+        src: "/videos/rythmes.mp4",
     },
     {
         title: 'Dessiner plus vite allonge les traits',
-        src: vitessesMp4,
+        src: "/videos/vitesses.mp4",
     },
     {
         title: 'Mettre en pause pour dessiner des traits qui clignotent',
-        src: explosionMp4,
+        src: "/videos/explosion.mp4",
     },
     {
         title: "Ceci est dessiné d'un seul long trait",
-        src: etoileMp4,
+        src: "/videos/etoile.mp4",
     },
     {
         title: 'Ceci est dessiné avec beaucoup de traits courts',
-        src: vaguesReculentMp4,
+        src: "/videos/vagues-reculent.mp4",
     },
     {
         title: 'Varier les couleurs',
-        src: arcEnCielMp4,
+        src: "/videos/arc-en-ciel.mp4",
     },
     {
         title: 'Varier la vitesse de dessin',
-        src: chenilleClignotanteMp4,
+        src: "/videos/chenille-clignotante.mp4",
     }
 ];
 
