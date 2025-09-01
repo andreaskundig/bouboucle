@@ -3,7 +3,6 @@ import { Menu, Looper } from '@andreaskundig/looper-custom-element';
 const htmlContent = `
 <modal-content>
     <div class="info">
-    <div class="info-fr">
     <p>Bouboucle est un projet
         d'Andréas Kündig et Ivan Gulizia.</p>
     <p>Publie ton animation sur notre
@@ -19,8 +18,6 @@ const htmlContent = `
         href="ancien.html"  target="_blank"
         class="link">ancienne version</a>
         plus compliquée est toujours disponible.</p>
-    </div>
-    <div class="info-fr">
     <p>Ça fait plus que 10 ans qu'<a
         href="http://www.andreaskundig.ch" target="_blank"
         class="link">Andréas</a>
@@ -29,10 +26,18 @@ const htmlContent = `
         href="http://www.ivangulizia.com/" target="_blank"
         class="link">Ivan</a> est impeccable.</p>
     </div>
-    </div>
 </modal-content>
     `;
 
+const myCss = `
+ my-info-content {
+    .info > p {
+      padding-left: 15px;
+    }
+  }
+
+ }
+`;
 
 
 class MyInfoContent extends HTMLElement {
@@ -43,7 +48,7 @@ class MyInfoContent extends HTMLElement {
     connectedCallback(){
         this.render(this);
         const modalC = this.querySelector('modal-content') as any;
-        this.css = modalC.css;
+        this.css = myCss + modalC.css;
         modalC.menu = this.menu;
     }
 
