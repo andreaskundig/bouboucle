@@ -4,33 +4,33 @@ import { VideoCarousel } from "./VideoCarousel";
 const slides = [
     {
         title: 'Choisir la combinaison fréquence / durée de vie',
-        src: "/videos/rythmes.mp4",
+        src: "./videos/rythmes.mp4"
     },
     {
         title: 'Dessiner plus vite allonge les traits',
-        src: "/videos/vitesses.mp4",
+        src: "./videos/vitesses.mp4",
     },
     {
         title: 'Mettre en pause pour dessiner des traits qui clignotent',
-        src: "/videos/explosion.mp4",
+        src: "./videos/explosion.mp4",
     },
     {
         title: "Ceci est dessiné d'un seul long trait",
-        src: "/videos/etoile.mp4",
+        src: "./videos/etoile.mp4",
     },
     {
         title: 'Ceci est dessiné avec beaucoup de traits courts',
-        src: "/videos/vagues-reculent.mp4",
+        src: "./videos/vagues-reculent.mp4",
     },
     {
         title: 'Varier les couleurs',
-        src: "/videos/arc-en-ciel.mp4",
+        src: "./videos/arc-en-ciel.mp4",
     },
     {
         title: 'Varier la vitesse de dessin',
-        src: "/videos/chenille-clignotante.mp4",
+        src: "./videos/chenille-clignotante.mp4",
     }
-];
+].map(s => ({title: s.title, src: (import.meta as any).resolve(s.src)}));
 
 const htmlContent = `
 <modal-content>
