@@ -1,11 +1,11 @@
 {
   "name": "@andreaskundig/looper-custom-element",
   "private": false,
-  "version": "0.0.5",
+  "version": "0.0.6",
   "type": "module",
   "scripts": {
     "dev": "vite",
-    "build": "tsc --noEmit && vite build && mkdirp ./dist/elements/ && cp -r ./src/elements/videos/ ./dist/elements/videos",
+    "build": "tsc --noEmit && vite build && mkdirp ./dist/elements/ && cp -r ./src/elements/videos ./dist/videos",
     "preview": "vite preview"
   },
   "files": [
