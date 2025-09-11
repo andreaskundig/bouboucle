@@ -12,14 +12,14 @@
 
 <body>
   <script type="module">
-    import 'https://cdn.jsdelivr.net/npm/@andreaskundig/looper-custom-element@0.0.6/dist/looperUi.js';
+    import 'https://cdn.jsdelivr.net/npm/@andreaskundig/looper-custom-element@0.0.7/dist/looperUi.js';
     // LooperUi must come after its children
     const looperUi = document.getElementById("looper-ui");
 
-    window.addEventListener('resize', () => {
-      looperUi.setAttribute("width", window.innerWidth.toString());
-      looperUi.setAttribute("height", window.innerHeight.toString());
-    });
+    // window.addEventListener('resize', () => {
+    //   looperUi.setAttribute("width", window.innerWidth.toString());
+    //   looperUi.setAttribute("height", window.innerHeight.toString());
+    // });
   </script>
   <looper-ui id="looper-ui">
     <div class="buttons">

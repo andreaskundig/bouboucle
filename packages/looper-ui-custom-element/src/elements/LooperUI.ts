@@ -135,6 +135,22 @@ export class LooperUI extends HTMLElement {
 
         // Append the new div back to the parent
         this.appendChild(this.rootDiv);
+
+
+        // TODO create a sibling div to canvas-parent 
+        // give it css that makes it fill the desired height
+        // (client like cdn.html can decide if its the viewport or half the viewport)
+        // observe it's size with the resize observer.
+        const resizeObserver = new ResizeObserver((entries) => {
+            for(const entry of entries){
+                const rect = entry.target.getBoundingClientRect()
+                const dimension = this.dimensionCalc(rect.width, rect.height);
+                console.log('obs',rect.width, rect.height, dimension);
+
+                this.looper?.scale(dimension);
+            }
+        });
+        resizeObserver.observe(this.rootDiv);
     }
 
     async initializeModalContent(button: Element, menu: Menu){
@@ -167,7 +183,8 @@ export class LooperUI extends HTMLElement {
             this.height = Number(newValue);
         }
         const dimension = this.dimensionCalc(this.width, this.height);
-        this.looper?.scale(dimension);
+        console.log(this.width, dimension);
+//        this.looper?.scale(dimension);
     }
 
     // injectCSS(cssStr: string) {

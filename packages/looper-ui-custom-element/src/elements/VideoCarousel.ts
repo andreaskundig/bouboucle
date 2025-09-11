@@ -154,9 +154,9 @@ export class VideoCarousel extends HTMLElement {
       const track = this.querySelector(`.${trackClass}`) as HTMLElement;
       const slides = track.querySelectorAll(`.${slideClass}`);
       const currentSlide = slides[this.slideIndex];
-      console.log('scroll', track.scrollLeft, this.slideIndex);
-      console.log('sc', track);
-      console.log('sl', currentSlide.clientWidth);
+      // console.log('scroll', track.scrollLeft, this.slideIndex);
+      // console.log('sc', track);
+      // console.log('sl', currentSlide.clientWidth);
       const slideWidth = currentSlide.clientWidth;
       const offsetX = -this.slideIndex * slideWidth;
       track.style.cssText = `transform: translateX(${offsetX}px)`;
