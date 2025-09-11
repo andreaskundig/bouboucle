@@ -28,6 +28,12 @@ export {type ClearButton } from "./ClearButton"
 export { injectCSS } from "@andreaskundig/looper-ui";
 export { VideoCarousel } from "./VideoCarousel";
 
+const rootDivCss = `
+    .root {
+        position: relative;
+    }
+`;
+
 export class LooperUI extends HTMLElement {
     static observedAttributes = ["width", "height"];
 
@@ -57,6 +63,7 @@ export class LooperUI extends HTMLElement {
     }
 
     async connectedCallback() {
+        this.rootDiv.classList.add("root");
 
         // 1 choose ui variant and setup dom accordingly
         // TODO take name of variant from attribute
@@ -64,6 +71,7 @@ export class LooperUI extends HTMLElement {
         {
             const buttonOrder:any = [];
             const cssList = setupDomForVariant(variant, this.rootDiv, buttonOrder as any);
+            cssList.push(rootDivCss);
             cssList.forEach(injectCSS);
         }
         // this.setupDomForVariant(variant, this.rootDiv);
