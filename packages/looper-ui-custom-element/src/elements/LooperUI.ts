@@ -28,10 +28,17 @@ export {type ClearButton } from "./ClearButton"
 export { injectCSS } from "@andreaskundig/looper-ui";
 export { VideoCarousel } from "./VideoCarousel";
 
-const rootDivCss = `
+const looperUiCss = `
+  looper-ui {
+    display: block;
+    width: 100%;
+    height: 100%;
     .root {
         position: relative;
+        width: 100%;
+        height: 100%;
     }
+}
 `;
 
 export class LooperUI extends HTMLElement {
@@ -71,7 +78,7 @@ export class LooperUI extends HTMLElement {
         {
             const buttonOrder:any = [];
             const cssList = setupDomForVariant(variant, this.rootDiv, buttonOrder as any);
-            cssList.push(rootDivCss);
+            cssList.push(looperUiCss);
             cssList.forEach(injectCSS);
         }
         // this.setupDomForVariant(variant, this.rootDiv);
@@ -92,9 +99,15 @@ export class LooperUI extends HTMLElement {
         //     ratio = eval(configRatioCode);
         // }
 
-        this.width = window.innerWidth;
-        this.height = window.innerHeight;
         
+        const rect = this.getBoundingClientRect()
+        // this.width = window.innerWidth;
+        // this.height = window.innerHeight;
+        this.width = rect.width;
+        this.height = rect.height;
+
+
+
         //const dimension = this.dimensionCalc(this.width, this.height, ratio);
         const dimension = this.dimensionCalc(this.width, this.height);
 
@@ -107,10 +120,7 @@ export class LooperUI extends HTMLElement {
             paper: paper,
         };
 
-        const looperConfig = Object.assign({
-            graphics: graphics,
-            backgroundColor: backgroundColor,
-        }, dimension);
+        const looperConfig = {...dimension, graphics, backgroundColor};
 
         this.looper = makeLooper(looperConfig as any);
         this.looper?.setLineColor('#E1BEE7')
@@ -140,21 +150,14 @@ export class LooperUI extends HTMLElement {
         // Append the new div back to the parent
         this.appendChild(this.rootDiv);
 
-
-        // TODO create a sibling div to canvas-parent 
-        // give it css that makes it fill the desired height
-        // (client like cdn.html can decide if its the viewport or half the viewport)
-        // observe it's size with the resize observer.
         const resizeObserver = new ResizeObserver((entries) => {
             for(const entry of entries){
                 const rect = entry.target.getBoundingClientRect()
                 const dimension = this.dimensionCalc(rect.width, rect.height);
-                console.log('obs',rect.width, rect.height, dimension);
-
                 this.looper?.scale(dimension);
             }
         });
-        //resizeObserver.observe(this.rootDiv);
+        resizeObserver.observe(this);
     }
 
     async initializeModalContent(button: Element, menu: Menu){
@@ -187,8 +190,8 @@ export class LooperUI extends HTMLElement {
             this.height = Number(newValue);
         }
         const dimension = this.dimensionCalc(this.width, this.height);
-        console.log(this.width, dimension);
-        this.looper?.scale(dimension);
+        //console.log(this.width, dimension);
+        //this.looper?.scale(dimension);
     }
 
     // injectCSS(cssStr: string) {
