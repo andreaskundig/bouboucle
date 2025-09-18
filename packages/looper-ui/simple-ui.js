@@ -394,12 +394,12 @@ export function makeMenu(overlayParent) {
             hideSubmenu();
             activeMenuButton = button;
             activeMenuButton.classList.add('active');
-            overlayDiv.classList.remove('hidden');
+            //overlayDiv.classList.remove('hidden');
             selectedSubmenuDiv = submenuDiv;
             selectedSubmenuDiv.classList.remove('hidden');
         },
         hideSubmenu = function(){
-            overlayDiv.classList.add('hidden');
+            //overlayDiv.classList.add('hidden');
             if(activeMenuButton){
                 activeMenuButton.classList.remove('active');
             }

@@ -22,6 +22,7 @@ html {
 .menu {
     display:flex;
     width: 100%;
+    background-color: white;
     > * {
         flex:1;
     }
