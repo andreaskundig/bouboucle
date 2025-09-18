@@ -5,12 +5,15 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
     <title>Vite + TS</title>
     <style>
-      /*body {
+     body {
+      /*
           margin:0;
           position: fixed;
           width: 100%;
           height: 100%;
-      }*/
+          */
+          background-color: brown;
+      }
     </style>
   </head>
   <body>
@@ -21,6 +24,7 @@
       const looperUi = document.getElementById("looper-ui");
 
       window.addEventListener('resize', () => {
+         if (!looperUi) return;
         looperUi.setAttribute("width", window.innerWidth.toString());
         looperUi.setAttribute("height", window.innerHeight.toString());
       });

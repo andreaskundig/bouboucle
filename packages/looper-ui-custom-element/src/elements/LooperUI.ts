@@ -81,6 +81,8 @@ export class LooperUI extends HTMLElement {
         // const configRatioCode = urlParams.ratio || null;
         const backgroundColor = '#ffffff';
         const showGallery = !!urlParams.gallery;
+
+        // TODO restore foreground image feature.
         // const fullSizeGif = !!urlParams['big-gif'];
         // const foregroundUrl = 'Coloriage_Assiette-polaire.png';
         // const foregroundImage = await loadImage(foregroundUrl);
@@ -93,7 +95,8 @@ export class LooperUI extends HTMLElement {
         this.width = window.innerWidth;
         this.height = window.innerHeight;
         
-        const dimension = this.dimensionCalc(this.width, this.height, ratio);
+        //const dimension = this.dimensionCalc(this.width, this.height, ratio);
+        const dimension = this.dimensionCalc(this.width, this.height);
 
         // const canvas = document.createElement('canvas');
         const canvas = this.rootDiv.querySelector('#main-canvas');
@@ -132,6 +135,7 @@ export class LooperUI extends HTMLElement {
             injectCSS(button.css);
             await this.initializeModalContent(button, menu);
         }
+        this.querySelector('.buttons')?.remove();
 
         // Append the new div back to the parent
         this.appendChild(this.rootDiv);
@@ -150,7 +154,7 @@ export class LooperUI extends HTMLElement {
                 this.looper?.scale(dimension);
             }
         });
-        resizeObserver.observe(this.rootDiv);
+        //resizeObserver.observe(this.rootDiv);
     }
 
     async initializeModalContent(button: Element, menu: Menu){
@@ -184,7 +188,7 @@ export class LooperUI extends HTMLElement {
         }
         const dimension = this.dimensionCalc(this.width, this.height);
         console.log(this.width, dimension);
-//        this.looper?.scale(dimension);
+        this.looper?.scale(dimension);
     }
 
     // injectCSS(cssStr: string) {
