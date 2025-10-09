@@ -21,13 +21,8 @@
       import "./src/elements/MyInfoContent.ts";
       import "@andreaskundig/looper-custom-element";
       const looperUi = document.getElementById("looper-ui");
-
-      window.addEventListener('resize', () => {
-        looperUi.setAttribute("width", window.innerWidth.toString());
-        looperUi.setAttribute("height", window.innerHeight.toString());
-      });
     </script>
-    <looper-ui id="looper-ui">
+    <looper-ui id="looper-ui" ratio="1.056" foreground-url="/images/Coloriage_Assiette-polaire.png">
       <div class="buttons">
         <color-button data-for="color-content"></color-button>
         <stroke-size-button data-for="stroke-size-content"></stroke-size-button>
