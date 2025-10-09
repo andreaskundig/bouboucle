@@ -201,8 +201,8 @@ export class VideoCarousel extends HTMLElement {
           this.scrollToSlide();
           requestAnimationFrame(() => track?.classList.add(animateSlidesClass));
         }
-
-        window.addEventListener('resize', handleResize);
+        const resizeObserver = new ResizeObserver(handleResize);
+        resizeObserver.observe(this);
 
         return () => {
             rmPrevL();
