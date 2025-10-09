@@ -53,6 +53,8 @@ html {
     padding: 20px 0px;
     border-bottom: 1px solid #dddddd;
     border-right: 1px solid #dddddd;
+    /* TODO make this work */
+    box-sizing: border-box;
 }
 .active {
     background-color:#dddddd;
