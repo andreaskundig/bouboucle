@@ -42,13 +42,10 @@ const looperUiCss = `
 `;
 
 export class LooperUI extends HTMLElement {
-    static observedAttributes = ["width", "height"];
-
-    width = 0;
-    height = 0;
-
-    looper?: Looper;
-    
+    static observedAttributes = ["foreground-url", "ratio"];
+    foregroundUrl?: string;
+    ratio?: number;
+    looper?: Looper; 
     rootDiv = document.createElement('div');
 
     constructor() {
@@ -89,38 +86,20 @@ export class LooperUI extends HTMLElement {
         const backgroundColor = '#ffffff';
         const showGallery = !!urlParams.gallery;
 
-        // TODO restore foreground image feature.
         // const fullSizeGif = !!urlParams['big-gif'];
-        // const foregroundUrl = 'Coloriage_Assiette-polaire.png';
-        // const foregroundImage = await loadImage(foregroundUrl);
-        // let ratio =  foregroundImage.naturalWidth / foregroundImage.naturalHeight;
-        let ratio = 4 / 3;
-        // if (configRatioCode) {
-        //     ratio = eval(configRatioCode);
-        // }
-
         
         const rect = this.getBoundingClientRect()
-        // this.width = window.innerWidth;
-        // this.height = window.innerHeight;
-        this.width = rect.width;
-        this.height = rect.height;
+        const dimension = this.dimensionCalc(rect.width, rect.height, this.ratio);
 
-
-
-        //const dimension = this.dimensionCalc(this.width, this.height, ratio);
-        const dimension = this.dimensionCalc(this.width, this.height);
-
-        // const canvas = document.createElement('canvas');
         const canvas = this.rootDiv.querySelector('#main-canvas');
-        /// this.rootDiv.appendChild(canvas!);
 
         const graphics = {
             canvas: canvas,
             paper: paper,
         };
 
-        const looperConfig = {...dimension, graphics, backgroundColor};
+        const looperConfig = {...dimension, graphics, backgroundColor, 
+            foregroundUrl: this.foregroundUrl };
 
         this.looper = makeLooper(looperConfig as any);
         this.looper?.setLineColor('#E1BEE7')
@@ -184,21 +163,13 @@ export class LooperUI extends HTMLElement {
     }
 
     attributeChangedCallback(name:string, _oldValue:string, newValue:string) {
-        if(name == 'width'){
-            this.width = Number(newValue);
-        }else if(name == 'height'){
-            this.height = Number(newValue);
+        if(name == 'foreground-url'){
+            this.foregroundUrl = newValue;
         }
-        const dimension = this.dimensionCalc(this.width, this.height);
-        //console.log(this.width, dimension);
-        //this.looper?.scale(dimension);
+        if(name == 'ratio'){
+            this.ratio = eval(newValue);
+        }
     }
-
-    // injectCSS(cssStr: string) {
-    //     const sheet = new CSSStyleSheet();
-    //     sheet.replaceSync(cssStr); 
-    //     this.shadowRoot!.adoptedStyleSheets.push(sheet); 
-    // }
 }
 
 

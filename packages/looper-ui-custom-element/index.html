@@ -23,12 +23,6 @@
       // LooperUi must come after its children
       import "./src/elements/LooperUI.ts";
       const looperUi = document.getElementById("looper-ui");
-
-      window.addEventListener('resize', () => {
-         if (!looperUi) return;
-        looperUi.setAttribute("width", window.innerWidth.toString());
-        looperUi.setAttribute("height", window.innerHeight.toString());
-      });
     </script>
 
     <looper-ui id="looper-ui">
