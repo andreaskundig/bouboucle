@@ -53,16 +53,10 @@ export class LooperUI extends HTMLElement {
     }
 
     dimensionCalc(width: number, height: number, ratio?: number){
-        const targetHeight = height - TITLE_HEIGHT;
-        const result:any = {
-            width,
-            height: targetHeight,
-        };
-
+        const result:any = { width, height };
         if(ratio){
             result.ratio = ratio;
         }
-
         return result;
     }
 
@@ -88,8 +82,9 @@ export class LooperUI extends HTMLElement {
 
         // const fullSizeGif = !!urlParams['big-gif'];
         
-        const rect = this.getBoundingClientRect()
-        const dimension = this.dimensionCalc(rect.width, rect.height, this.ratio);
+        const rect = this.getBoundingClientRect();
+        const dimension = this.dimensionCalc(rect.width, 
+                          rect.height - TITLE_HEIGHT, this.ratio);
 
         const canvas = this.rootDiv.querySelector('#main-canvas');
 
@@ -131,7 +126,9 @@ export class LooperUI extends HTMLElement {
 
         const resizeObserver = new ResizeObserver((entries) => {
             for(const entry of entries){
-                const rect = entry.target.getBoundingClientRect()
+//                const rect = entry.target.getBoundingClientRect()
+                const canvasParent =  entry.target.querySelector('#canvas-parent');
+                const rect = canvasParent!.getBoundingClientRect();
                 const dimension = this.dimensionCalc(rect.width, rect.height);
                 this.looper?.scale(dimension);
             }
