@@ -56,6 +56,7 @@ export class StrokeSizeButton extends HTMLElement {
                 ${stroke6Icon}
             </multi-icon-button>
         `;
+        this.classList.add('looper-menu-button');
     }
 }
 

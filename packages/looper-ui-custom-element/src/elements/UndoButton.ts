@@ -8,6 +8,7 @@ class UndoButton extends HTMLElement {
     connectedCallback(){
         this.innerHTML = undoIcon;
         this.addEventListener('click', this.#clickHandler);
+        this.classList.add('looper-menu-button');
     }
     
     disconnectedCallback(){

@@ -8,6 +8,7 @@ const simpleCSS = `
 html {
     font-family: var(--font-family);
     font-size: var(--font-size);
+    box-sizing: border-box;
 }
 
 .hidden { display: none !important;}
@@ -31,15 +32,6 @@ html {
 #stroke-submenu > div, #timing-submenu > div.old {
     width: 16.66666%; /* 6 buttons */
 }
-    
-/*
- .menu,
- .menu > div,
- .submenu,
- .submenu > div {
-     line-height: 0;
- }
-*/
 
 .menu > div > img,
 .menu svg,
@@ -50,12 +42,15 @@ html {
  {
     width: 100%;
     height: 39px;
-    padding: 20px 0px;
+}
+.menu > .looper-menu-button {
     border-bottom: 1px solid #dddddd;
     border-right: 1px solid #dddddd;
-    /* TODO make this work */
-    box-sizing: border-box;
 }
+.looper-menu-button > svg {
+    margin: 17.5px 0px;
+}
+
 .active {
     background-color:#dddddd;
 }

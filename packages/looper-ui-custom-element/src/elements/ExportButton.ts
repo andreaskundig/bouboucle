@@ -12,6 +12,7 @@ class ExportButton extends HTMLElement {
    
     render(parent: HTMLElement){
         parent.innerHTML = doneIcon;
+        this.classList.add('looper-menu-button');
     }
 }
 

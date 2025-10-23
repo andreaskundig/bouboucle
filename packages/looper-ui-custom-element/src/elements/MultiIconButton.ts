@@ -6,6 +6,7 @@ export class MultiIconButton extends HTMLElement {
 
     connectedCallback(){
         this.showOnlySelected(0);
+        this.classList.add('looper-menu-button');
     }
     
     attributeChangedCallback(name:string, _oldValue: string, newValue: string) {

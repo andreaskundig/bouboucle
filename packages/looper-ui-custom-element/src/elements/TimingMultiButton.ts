@@ -69,6 +69,7 @@ export class TimingMultiButton extends HTMLElement {
                 ${timing6Icon}
             </multi-icon-button>
         `;
+        this.classList.add('looper-menu-button');
     }
 }
 

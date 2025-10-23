@@ -24,6 +24,7 @@ export class ColorButton extends HTMLElement {
     
     render(parent: HTMLElement){
         parent.innerHTML = colorIcon;
+        this.classList.add('looper-menu-button');
     }
 }
 

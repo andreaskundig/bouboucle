@@ -40,6 +40,7 @@ class PlayPauseButton extends HTMLElement {
                 ${playIcon}
             </multi-icon-button>
         `;
+        this.classList.add('looper-menu-button');
     }
 }
 

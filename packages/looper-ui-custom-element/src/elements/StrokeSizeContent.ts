@@ -41,6 +41,7 @@ export class StrokeSizeContent extends HTMLElement {
             stroke5Icon,
             stroke6Icon,
         ], initialSelectedIndex);
+        this.classList.add('looper-menu-button');
     }
 
     onIconSelected(e:any){

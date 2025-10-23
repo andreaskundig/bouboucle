@@ -7,6 +7,7 @@ export class ClearButton extends HTMLElement {
     connectedCallback(){
         this.innerHTML = eraseIcon;
         this.addEventListener('click', this.#clickHandler);
+        this.classList.add('looper-menu-button');        
     }
 
     disconnectedCallback(){

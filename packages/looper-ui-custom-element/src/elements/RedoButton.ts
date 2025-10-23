@@ -8,6 +8,7 @@ class RedoButton extends HTMLElement {
     connectedCallback(){
         this.innerHTML = redoIcon;
         this.addEventListener('click', this.#clickHandler);
+        this.classList.add('looper-menu-button');
     }
     
     disconnectedCallback(){

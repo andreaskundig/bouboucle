@@ -71,6 +71,7 @@ class SpeedButtons extends HTMLElement {
             ${forwardIcon}
         `;
         this.classList.add("speed-buttons"); 
+        this.classList.add('looper-menu-button');
     }
 
     determineActiveButton(speed:number){
