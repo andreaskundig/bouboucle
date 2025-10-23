@@ -6,10 +6,11 @@ const CSS = `
 speed-buttons.speed-buttons {
     flex: 3;
     display: flex;
+    * {
+        flex: 1;
+    }
 }
-.speed-buttons multi-icon-button {
-    width: 100%;
-}
+ 
 `;
 class SpeedButtons extends HTMLElement {
 
@@ -63,15 +64,18 @@ class SpeedButtons extends HTMLElement {
 
     render(){
         this.innerHTML = `
-            ${rewindIcon}
+
+            <div class="looper-menu-button">${rewindIcon}</div>
             <multi-icon-button>
                 ${pauseIcon}
                 ${playIcon}
             </multi-icon-button>
-            ${forwardIcon}
+            <div class="looper-menu-button">${forwardIcon}</div>
         `;
         this.classList.add("speed-buttons"); 
         this.classList.add('looper-menu-button');
+        // TODO split out styles we need here out of menu
+        this.classList.add('menu');
     }
 
     determineActiveButton(speed:number){

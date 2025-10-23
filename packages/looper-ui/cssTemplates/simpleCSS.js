@@ -24,6 +24,7 @@ html {
     display:flex;
     width: 100%;
     background-color: white;
+    height: 80px;
     > * {
         flex:1;
     }
@@ -46,11 +47,10 @@ html {
 .menu > .looper-menu-button {
     border-bottom: 1px solid #dddddd;
     border-right: 1px solid #dddddd;
+    display: flex;
+    align-items: center;
+    justify-content: center;
 }
-.looper-menu-button > svg {
-    margin: 17.5px 0px;
-}
-
 .active {
     background-color:#dddddd;
 }
