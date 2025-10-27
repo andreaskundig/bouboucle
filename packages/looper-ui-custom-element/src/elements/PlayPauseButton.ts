@@ -1,8 +1,9 @@
 import { Looper } from "../types";
 import { playIcon, pauseIcon } from "./svgButtons";
-import { MultiIconButton } from "./MultiIconButton";
+import { MultiIconButton, CSS as mibCSS } from "./MultiIconButton";
 
 class PlayPauseButton extends HTMLElement {
+    css = mibCSS;
     looper?: Looper;
 
     connectedCallback(){

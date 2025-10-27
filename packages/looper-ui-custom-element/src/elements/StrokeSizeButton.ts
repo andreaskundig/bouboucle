@@ -1,6 +1,6 @@
 import { Looper } from '../types';
 import "./MultiIconButton";
-import { MultiIconButton } from "./MultiIconButton";
+import { MultiIconButton, CSS as mibCSS  } from "./MultiIconButton";
 import "./StrokeSizeContent";
 import {
     stroke1Icon,
@@ -15,6 +15,7 @@ import {
 const strokeWidths = [2, 7, 20, 50, 200, 600];
 
 export class StrokeSizeButton extends HTMLElement {
+    css = mibCSS;
     #looper!: Looper;
 
     get looper(): Looper{

@@ -1,6 +1,6 @@
 import { Looper } from '../types';
 import "./MultiIconButton";
-import { MultiIconButton } from "./MultiIconButton";
+import { MultiIconButton, CSS as mibCSS } from "./MultiIconButton";
 import "./StrokeSizeContent";
 import {
     timing1Icon,
@@ -16,6 +16,7 @@ const timings = [[0.05,0.5],[0.25,1],[0.5,2],[1,2],[1,4],[2,1]]
 const initialTimingIndex = 2;                
 
 export class TimingMultiButton extends HTMLElement {
+    css = mibCSS;
     #looper!: Looper;
 
     get looper(): Looper{

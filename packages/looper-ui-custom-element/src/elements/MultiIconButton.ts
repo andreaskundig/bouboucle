@@ -1,5 +1,13 @@
+export const CSS = `
+    multi-icon-button {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+}`;
+
 export class MultiIconButton extends HTMLElement {
-    
+    css = CSS
+
     static get observedAttributes() { 
         return ['selected']; 
     }

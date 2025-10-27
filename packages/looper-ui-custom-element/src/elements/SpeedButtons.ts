@@ -1,6 +1,6 @@
 import { playIcon, pauseIcon, forwardIcon, rewindIcon } from "./svgButtons";
 import { Looper } from "../types";
-import { MultiIconButton } from "./MultiIconButton";
+import { MultiIconButton, CSS as mibCSS } from "./MultiIconButton";
 
 const CSS = `
 speed-buttons.speed-buttons {
@@ -10,7 +10,7 @@ speed-buttons.speed-buttons {
         flex: 1;
     }
 }
- 
+${mibCSS}
 `;
 class SpeedButtons extends HTMLElement {
 
@@ -64,7 +64,6 @@ class SpeedButtons extends HTMLElement {
 
     render(){
         this.innerHTML = `
-
             <div class="looper-menu-button">${rewindIcon}</div>
             <multi-icon-button>
                 ${pauseIcon}
