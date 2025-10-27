@@ -73,8 +73,6 @@ class SpeedButtons extends HTMLElement {
             <div class="looper-menu-button">${forwardIcon}</div>
         `;
         this.classList.add("speed-buttons"); 
-        this.classList.add('looper-menu-button');
-        // TODO split out styles we need here out of menu
         this.classList.add('menu');
     }
 
