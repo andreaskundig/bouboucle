@@ -1,4 +1,3 @@
-
 const simpleCSS = `
 :root {
   --font-family: Arial, Helvetica, sans-serif;

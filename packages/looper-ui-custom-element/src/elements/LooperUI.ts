@@ -1,5 +1,6 @@
-import { makeSimpleUi, makeMenu, UIVariant, setupDomForVariant, injectCSS } from '@andreaskundig/looper-ui';
+import { makeSimpleUi, makeMenu, injectCSS, setupDom, UIVariantCode } from '@andreaskundig/looper-ui';
 import { io, urlUtils, makeLooper } from '@andreaskundig/looper';
+import  simpleCSS from '../simpleCSS';
 import { Menu } from '../types';
 import paper from 'paper/dist/paper-core';
 import "./ColorButton";
@@ -64,8 +65,9 @@ export class LooperUI extends HTMLElement {
         this.rootDiv.classList.add("root");
 
         // 1 choose ui variant and setup dom accordingly
-        // TODO take name of variant from attribute
-        const variant = UIVariant.default;
+        // TODO take name of variant from attribute,
+        // or get rid of it entirely, that probably would work
+        const variant:UIVariant = "default";
         {
             const buttonOrder:any = [];
             const cssList = setupDomForVariant(variant, this.rootDiv, buttonOrder as any);
@@ -168,6 +170,21 @@ export class LooperUI extends HTMLElement {
         }
     }
 }
+
+type UIVariant = "default" | "local" | "advanced";
+
+export function setupDomForVariant(uiVariant: UIVariant,
+                                   targetDomElement=document.body,
+                                   buttonOrder=undefined): [string] | [string, string]
+{
+    if(!(uiVariant in UIVariantCode)){
+        throw new Error(`unsupported UI variant ${uiVariant}`)
+    }
+    const { css, html } = UIVariantCode[uiVariant];
+    setupDom(targetDomElement, html, buttonOrder);
+    return css ? [simpleCSS, css ] : [simpleCSS] ;
+}
+
 
 
 customElements.define("looper-ui", LooperUI);
