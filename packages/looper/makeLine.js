@@ -1,5 +1,6 @@
 export default function makeLine(color, strokeWidth, lifetime, start, beat, multiPrd,
-                        paperScope){
+                        paperScope //TODO replace with generic graphics object
+                    ){
     var data = {start: start,
                 last: null,
                 beat: beat || 2000,
@@ -10,8 +11,12 @@ export default function makeLine(color, strokeWidth, lifetime, start, beat, mult
                 multiPeriod: isNaN(multiPrd) ? 'auto' : parseFloat(multiPrd),
                 strokeWidth: strokeWidth || 2,
                 times: []},
+        // TODO examine relation between drawingpaths and reference path
+        // in order to hide them behind a simple interface
+        // reference path probably only serves to hold points and smooth the path
+        // in our webgl implementation it would be just an array of segments.        
         drawingPaths = [],
-        referencePath = new paperScope.Path({visible: false});
+        referencePath = new paperScope.Path({visible: false}); 
 
     var makePath = function(data){
         return new paperScope.Path({strokeColor: data.color,
@@ -20,18 +25,18 @@ export default function makeLine(color, strokeWidth, lifetime, start, beat, mult
                                     strokeCap: 'round'});
     };
 
-    var simplifyAndSmooth = function(referencePath){
-        var offsets = referencePath.segments.map(function(s){
-            return referencePath.getOffsetOf(s.point);
-        });
-        referencePath.simplify();
-        var points = offsets.map(function(o){
-            return referencePath.getPointAt(o);
-        }).filter(function(p){return p;});
-        referencePath.removeSegments();
-        referencePath.addSegments(points);
-        referencePath.smooth({ type: 'catmull-rom'});
-    };
+    // var simplifyAndSmooth = function(referencePath){
+    //     var offsets = referencePath.segments.map(function(s){
+    //         return referencePath.getOffsetOf(s.point);
+    //     });
+    //     referencePath.simplify();
+    //     var points = offsets.map(function(o){
+    //         return referencePath.getPointAt(o);
+    //     }).filter(function(p){return p;});
+    //     referencePath.removeSegments();
+    //     referencePath.addSegments(points);
+    //     referencePath.smooth({ type: 'catmull-rom'});
+    // };
 
     var setLast = function(dateNow){
         // The end time of the line, after the last point is drawn.
