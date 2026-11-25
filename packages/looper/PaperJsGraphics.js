@@ -1,12 +1,37 @@
 
+// for future reference
+// var simplifyAndSmooth = function(referencePath){
+//     var offsets = referencePath.segments.map(function(s){
+//         return referencePath.getOffsetOf(s.point);
+//     });
+//     referencePath.simplify();
+//     var points = offsets.map(function(o){
+//         return referencePath.getPointAt(o);
+//     }).filter(function(p){return p;});
+//     referencePath.removeSegments();
+//     referencePath.addSegments(points);
+//     referencePath.smooth({ type: 'catmull-rom'});
+// };
+
 export class PaperJsGraphics {
+  constructor(graphicsConfig){
+    this.paperScope = new graphicsConfig.paper.PaperScope()
+    this.paperScope.setup(graphicsConfig.canvas);
+  }
+
+  makeLine(color, strokeWidth){
+    return new PaperJsLine(this.paperScope, color, strokeWidth);
+  }
+}
+
+export class PaperJsLine {
 
   constructor(paperScope, color, strokeWidth){
     this.paperScope = paperScope;
     this.referencePath = new paperScope.Path({visible: false});
     this.drawingPaths = [];
-    this.color = color;
-    this.strokeWidth = strokeWidth
+    this.color = color ?? "black";
+    this.strokeWidth = strokeWidth ?? 2;
   }
 
   #makePath(){

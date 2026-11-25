@@ -2,6 +2,7 @@ import makeTimeKeeper from './makeTimeKeeper.js';
 import makeLine from './makeLine.js';
 import actions from './actions.js';
 import io from './io.js';
+import { PaperJsLine, PaperJsGraphics } from './PaperJsGraphics.js';
 
 // TODO: complete jsdoc
 /**
@@ -22,7 +23,7 @@ var makeLooper = function(opts){
     // all the rest is information that can be discarded/recalculated at reload
     var state, currentLine, lineColor, strokeWidth, lifetime, 
         timeKeeper = makeTimeKeeper(), periods, beatListener, 
-        graphics, stopped, ps, background, availableWidth, availableHeight,
+        graphicsConfig, graphics, stopped, ps, background, availableWidth, availableHeight,
         toCallInNextFrame = [], foreground;
     
     var init = function(thePeriods, dimension, foregroundUrl){
@@ -43,8 +44,8 @@ var makeLooper = function(opts){
     
     var exportData = function(){
         var data = {
-            width: state.width || graphics.canvas.width / ps.view.pixelRatio,
-            height: state.height || graphics.canvas.height / ps.view.pixelRatio,
+            width: state.width || graphicsConfig.canvas.width / ps.view.pixelRatio,
+            height: state.height || graphicsConfig.canvas.height / ps.view.pixelRatio,
             speed: timeKeeper.getSpeed(),
             foregroundUrl: state.foregroundUrl,
             lineData: state.lines.map(function(l){
@@ -81,8 +82,7 @@ var makeLooper = function(opts){
         }
         setBackground(data.backgroundColor);
         data.lineData.forEach(function(dt){
-            var line = makeLine(dt.color, dt.strokeWidth, dt.lifetime,
-                                now(), dt.beat, dt.multiPeriod, ps);
+            var line = makeLine(dt.color, dt.strokeWidth, dt.lifetime, now(), dt.beat, dt.multiPeriod, graphics);
             line.importData(dt);
             state.lines.push(line);
         });
@@ -123,7 +123,7 @@ var makeLooper = function(opts){
                                now,
                                timeKeeper.getBeat(),
                                multiPeriod, 
-                               ps);
+                               graphics);
         actions.do(addLineAction(currentLine));
         return currentLine;
     };
@@ -135,7 +135,8 @@ var makeLooper = function(opts){
         currentLine = null;
     };
     var installListeners = function(){
-        var t = new ps.Tool();
+        // var t = new ps.Tool();
+        var t = new graphics.paperScope.Tool();
         t.minDistance = 3;
         t.onMouseDown = function(e){ 
             newLine(now(), periods); 
@@ -191,19 +192,20 @@ var makeLooper = function(opts){
         var theBeat = config.beat,
             multiPeriod = config.multiPeriod,
             dimension = reconcileDimensions(config, config.ratio);
-        graphics = config.graphics;
+        graphicsConfig = config.graphics;
         init(multiPeriod, dimension, config.foregroundUrl);
         timeKeeper.reset();
         timeKeeper.setBeat(theBeat || 2000);
-        ps = new graphics.paper.PaperScope();
-        ps.setup(graphics.canvas);
+        // ps = new graphicsConfig.paper.PaperScope();
+        // ps.setup(graphicsConfig.canvas);
+        graphics = new PaperJsGraphics(graphicsConfig);
         if(!config.readonly){
             installListeners();
         }
         // colored background to make gif exporting work
         setBackground(config.backgroundColor);
         scale(dimension);
-        ps.view.draw();
+        graphics.paperScope.view.draw();
     };
     
     /** Scale the animation to maximum size within available width & height.*/ 
@@ -217,13 +219,13 @@ var makeLooper = function(opts){
                                   height: availableHeight},
                                   getRatio())
         const zoom = width / state.width;
-        ps.activate();
-        ps.view.zoom = zoom;
-        var center = new graphics.paper.Point(
-            graphics.canvas.width/2/zoom / ps.view.pixelRatio,
-            graphics.canvas.height/2/zoom / ps.view.pixelRatio);
-        ps.view.center = center;
-        ps.view.viewSize = new graphics.paper.Size(width, height);
+        graphics.paperScope.activate();
+        graphics.paperScope.view.zoom = zoom;
+        var center = new graphicsConfig.paper.Point(
+            graphicsConfig.canvas.width/2/zoom / graphics.paperScope.view.pixelRatio,
+            graphicsConfig.canvas.height/2/zoom / graphics.paperScope.view.pixelRatio);
+        graphics.paperScope.view.center = center;
+        graphics.paperScope.view.viewSize = new graphicsConfig.paper.Size(width, height);
         if(background){
             setBackground(background.fillColor);
         }
@@ -235,9 +237,10 @@ var makeLooper = function(opts){
     }
 
     var setBackground = function(backgroundColor){
-        ps.activate();
+        // ps.activate();
+        graphics.paperScope.activate();
         if(backgroundColor){
-            var newBackground = new ps.Path.Rectangle(ps.view.bounds);
+            var newBackground = new graphics.paperScope.Path.Rectangle(graphics.paperScope.view.bounds);
             newBackground.fillColor = backgroundColor;
             if(background){
                 background.replaceWith(newBackground);
@@ -259,7 +262,7 @@ var makeLooper = function(opts){
         }
         redrawAllLines(time)
         foreground?.bringToFront();
-        ps.view.draw();
+        graphics.paperScope.view.draw();
     };
 
     var redrawAllLines = function(time){
@@ -294,7 +297,7 @@ var makeLooper = function(opts){
 
     var start = async function(){
         console.log('start');
-        ps.activate();
+        graphics.paperScope.activate();
         stopped = false;
         var render = async function(){
             var time = timeKeeper.getTime(Date.now());
@@ -336,7 +339,7 @@ var makeLooper = function(opts){
     };
 
     var makeGifRecorder = function(){
-        return io.makeGifRecorder(graphics.canvas);
+        return io.makeGifRecorder(graphicsConfig.canvas);
     };
 
     var findShortestLoop = function(){
@@ -352,9 +355,9 @@ var makeLooper = function(opts){
             fullSize = opts.fullSize,
             rGraphics = opts.graphics,
             // max 6 seconds
-            targetWidth = fullSize ? graphics.canvas.width : 500,
+            targetWidth = fullSize ? graphicsConfig.canvas.width : 500,
             recWidth = targetWidth / ps.view.pixelRatio,
-            recHeight = recWidth / graphics.canvas.width*graphics.canvas.height,
+            recHeight = recWidth / graphicsConfig.canvas.width*graphicsConfig.canvas.height,
             recordingStart = timeKeeper.getTime(Date.now()),
             //https://en.wikipedia.org/wiki/GIF#Animated_GIF
             // Delay for each frame is specified in hundredths of a second.
@@ -365,7 +368,7 @@ var makeLooper = function(opts){
             interval = timeKeeper.convertFromRealTime(realInterval);
         if(!rGraphics){
             rGraphics = {canvas: document.getElementById('hidden-canvas'),
-                        paper: graphics.paper};
+                        paper: graphicsConfig.paper};
         }
         var looperOpts = {graphics: rGraphics,
                           width: recWidth,
@@ -482,7 +485,7 @@ var makeLooper = function(opts){
                     backgroundColor: false,
                     lineData: []},
             looper = makeLooper({graphics: {canvas:canvas,
-                                            paper: graphics.paper},
+                                            paper: graphicsConfig.paper},
                                  backgroundColor: false,
                                  width: data.width, height: data.height});
         timings.forEach(function(row,rowIndex){

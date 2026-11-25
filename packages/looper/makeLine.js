@@ -1,41 +1,15 @@
-import { PaperJsGraphics } from "./PaperJsGraphics.js";
-
-export default function makeLine(color, strokeWidth, lifetime, start, beat, multiPrd,
-                        paperScope //TODO replace with generic graphics object
-                    ){
+export default function makeLine(color, strokeWidth, lifetime, start, beat, multiPrd, graphics) {
     var data = {start: start,
                 last: null,
                 beat: beat || 2000,
                 lifetime: lifetime || 500,
-                color: color || 'black',
+                color: color || "black",
+                strokeWidth: strokeWidth || 2,
                 //TODO accept only values 'auto', 'repeat' and falsy
                 // currently we have 'auto', 1 and falsy
                 multiPeriod: isNaN(multiPrd) ? 'auto' : parseFloat(multiPrd),
-                strokeWidth: strokeWidth || 2,
-                times: []};
-
-    var graphics = new PaperJsGraphics(paperScope, data.color, data.strokeWidth);
-
-    var makePath = function(data){
-        return new paperScope.Path({strokeColor: data.color,
-                                    strokeWidth: data.strokeWidth,
-                                    strokeJoin: 'round',
-                                    strokeCap: 'round'});
-    };
-
-    // var simplifyAndSmooth = function(referencePath){
-    //     var offsets = referencePath.segments.map(function(s){
-    //         return referencePath.getOffsetOf(s.point);
-    //     });
-    //     referencePath.simplify();
-    //     var points = offsets.map(function(o){
-    //         return referencePath.getPointAt(o);
-    //     }).filter(function(p){return p;});
-    //     referencePath.removeSegments();
-    //     referencePath.addSegments(points);
-    //     referencePath.smooth({ type: 'catmull-rom'});
-    // };
-
+                times: [] };
+    var gLine = graphics.makeLine(data.color, data.strokeWidth);
     var setLast = function(dateNow){
         // The end time of the line, after the last point is drawn.
         // This is important when there is no interval duration,
@@ -147,8 +121,8 @@ export default function makeLine(color, strokeWidth, lifetime, start, beat, mult
         },
         redraw: function(dateNow){
             // Segments in our sense: groups of points
-            var visibleSegments = this.periodSegmentsToShow(graphics.getPoints(), dateNow);
-            graphics.updateLines(visibleSegments)
+            var visibleSegments = this.periodSegmentsToShow(gLine.getPoints(), dateNow);
+            gLine.updateLines(visibleSegments)
         },
         pushSegment: function(point, dateNow){
             var birth = dateNow - data.start;
@@ -159,30 +133,30 @@ export default function makeLine(color, strokeWidth, lifetime, start, beat, mult
                 birth -= lifetime;
             }
             data.times.push(birth);
-            graphics.addPoint(point)
+            gLine.addPoint(point)
             
-            graphics.smoothLastSegment()
+            gLine.smoothLastSegment()
         },
         completeCreation: function(absoluteLast){
             setLast(absoluteLast);
-            graphics.smoothAllSegments_v1() // check difference with v2
+            gLine.smoothAllSegments_v1() // check difference with v2
 
             // unfortunately, this is too expensive. Try a worker?
             //https://developer.mozilla.org/en-US/docs/Web/API/Worker
             //simplifyAndSmooth(referencePath);
         },
         clear: function(){
-            graphics.clear();
+            gLine.clear();
         },
         exportData: function(){
-            return graphics.exportPoints();
+            return gLine.exportPoints();
         },
         importData: function(newdata){
             this.clear();
 
-            graphics.importPoints(newdata.segments);
+            gLine.importPoints(newdata.segments);
 
-            graphics.smoothAllSegments_v2(); // check difference with v1
+            gLine.smoothAllSegments_v2(); // check difference with v1
             
             //don't delete the segments, they might be needed for redo
             // but why was this even deleted in the first place?
