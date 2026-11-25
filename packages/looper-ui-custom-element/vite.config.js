@@ -12,6 +12,9 @@ export default defineConfig({
       fileName: 'looperUi',
     },
   },
+  server: {
+    port: 8000,
+  },
   plugins: [dts({
     include: ['src'],
     staticImport: true,

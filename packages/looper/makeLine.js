@@ -1,3 +1,5 @@
+import { PaperJsGraphics } from "./PaperJsGraphics.js";
+
 export default function makeLine(color, strokeWidth, lifetime, start, beat, multiPrd,
                         paperScope //TODO replace with generic graphics object
                     ){
@@ -10,12 +12,9 @@ export default function makeLine(color, strokeWidth, lifetime, start, beat, mult
                 // currently we have 'auto', 1 and falsy
                 multiPeriod: isNaN(multiPrd) ? 'auto' : parseFloat(multiPrd),
                 strokeWidth: strokeWidth || 2,
-                times: []},
+                times: []};
 
-        //TODO graphics = new PaperJsGraphics(paperScope); 
-        // TODO start by replacing these two and access them as graphics.drawingPath and .referencePath
-        drawingPaths = [],
-        referencePath = new paperScope.Path({visible: false}); 
+    var graphics = new PaperJsGraphics(paperScope);
 
     var makePath = function(data){
         return new paperScope.Path({strokeColor: data.color,
@@ -149,15 +148,15 @@ export default function makeLine(color, strokeWidth, lifetime, start, beat, mult
         redraw: function(dateNow){
             // TODO graphics.getReferencePoints() // because a paper.js segment is a point for us
             // Segments in our sense: groups of points
-            var visibleSegments = this.periodSegmentsToShow(referencePath.segments, dateNow);
+            var visibleSegments = this.periodSegmentsToShow(graphics.referencePath.segments, dateNow);
             // TODO graphics.updateLines(visibleSegments)
             visibleSegments.forEach(function(segs, i){
-                if(drawingPaths.length < i + 1){
+                if(graphics.drawingPaths.length < i + 1){
                     // create a path without segments
-                    drawingPaths.push(makePath(data));
-                    // drawingPaths[drawingPaths.length - 1].blendMode='multiply';
+                    graphics.drawingPaths.push(makePath(data));
+                    // graphics.drawingPaths[graphics.drawingPaths.length - 1].blendMode='multiply';
                 }
-                var path = drawingPaths[i];
+                var path = graphics.drawingPaths[i];
                 path.removeSegments();
                 path.addSegments(segs);
                 //path needs two segments to display one point :-P
@@ -176,16 +175,16 @@ export default function makeLine(color, strokeWidth, lifetime, start, beat, mult
             data.times.push(birth);
             // TODO graphics.addReferencePoint(point)
             var segment = {point: point};
-            referencePath.add(segment);
-            var previousIndex = referencePath.segments.length - 2;
+            graphics.referencePath.add(segment);
+            var previousIndex = graphics.referencePath.segments.length - 2;
             // TODO graphics.smoothLastReferenceSegment()
-            referencePath.segments[Math.max(0, previousIndex)].smooth();
+            graphics.referencePath.segments[Math.max(0, previousIndex)].smooth();
         },
         completeCreation: function(absoluteLast){
             setLast(absoluteLast);
             // TODO graphics.smoothAllReferenceSegments_v1() // check difference with v2
-            if(referencePath.segments.length>1){
-                referencePath.smooth({ type: 'catmull-rom'});
+            if(graphics.referencePath.segments.length>1){
+                graphics.referencePath.smooth({ type: 'catmull-rom'});
             }
             // unfortunately, this is too expensive. Try a worker?
             //https://developer.mozilla.org/en-US/docs/Web/API/Worker
@@ -193,14 +192,14 @@ export default function makeLine(color, strokeWidth, lifetime, start, beat, mult
         },
         clear: function(){
             // TODO graphics.clear()
-            drawingPaths.forEach(function(drawingPath){
+            graphics.drawingPaths.forEach(function(drawingPath){
                 drawingPath.removeSegments();
             });
         },
         exportData: function(){
             var exported = new Object(data);
             // graphics.exportReferencePoints()
-            exported.segments = referencePath.segments.map(function(s){
+            exported.segments = graphics.referencePath.segments.map(function(s){
                 return [s.point.x, s.point.y]; 
             });
             return exported;
@@ -208,11 +207,11 @@ export default function makeLine(color, strokeWidth, lifetime, start, beat, mult
         importData: function(newdata){
             this.clear();
             // graphics.importReferencePoints(newdata.segments)
-            referencePath.removeSegments();
-            referencePath.addSegments(newdata.segments);
+            graphics.referencePath.removeSegments();
+            graphics.referencePath.addSegments(newdata.segments);
 
             // TODO graphics.smoothAllReferenceSegments_v2() // check difference with v1
-            referencePath.segments.forEach(function(s){ s.smooth(); });
+            graphics.referencePath.segments.forEach(function(s){ s.smooth(); });
             //don't delete the segments, they might be needed for redo
             // but why was this even deleted in the first place?
             //delete newdata.segments;

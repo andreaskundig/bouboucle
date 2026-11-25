@@ -1,5 +1,5 @@
 
-class PaperJsLineGfx {
+export class PaperJsGraphics {
 
   constructor(paperScope, color, strokeWidth){
     this.paperScope = paperScope;
