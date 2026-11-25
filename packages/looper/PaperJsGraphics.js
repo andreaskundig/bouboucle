@@ -16,7 +16,7 @@ export class PaperJsGraphics {
                             strokeCap: 'round'});
   }
 
-  getReferencePoints() {
+  getPoints() {
     return this.referencePath.segments;
   }
 
@@ -35,23 +35,23 @@ export class PaperJsGraphics {
     });
   }
 
-  addReferencePoint(point){
+  addPoint(point){
     var segment = { point: point };
     this.referencePath.add(segment);
   }
 
-  smoothLastReferenceSegment(){
+  smoothLastSegment(){
     var previousIndex = this.referencePath.segments.length - 2;
     this.referencePath.segments[Math.max(0, previousIndex)].smooth();
   }
 
-  smoothAllReferenceSegments_v1(){
+  smoothAllSegments_v1(){
     if (this.referencePath.segments.length > 1) {
       this.referencePath.smooth({ type: 'catmull-rom' });
     }
   }
 
-  smoothAllReferenceSegments_v2(){
+  smoothAllSegments_v2(){
     this.referencePath.segments.forEach(function(s){ s.smooth(); });
   }
 
@@ -61,14 +61,14 @@ export class PaperJsGraphics {
     });
   }
 
-  exportReferencePoints(){
+  importPoints(points){
+    this.referencePath.removeSegments();
+    this.referencePath.addSegments(points);
+  }
+
+  exportPoints(){
     return this.referencePath.segments.map(function(s){
         return [s.point.x, s.point.y]; 
     });
-  }
-
-  importReferencePoints(segments) {
-    this.referencePath.removeSegments();
-    this.referencePath.addSegments(segments);
   }
 }

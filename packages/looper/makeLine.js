@@ -147,7 +147,7 @@ export default function makeLine(color, strokeWidth, lifetime, start, beat, mult
         },
         redraw: function(dateNow){
             // Segments in our sense: groups of points
-            var visibleSegments = this.periodSegmentsToShow(graphics.getReferencePoints(), dateNow);
+            var visibleSegments = this.periodSegmentsToShow(graphics.getPoints(), dateNow);
             graphics.updateLines(visibleSegments)
         },
         pushSegment: function(point, dateNow){
@@ -159,13 +159,13 @@ export default function makeLine(color, strokeWidth, lifetime, start, beat, mult
                 birth -= lifetime;
             }
             data.times.push(birth);
-            graphics.addReferencePoint(point)
+            graphics.addPoint(point)
             
-            graphics.smoothLastReferenceSegment()
+            graphics.smoothLastSegment()
         },
         completeCreation: function(absoluteLast){
             setLast(absoluteLast);
-            graphics.smoothAllReferenceSegments_v1() // check difference with v2
+            graphics.smoothAllSegments_v1() // check difference with v2
 
             // unfortunately, this is too expensive. Try a worker?
             //https://developer.mozilla.org/en-US/docs/Web/API/Worker
@@ -175,14 +175,14 @@ export default function makeLine(color, strokeWidth, lifetime, start, beat, mult
             graphics.clear();
         },
         exportData: function(){
-            return graphics.exportReferencePoints();
+            return graphics.exportPoints();
         },
         importData: function(newdata){
             this.clear();
-            graphics.referencePath.removeSegments();
-            graphics.referencePath.addSegments(newdata.segments);
 
-            graphics.smoothAllReferenceSegments_v2(); // check difference with v1
+            graphics.importPoints(newdata.segments);
+
+            graphics.smoothAllSegments_v2(); // check difference with v1
             
             //don't delete the segments, they might be needed for redo
             // but why was this even deleted in the first place?
