@@ -14,7 +14,7 @@ export default function makeLine(color, strokeWidth, lifetime, start, beat, mult
                 strokeWidth: strokeWidth || 2,
                 times: []};
 
-    var graphics = new PaperJsGraphics(paperScope);
+    var graphics = new PaperJsGraphics(paperScope, data.color, data.strokeWidth);
 
     var makePath = function(data){
         return new paperScope.Path({strokeColor: data.color,
@@ -146,23 +146,9 @@ export default function makeLine(color, strokeWidth, lifetime, start, beat, mult
             return periodSegments;
         },
         redraw: function(dateNow){
-            // TODO graphics.getReferencePoints() // because a paper.js segment is a point for us
             // Segments in our sense: groups of points
-            var visibleSegments = this.periodSegmentsToShow(graphics.referencePath.segments, dateNow);
-            // TODO graphics.updateLines(visibleSegments)
-            visibleSegments.forEach(function(segs, i){
-                if(graphics.drawingPaths.length < i + 1){
-                    // create a path without segments
-                    graphics.drawingPaths.push(makePath(data));
-                    // graphics.drawingPaths[graphics.drawingPaths.length - 1].blendMode='multiply';
-                }
-                var path = graphics.drawingPaths[i];
-                path.removeSegments();
-                path.addSegments(segs);
-                //path needs two segments to display one point :-P
-                if(path.segments.length === 1){path.add(path.segments[0]);}
-            });
-
+            var visibleSegments = this.periodSegmentsToShow(graphics.getReferencePoints(), dateNow);
+            graphics.updateLines(visibleSegments)
         },
         pushSegment: function(point, dateNow){
             var birth = dateNow - data.start;
@@ -173,45 +159,31 @@ export default function makeLine(color, strokeWidth, lifetime, start, beat, mult
                 birth -= lifetime;
             }
             data.times.push(birth);
-            // TODO graphics.addReferencePoint(point)
-            var segment = {point: point};
-            graphics.referencePath.add(segment);
-            var previousIndex = graphics.referencePath.segments.length - 2;
-            // TODO graphics.smoothLastReferenceSegment()
-            graphics.referencePath.segments[Math.max(0, previousIndex)].smooth();
+            graphics.addReferencePoint(point)
+            
+            graphics.smoothLastReferenceSegment()
         },
         completeCreation: function(absoluteLast){
             setLast(absoluteLast);
-            // TODO graphics.smoothAllReferenceSegments_v1() // check difference with v2
-            if(graphics.referencePath.segments.length>1){
-                graphics.referencePath.smooth({ type: 'catmull-rom'});
-            }
+            graphics.smoothAllReferenceSegments_v1() // check difference with v2
+
             // unfortunately, this is too expensive. Try a worker?
             //https://developer.mozilla.org/en-US/docs/Web/API/Worker
             //simplifyAndSmooth(referencePath);
         },
         clear: function(){
-            // TODO graphics.clear()
-            graphics.drawingPaths.forEach(function(drawingPath){
-                drawingPath.removeSegments();
-            });
+            graphics.clear();
         },
         exportData: function(){
-            var exported = new Object(data);
-            // graphics.exportReferencePoints()
-            exported.segments = graphics.referencePath.segments.map(function(s){
-                return [s.point.x, s.point.y]; 
-            });
-            return exported;
+            return graphics.exportReferencePoints();
         },
         importData: function(newdata){
             this.clear();
-            // graphics.importReferencePoints(newdata.segments)
             graphics.referencePath.removeSegments();
             graphics.referencePath.addSegments(newdata.segments);
 
-            // TODO graphics.smoothAllReferenceSegments_v2() // check difference with v1
-            graphics.referencePath.segments.forEach(function(s){ s.smooth(); });
+            graphics.smoothAllReferenceSegments_v2(); // check difference with v1
+            
             //don't delete the segments, they might be needed for redo
             // but why was this even deleted in the first place?
             //delete newdata.segments;

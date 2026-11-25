@@ -17,12 +17,12 @@ export class PaperJsGraphics {
   }
 
   getReferencePoints() {
-    this.referencePath.segments;
+    return this.referencePath.segments;
   }
 
   updateLines(visibleSegments){
-    visibleSegments.forEach(function(segs, i){
-      if (drawingPaths.length < i + 1) {
+    visibleSegments.forEach((segs, i) => {
+      if (this.drawingPaths.length < i + 1) {
         // create a path without segments
         this.drawingPaths.push(this.#makePath());
         // drawingPaths[drawingPaths.length - 1].blendMode='multiply';
@@ -41,7 +41,7 @@ export class PaperJsGraphics {
   }
 
   smoothLastReferenceSegment(){
-    var previousIndex = referencePath.segments.length - 2;
+    var previousIndex = this.referencePath.segments.length - 2;
     this.referencePath.segments[Math.max(0, previousIndex)].smooth();
   }
 
