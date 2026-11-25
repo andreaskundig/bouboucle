@@ -80,7 +80,8 @@ var makeLooper = function(opts){
         if(!data.hasOwnProperty('backgroundColor')){
             data.backgroundColor = '#ffffff'; // old format
         }
-        setBackground(data.backgroundColor);
+        // setBackground(data.backgroundColor);
+        graphics.setBackgroundColor(data.backgroundColor);
         data.lineData.forEach(function(dt){
             var line = makeLine(dt.color, dt.strokeWidth, dt.lifetime, now(), dt.beat, dt.multiPeriod, graphics);
             line.importData(dt);
@@ -203,12 +204,15 @@ var makeLooper = function(opts){
             installListeners();
         }
         // colored background to make gif exporting work
-        setBackground(config.backgroundColor);
+        graphics.setBackgroundColor(config.backgroundColor);
         scale(dimension);
         graphics.paperScope.view.draw();
     };
     
     /** Scale the animation to maximum size within available width & height.*/ 
+    //TODO move this to PaperJsGraphics
+    //TODO replace every access to background with calls to graphics,
+    // because background stays null now
     var scale = function(newAvailableSize){
         if(newAvailableSize){
             availableWidth = newAvailableSize.width;
@@ -225,10 +229,10 @@ var makeLooper = function(opts){
             graphicsConfig.canvas.width/2/zoom / graphics.paperScope.view.pixelRatio,
             graphicsConfig.canvas.height/2/zoom / graphics.paperScope.view.pixelRatio);
         graphics.paperScope.view.center = center;
-        graphics.paperScope.view.viewSize = new graphicsConfig.paper.Size(width, height);
-        if(background){
-            setBackground(background.fillColor);
-        }
+        graphics.paperScope.view.viewSize = new graphicsConfig.paper.Size(width, height);    
+        var backgroundColor = graphics.getBackgroundColor();
+        graphics.setBackgroundColor(backgroundColor);
+        
     };
 
     var getDimension = function(){
@@ -236,23 +240,23 @@ var makeLooper = function(opts){
         return {width: availableWidth, height: availableHeight};
     }
 
-    var setBackground = function(backgroundColor){
-        // ps.activate();
-        graphics.paperScope.activate();
-        if(backgroundColor){
-            var newBackground = new graphics.paperScope.Path.Rectangle(graphics.paperScope.view.bounds);
-            newBackground.fillColor = backgroundColor;
-            if(background){
-                background.replaceWith(newBackground);
-            }
-            background = newBackground;
-        }else{
-            if(background){
-                background.remove();
-                background = null;
-            }
-        }
-    };
+    // var setBackground = function(backgroundColor){
+    //     // ps.activate();
+    //     graphics.paperScope.activate();
+    //     if(backgroundColor){
+    //         var newBackground = new graphics.paperScope.Path.Rectangle(graphics.paperScope.view.bounds);
+    //         newBackground.fillColor = backgroundColor;
+    //         if(background){
+    //             background.replaceWith(newBackground);
+    //         }
+    //         background = newBackground;
+    //     }else{
+    //         if(background){
+    //             background.remove();
+    //             background = null;
+    //         }
+    //     }
+    // };
     
     var redrawAll = async function(time){
         // ps.activate();

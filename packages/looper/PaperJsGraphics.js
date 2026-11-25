@@ -22,6 +22,31 @@ export class PaperJsGraphics {
   makeLine(color, strokeWidth){
     return new PaperJsLine(this.paperScope, color, strokeWidth);
   }
+
+  setBackgroundColor(backgroundColor) {
+    this.paperScope.activate();
+    if (backgroundColor) {
+      var newBackground = new this.paperScope.Path.Rectangle(this.paperScope.view.bounds);
+      newBackground.fillColor = backgroundColor;
+      if (this.background) {
+        this.background.replaceWith(newBackground);
+      }
+      this.background = newBackground;
+    } else {
+      if (this.background) {
+        this.background.remove();
+        this.background = null;
+      }
+    }
+  }
+
+  getBackgroundColor(){
+    return this.background?.fillColor;
+  }
+
+  setZoom(zoom){
+
+  }
 }
 
 export class PaperJsLine {
